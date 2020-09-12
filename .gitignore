@@ -1,0 +1,7 @@
+# ignore all logs
+**/x_sources
+.DS_Store
+Thumbs.db
+todo.txt
+~*.*
+vr.docx

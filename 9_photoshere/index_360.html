@@ -1,0 +1,24 @@
+<!-- https://github.com/jorgecardoso/aframe-webcentric-component -->
+<!-- https://www.flickr.com/groups/360degrees/pool/map?mode=group -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-webcentric-component@0.0.2/dist/aframe-webcentric-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene webcentric>
+      <a-assets>
+        <img
+          id="athenes"
+          crossorigin="anonymous"
+          src="athenes_vue acropole.jpg"
+        />
+      </a-assets>
+
+      <a-sky src="#athenes"></a-sky>
+
+      <a-entity><a-camera wasd-controls-enabled="false"></a-camera></a-entity>
+    </a-scene>
+  </body>
+</html>
