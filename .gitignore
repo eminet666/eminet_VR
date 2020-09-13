@@ -1,7 +1,12 @@
-# ignore all logs
-**/x_sources
+# ignore files
 .DS_Store
 Thumbs.db
-todo.txt
 ~*.*
-vr.docx
+
+# ignore rep
+/vr.docx
+/x_sources
+/todo.txt
+/9_photosphere
+/a_cursor
+/b_animation
