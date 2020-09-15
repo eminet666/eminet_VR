@@ -9,4 +9,5 @@ Thumbs.db
 
 # ignore rep
 /a_cursor
+/b_animation
 /c_lights
