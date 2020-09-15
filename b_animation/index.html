@@ -1,0 +1,97 @@
+<!-- https://aframe-course.glitch.me/1200-animations.htmlhttps://aframe-course.glitch.me/1200-animations.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animations - 01</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse" background="color:gray">
+
+      <!-- etape 1 : principe -->
+      <!-- <a-box
+            position="0 1.6 -2"
+            animation="property: rotation; to: 0 360 180; dur: 5000; loop: 1"
+      ></a-box> -->
+
+      <!-- etape 2 : easing -->
+      <!-- <a-box
+            scale="0.5 0.5 0.5"
+            position="-3 0 -4"
+            animation="property: position; dur: 5000; easing: linear; to: 3 0 -4; loop: true"
+      ></a-box> -->
+
+      <!-- etape 3 : enchainer des animations -->
+      <!-- <a-box
+              position="-1 1.6 -2"
+              scale="0.5 0.5 0.5"
+              color="#ff0000"
+              animation="property: height; from: 1; to: 2; dur: 1000; delay: 0; loop: true;"
+      ></a-box>
+
+      <a-box
+              id="sec"
+              position="0 1.6 -2"
+              scale="0.5 0.5 0.5"
+              color="#00ff00"
+              animation="property: height; from: 1; to: 2; dur: 1000; delay: 1000; loop: true;"
+      ></a-box>
+
+      <a-box
+              id="thi"
+              position="1 1.6 -2"
+              scale="0.5 0.5 0.5"
+              color="#0000ff"
+              animation="property: height; from: 1; to: 2; dur: 1000; delay: 2000; loop: true;"
+      ></a-box> -->
+
+      <!-- 4- axes de rotation -->
+      <!-- <a-entity
+              id="rotatingbox"
+              position="0 2 -2"
+              animation="property: rotation; from: 0 0 0; to: 0 0 360; dur: 1000; loop: true; easing: linear">
+              <a-box
+                position="0 0.25 0"
+                width="0.1"
+                height="0.5"
+                depth="0.1"
+                color="#ff0000"
+              ></a-box>
+      </a-entity>
+
+      <a-entity
+              id="rotatingsphere"
+              position="0 0 0"
+              animation="property: rotation; from: 0 0 0; to: 0 360 0; dur: 5000; loop: true; easing: linear">
+              <a-sphere position="0 0 -5" radius="0.1" color="#00ff00"> </a-sphere>
+      </a-entity> -->
+
+      <!-- 5- plusieurs proprietes d'un même objet -->
+      <!-- <a-box
+              position="-1 1.6 -2"
+              scale="0.5 0.5 0.5"
+              color="#ff0000"
+              animation__height="property: height; from: 1; to: 2; dur: 1000; loop: 1"
+              animation__rotation="property: rotation; from: 0 0 0; to: 360 0 0; dur: 1000; loop: true"
+              animation__color="property: color; from: #ff0000; to: #0000ff; dur: 1000; loop: true; dir: alternate"
+       ></a-box> -->
+
+       <!-- 6- animations interactives -->
+       <a-box
+               position="-1 1.6 -3"
+               color="#ff0000"
+               animation="property: height; dur: 2000; from: 1; to: 2; startEvents: mouseenter"
+       ></a-box>
+       <a-box
+            position="1 1.6 -3"
+            color="#ffff00"
+            animation="property: height; dur: 2000; from: 1; to: 2; startEvents: click"
+        ></a-box>
+
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+    </a-scene>
+  </body>
+</html>
