@@ -9,6 +9,7 @@
 		<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 
 		<script>
+			// verifie le chaargement du model 3D
 	      	AFRAME.registerComponent('loaded', {
 	          init: function () {
 	            var el = this.el;
@@ -22,6 +23,7 @@
 	            }
 	      	});
 
+			// au charement la musique
 			AFRAME.registerComponent('sound_loaded', {
 			  init: function () {
 				var el = this.el;
