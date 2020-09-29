@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+      <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+      <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.7/aframe/build/aframe-ar.js"></script>
+      <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+      <script src="js/play-all-model-animations.js"></script>
+      <script src="js/aframe-extras.js"></script>
+      <script src="js/aframe-text-geometry-component.min.js"></script>
+
+      <script>
+        AFRAME.registerComponent('log', {         // fonction de 'log' juste pour vérifier le principe
+          schema: {type: 'string'},
+          init: function () {
+            var stringToLog = this.data;
+            console.log(stringToLog);             // cette fonction se contente d'écrire un texte donné en paramètre dans la console
+          }
+        });
+
+        AFRAME.registerComponent('loaded', {
+            init: function () {
+              var el = this.el;
+              el.addEventListener('model-loaded', () => {
+                console.log(el.id+" chargé");
+                });
+              this.el.addEventListener('model-error', () => {
+                  // Grab the mesh / scene.
+                  console.log("erreur");
+                });
+              }
+        });
+
+      </script>
+
+  </head>
+
+  <body>
+
+    <a-scene embedded arjs='trackingMethod: best; debugUIEnabled: false;'>
+
+          <a-assets>
+            <a-asset-item id="glbFlamingo" src="./models/Flamingo.glb"></a-asset-item>
+            <a-asset-item id="glbParrot" src="./models/Parrot.glb"></a-asset-item>
+            <a-asset-item id="glbStork" src="./models/Stork.glb"></a-asset-item>
+            <audio id="vent" src="./assets/vent.mp3" preload="true"></audio>
+            <audio id="vol" src="./assets/vol.mp3" preload="true"></audio>
+          </a-assets>
+
+          <a-marker preset="hiro">
+
+              <a-entity   id ="flamingo"
+                          scale="0.5 0.5 0.5"
+                          position="0 0 0"
+                          rotation="0 0 0"
+                          log="flamingo ok"
+                          loaded
+                          play-all-model-animations
+                          sound="src: #vol; loop: true"
+                          gltf-model="#glbFlamingo">
+               </a-entity>
+
+               <a-entity   id ="parrot"
+                           scale="0.5 0.5 0.5"
+                           position="-2 0 0"
+                           rotation="0 0 0"
+                           log="parrot ok"
+                           loaded
+                           play-all-model-animations
+                           gltf-model="#glbParrot">
+                </a-entity>
+
+                <a-entity   id ="stork"
+                            scale="0.5 0.5 0.5"
+                            position="2 0 0"
+                            rotation="0 0 0"
+                            log="stork ok"
+                            loaded
+                            play-all-model-animations
+                            gltf-model="#glbStork">
+                 </a-entity>
+
+          </a-marker>
+
+          <a-entity camera>
+              <a-cursor color="red"></a-cursor>
+              <a-sound id="amb_vent" sound="src: #vent" loop= "true" autoplay="true"></a-sound>
+          </a-entity>
+
+    </a-scene>
+
+    <!-- GESTION AUDIO -->
+    <button id="bouton" style="position: absolute; left: 20px; bottom: 20px;">SON ON</button>
+
+    <script>
+        var contexteAudio = new AudioContext;
+        var b = document.getElementById("bouton");
+        var s = document.getElementById("amb_vent");
+        var v = document.getElementById("amb_vol");
+
+        function resumeAudio() {
+
+            if(contexteAudio.state == "suspended")
+            {
+                  contexteAudio.resume();
+                  console.log('Playback resumed successfully');
+                  s.play();
+                  //v.play();
+                  b.innerHTML = "SON OFF";
+            }
+            else {
+                  contexteAudio.suspend();
+                  console.log('Playback paused successfully');
+                  s.pause();
+                  v.pause();
+                  b.innerHTML = "SON ON";
+            }
+                //document.removeEventListener("click", resumeAudio);
+        }
+
+        b.onclick = resumeAudio;
+      </script>
+
+
+  </body>
+</html>
