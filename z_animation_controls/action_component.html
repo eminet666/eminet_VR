@@ -7,6 +7,7 @@
      - animation-finished  action, direction 	Emitted when all loops  have finished
  -->
  <!-- https://aframe.io/docs/1.0.0/core/component.html -->
+ <!-- https://aframe.io/docs/1.0.0/core/entity.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,22 +16,15 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 
     <script>
-    /*    // Registering component in foo-component.js
-        AFRAME.registerComponent('foo', {
-          schema: {},
-          init: function () {},
-          update: function () {},
-          tick: function () {},
-          remove: function () {},
-          pause: function () {},
-          play: function () {}
-      }); */
-
+      var nb = 0;
+      var donnees;
       AFRAME.registerComponent('loaded', {
         init: function () {
           var el = this.el;
           el.addEventListener('model-loaded', () => {
             console.log(">>> animation chargée : "+el.id);
+            var data = el.getAttribute("animation-mixer").duration;
+            console.log(">>> animation données : "+data);
             });
           el.addEventListener('model-error', () => {
               console.log(">>> erreur chargement : "+el.id);
@@ -39,16 +33,24 @@
       });
 
       AFRAME.registerComponent('finished', {
-        tick: function () {
+        init: function () {
             var el = this.el;
             el.addEventListener('animation-finished', () => {
                 console.log(">>> animation terminée : "+el.id);
+                nb = 0;
             });
+            el.addEventListener('animation-loop', () => {
+                nb++;
+                console.log(">>> animation répétion : "+el.id);
+                if(nb == 5) el.pause();
+            });
+        },
+        pause: function () {
+            console.log(">>> animation pause : "+this.el.id);
         }
       });
 
     </script>
-
 
   </head>
 
@@ -64,7 +66,7 @@
                   rotation="0 60 0"
                   scale="0.03 0.03 0.03"
                   gltf-model="#fox"
-                  animation-mixer="clip: Run; repetitions : 10; timeScale: 3; "
+                  animation-mixer="clip: Run; repetitions : 10; timeScale: 3; duration : 5;"
                   loaded
                   finished>
         </a-entity>
