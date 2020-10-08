@@ -7,7 +7,7 @@
     <a-scene>
         <!-- #lumières et evironnement -->
         <a-entity light="type: ambient; color: #CCC; intensity:1"></a-entity>
-        <a-entity light="type: directional; castShadow:true; intensity: 0.5" position="-1 1.5 1"></a-entity>
+        <a-entity id="spot" light="type: directional; castShadow:true; intensity: 0.5" position="-1 1.5 1"></a-entity>
 
       <!-- parent that shadows -->
       <a-entity shadow="cast:true; receive:true">
