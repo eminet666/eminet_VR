@@ -34,6 +34,7 @@
                 el.addEventListener('animation-finished', () => {
                     console.log(">>>> animation terminée ");
                     nb = 0;
+                    el.removeAttribute("animation-mixer");
                     el.setAttribute("animation-mixer", "clip: Walk; repetitions: 5; duration : 2; clampWhenFinished: true" );
                 });
                 el.addEventListener('animation-loop', () => {

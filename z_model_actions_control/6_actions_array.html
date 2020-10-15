@@ -15,12 +15,12 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 
     <script>
-      var actions = ["Run", "Walk", "Survey"];
-      // var dataRun = "clip: Run; crossFadeDuration: .3; repetitions : 10; timeScale: 1";
-      // var dataWalk = "clip: Walk; crossFadeDuration: .3; repetitions : 10; timeScale: 1";
-      // var dataSurvey = "clip: Survey; crossFadeDuration: .3; repetitions : 2; timeScale: 1";
-      var current = actions[2];
-      var
+      var actions_index = 0;
+      var clip = ["Run", "Walk", "Survey"];
+      var options_index = 0;
+      var repet = [1, 4, 3, 2, 5, 3, 6, 2];
+      var duree = [ 4, 2, 2, 2, 1, 1, 1, 0.5];
+      var data = "clip: "+clip[actions_index]+"; crossFadeDuration: .3; repetitions : "+repet+"; duration: "+duree;
 
       AFRAME.registerComponent('loaded', {
         init: function () {
@@ -39,12 +39,15 @@
           update: function () {
               var el = this.el;
               el.addEventListener('animation-finished', () => {
-                  console.log(">>> animation terminée : "+el.id);
+                  // console.log(">>> animation terminée : "+el.id);
                   el.removeAttribute("animation-mixer");
 
-                  var newIndex = Math.floor(Math.random() * actions.length);
-                  console.log(">>> "+newIndex);
-                  //el.setAttribute("animation-mixer", maj );
+                  actions_index = Math.floor(Math.random() * 3);
+                  data = "clip: "+clip[actions_index]+"; crossFadeDuration: .3; repetitions : "+repet[options_index]+"; duration: "+duree[options_index];
+                  console.log(">>>> clip:"+clip[actions_index]+" repetitions:"+repet[options_index]+" duration:"+duree[options_index]);
+                  el.setAttribute("animation-mixer", data);
+                  if(options_index < repet.length-1) { options_index++;}
+
               });
           }
       });
@@ -62,7 +65,7 @@
                   rotation="0 60 0"
                   scale="0.03 0.03 0.03"
                   gltf-model="#fox"
-                  animation-mixer="clip: Survey; repetitions : 10; timeScale: 3; "
+                  animation-mixer="clip: Run; repetitions : 1; duration: 5; "
                   loaded
                   finished>
         </a-entity>
