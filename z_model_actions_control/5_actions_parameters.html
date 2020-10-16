@@ -15,7 +15,6 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
 
     <script>
-      var actions = ["Run", "Walk", "Survey"];
       var repet = 1;
       var duree = 2;
       var dataRun = "clip: Run; crossFadeDuration: .3; repetitions : "+repet+"; duration: "+duree;
@@ -45,6 +44,7 @@
                   fin =  Date.now();
                   let ecoule =((fin - debut)/1000).toFixed(1);
                   console.log(">>> répétions: "+repet+" duration: "+duree+" ecoulé : "+ecoule+"s");
+
                   // nouvelle anim
                   repet = Math.ceil(Math.random() * 5);             // entier supérieur
                   // duree = (Math.random() * 5).toFixed(1);           // arrondi 1 décimale</1>

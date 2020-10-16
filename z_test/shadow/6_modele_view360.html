@@ -43,10 +43,15 @@
 					  shadow="cast:true; receive:true"
                       >
             </a-entity>
-	
+
 			<!-- #plane avec matériau transparent -->
-			<a-plane color="#CCC" height="3" width="3" position="1.5643 0 -6.13555" rotation="-90 0 0" shadow="receive: true" shadow-material ></a-plane>
-			<a-sky src="#thira" shadow="cast:true; receive:true"></a-sky>
+			<a-plane color="#CCC" height="3" width="3"
+					 position="1.5643 0 -6.13555"
+					 rotation="-90 0 0"
+					 shadow="receive: true"
+					 shadow-material>
+			</a-plane>
+			<a-sky src="#thira"></a-sky>
 			<!-- #camera -->
 			<a-entity id="camera" position="0 1.6 0" camera look-controls></a-entity>
     	</a-scene>

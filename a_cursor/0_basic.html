@@ -11,9 +11,6 @@
 
 <body>
     <a-scene>
-        <a-assets>
-            <a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
-        </a-assets>
 
         <a-camera position="0 1.6 4" look-controls wasd-controls>
               <a-cursor position="0 0 -3"
@@ -25,9 +22,8 @@
               </a-cursor>
         </a-camera>
 
-        <a-box position="0 1 0"
-               material="color: green">
-               <a-animation begin="mouseenter" attribute="rotation" to="0 360 0"
+        <a-box position="0 1 0" material="color: green">
+               <a-animation begin="mouseenter" attribute="rotation" to="0 360 0" 
                easing="linear" dur="2000" fill="backwards"></a-animation>
         </a-box>
 
