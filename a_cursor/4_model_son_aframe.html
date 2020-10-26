@@ -22,12 +22,12 @@
                         {
                               contexteAudio.resume();
                               son_vent.play();
-                              console.log(">>>> SON OFF : Playback resumed successfully");
+                              console.log(">>>> SON ON : Playback resumed successfully");
                         }
                         else {
                               contexteAudio.suspend();
                               son_vent.pause();
-                              console.log(">>>> SON ON : Playback paused successfully");
+                              console.log(">>>> SON OFF : Playback paused successfully");
                         }
                     });
                     el.addEventListener('mouseleave', function () {

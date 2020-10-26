@@ -75,13 +75,13 @@
                       contexteAudio.resume();
                       son_vent.play();
                       b.innerHTML = "SON OFF";
-                      console.log(">>>> SON OFF : Playback resumed successfully");
+                      console.log(">>>> SON ON : Playback resumed successfully");
             }
                 else {
                       contexteAudio.suspend();
                       son_vent.pause();
                       b.innerHTML = "SON ON";
-                      console.log(">>>> SON ON : Playback paused successfully");
+                      console.log(">>>> SON OFF : Playback paused successfully");
                 }
                 //document.removeEventListener("click", resumeAudio);
             }
