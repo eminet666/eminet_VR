@@ -26,19 +26,12 @@
     <body>
         <a-scene renderer="antialias: true">
             <a-entity position="0 0 0">
-                <a-entity id="lefthand"
-                          oculus-touch-controls="hand: right; model:false"
-                          haptics="dur: 40"
-                          raycaster="objects: .collidable; showLine: true; far: 5;"
-                          line="color: green; opacity: 1;"
-                          gltf-model="#main_g">
-                </a-entity>
                 <a-entity id="righthand"
                           oculus-touch-controls="hand: right; model:false"
                           haptics="dur: 40"
                           raycaster="objects: .collidable; showLine: true; far: 5;"
-                          line="color: green; opacity: 1;">
-                          <a-entity gltf-model="#main_d"></a-entity>
+                          line="color: green; opacity: 1;"
+                          gltf-model="#main_d">
                 </a-entity>
         	</a-entity>
 

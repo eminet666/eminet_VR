@@ -26,6 +26,13 @@
         <a-scene renderer="antialias: true">
             <a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
+                <a-entity id="lefthand"
+                          oculus-touch-controls="hand: left; model:false"
+                          haptics="dur: 40"
+                          raycaster="objects: .collidable; showLine: true; far: 5;"
+                          line="color: yellow; opacity: 1;"
+                          geometry="primitive: sphere; radius: 0.05;">
+                </a-entity>
                 <a-entity id="righthand"
                           oculus-touch-controls="hand: right; model:false"
                           haptics="dur: 40"
