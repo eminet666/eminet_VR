@@ -23,7 +23,7 @@
     </head>
 
     <body>
-        <a-scene>
+        <a-scene renderer="antialias: true">
             <a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
                 <a-entity id="righthand"
@@ -31,7 +31,7 @@
                           haptics="dur: 40"
                           raycaster="objects: .collidable; showLine: true; far: 5; lineColor: red; lineOpacity: 1"
                           <a-sphere radius="0.05"
-                             material="transparent: true; opacity: 0.5; color: #517ecb;">
+                             material="transparent: false; color: #yellow;">
                           </a-sphere>
                 </a-entity>
         	</a-entity>
