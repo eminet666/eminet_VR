@@ -27,8 +27,9 @@
             <a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
                 <a-entity laser-controls="hand: right"
-                          raycaster="objects: .collidable; showLine: true; far: 10; lineColor: #00FF00; lineOpacity: 1"
-                ></a-entity>
+                          raycaster="objects: .collidable; showLine: true; far: 10;"
+                          line="color: yellow; opacity: 1;">
+                </a-entity>
         	</a-entity>
 
             <a-box id="objet" position="-2 0.5 -3" color="blue"
