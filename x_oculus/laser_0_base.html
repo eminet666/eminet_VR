@@ -1,6 +1,7 @@
 <!-- source : https://stemkoski.github.io/A-Frame-Examples/ -->
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
@@ -35,6 +36,12 @@
 
         	<a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
+                <a-entity id="leftHand"
+                    laser-controls="hand: left"
+                    raycaster="objects: .collidable; far: 5;"
+                    line="color: #CCCCCC"
+                    pointer>
+                </a-entity>
         		<a-entity id="rightHand"
                     laser-controls="hand: right"
                     raycaster="objects: .collidable; far: 5;"

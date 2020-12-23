@@ -1,4 +1,4 @@
-<!-- source : https://stemkoski.github.io/A-Frame-Examples/ -->
+<!-- source : https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md -->
 <!DOCTYPE html>
 <html>
 
@@ -6,14 +6,17 @@
         <meta charset="UTF-8">
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script>
-        AFRAME.registerComponent('collider-check', {
-          dependencies: ['raycaster'],
+        AFRAME.registerComponent('collision', {
+        	init: function() {
+                let mesh = this.el.getObject3D("mesh");
+        		this.el.addEventListener("raycaster-intersected", function(event) {
+                    mesh.material.color.set("red");
+        		});
 
-          init: function () {
-            this.el.addEventListener('raycaster-intersection', function () {
-              console.log('Player hit something!');
-            });
-          }
+        		this.el.addEventListener("raycaster-intersected-cleared", function(event) {
+                    mesh.material.color.set("blue");
+        		});
+        	}
         });
         </script>
 
@@ -26,7 +29,7 @@
                 <a-entity laser-controls="hand: right"></a-entity>
         	</a-entity>
 
-            <a-entity id="player" collider-check>
+            <a-entity id="player">
               <a-entity raycaster="objects: .collidable"
                         position="0 -0.9 0"
                         rotation="90 0 0">
@@ -34,7 +37,7 @@
             </a-entity>
 
             <a-box id="objet" position="-2 0.5 -3" color="blue"
-        		class="collidable">
+        		class="collidable" collision>
         	</a-box>
 
             <a-sky color="#6EBAA7"></a-sky>
