@@ -1,5 +1,4 @@
 <!-- source : https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md -->
-<!-- doc(fr) : https://sodocumentation.net/fr/aframe/topic/10036/raycasters--composant- -->
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +27,7 @@
             <a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
                 <a-entity laser-controls="hand: right"
-                          raycaster="objects: .collidable"
+                          raycaster="objects: .collidable; showLine: true; far: 100; lineColor: red; lineOpacity: 0.5"
                 ></a-entity>
         	</a-entity>
 
