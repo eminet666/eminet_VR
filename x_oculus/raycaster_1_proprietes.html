@@ -13,7 +13,6 @@
         		this.el.addEventListener("raycaster-intersected", function(event) {
                     mesh.material.color.set("red");
         		});
-
         		this.el.addEventListener("raycaster-intersected-cleared", function(event) {
                     mesh.material.color.set("blue");
         		});
@@ -28,7 +27,7 @@
             <a-entity position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
                 <a-entity laser-controls="hand: right"
-                          raycaster="objects: .collidable; showLine: true; far: 100; lineColor: #FFFF00; lineOpacity: 1"
+                          raycaster="objects: .collidable; showLine: true; far: 10; lineColor: #00FF00; lineOpacity: 1"
                 ></a-entity>
         	</a-entity>
 
