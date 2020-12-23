@@ -26,7 +26,8 @@
     <body>
         <a-scene renderer="antialias: true">
             <a-assets>
-              <a-asset-item id="main" src="./assets/models/main.glb"></a-asset-item>
+              <a-asset-item id="main_d" src="./assets/models/main_d.glb"></a-asset-item>
+              <a-asset-item id="main_g" src="./assets/models/main_g.glb"></a-asset-item>
             </a-assets>
 
             <a-entity position="0 0 0">
@@ -36,8 +37,9 @@
                           haptics="dur: 40"
                           raycaster="objects: .collidable; showLine: true; far: 5;"
                           line="color: green; opacity: 1;">
+                          <a-entity gltf-model="#main_d"></a-entity>
                 </a-entity>
-                <a-entity gltf-model="#main"></a-entity>
+
         	</a-entity>
 
             <a-box id="objet" position="-2 0.5 -3" color="blue"
