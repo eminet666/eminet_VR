@@ -20,6 +20,11 @@
 
     <body>
         <a-scene>
+            <a-entity position="0 0 0">
+        		<a-entity camera position="0 1.5 1" look-controls></a-entity>
+                <a-entity laser-controls="hand: right"></a-entity>
+        	</a-entity>
+
             <a-entity id="player" collider-check>
               <a-entity raycaster="objects: .collidable"
                         position="0 -0.9 0"
@@ -29,8 +34,9 @@
 
             <a-entity class="collidable"
                       geometry="primitive: box"
-                      position="1 0 0">
+                      position="1 1 -2">
             </a-entity>
+            <a-sky color="#6EBAA7"></a-sky>
         </a-scene>
     </body>
 </html>
