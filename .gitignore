@@ -7,6 +7,7 @@ Thumbs.db
 /todo.txt
 
 # ignore rep
+/z_*
 /b_animation
 /c_lights
 /z_test/sound_ref
