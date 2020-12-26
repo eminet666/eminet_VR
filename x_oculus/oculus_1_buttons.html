@@ -12,13 +12,18 @@
         	{
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite1 = document.querySelector('#boite1');
+                console.log(boite1);
 
         		this.el.addEventListener("gripdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
         		});
 
+                this.el.addEventListener("thumbstickdown", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
+        		});
+
                 this.el.addEventListener("xbuttondown", function(event)	{
-                    boite1.object3D.position.z += 0.1;
+                    boite1.object3D.position.z -= 0.1;
         		});
                 this.el.addEventListener("ybuttondown", function(event)	{
                     boite1.object3D.position.z += 0.1;
@@ -30,13 +35,14 @@
         	{
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite3 = document.querySelector('#boite3');
+                console.log(boite3);
 
         		this.el.addEventListener("surfacedown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite3, 'color', 'green');
         		});
 
                 this.el.addEventListener("abuttondown", function(event)	{
-                    boite3.object3D.position.z += 0.1;
+                    boite3.object3D.position.z -= 0.1;
         		});
                 this.el.addEventListener("bbuttondown", function(event)	{
                     boite3.object3D.position.z += 0.1;
