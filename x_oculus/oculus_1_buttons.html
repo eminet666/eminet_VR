@@ -16,15 +16,10 @@
 
         		this.el.addEventListener("gripdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
-                    boite1.object3D.color = 'orange';
-        		});
-
-                this.el.addEventListener("thumbstickdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
         		});
 
                 this.el.addEventListener("xbuttondown", function(event)	{
-                    utilisateur.object3D.position.z -= 0.1;
+                    boite1.object3D.position.z -= 0.1;
         		});
                 this.el.addEventListener("ybuttondown", function(event)	{
                     boite1.object3D.position.z += 0.1;
@@ -38,7 +33,7 @@
                 const boite3 = document.querySelector('#boite3');
                 console.log(boite3);
 
-        		this.el.addEventListener("surfacedown", function(event)	{
+                this.el.addEventListener("gripdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite3, 'color', 'green');
         		});
 

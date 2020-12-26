@@ -2,24 +2,22 @@
 
 
 ## tests
-* raycaster
-    * [raycaster_0_base](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_0_base.html)
-    * [raycaster_1_proprietes](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_1_proprietes.html)
-    * [raycaster_2_geometrie](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_2_geometrie.html)
-    * [raycaster_2_geometrie0](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_2_geometrie0.html)
-    * [raycaster_3_model](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_3_model.html)
-    * [raycaster_3_model0](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_3_model0.html)
+### raycaster
+* [raycaster_0_base](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_0_base.html)
+* [raycaster_1_proprietes](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_1_proprietes.html)
+* [raycaster_2_geometrie](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_2_geometrie.html)
+* [raycaster_2_geometrie0](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_2_geometrie0.html)
+* [raycaster_3_model](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_3_model.html)
+* [raycaster_3_model0](https://eminet666.github.io/eminet_VR/x_oculus/raycaster_3_model0.html)
 
-* laser    
-    * [laser_0_base](https://eminet666.github.io/eminet_VR/x_oculus/laser_0_base.html)
-    * [laser](https://eminet666.github.io/eminet_VR/x_oculus/laser.html)
+### laser    
+* [laser_0_base](https://eminet666.github.io/eminet_VR/x_oculus/laser_0_base.html)
+* [laser](https://eminet666.github.io/eminet_VR/x_oculus/laser.html)
 
 ### oculus controls
 ![manettes](./manettes.png)
-    * [oculus_trigger](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0_trigger.html)
-    * [oculus_buttons](https://eminet666.github.io/eminet_VR/x_oculus/oculus_1_buttons.html)
-
-
+* [oculus_trigger](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0_trigger.html)
+* [oculus_buttons](https://eminet666.github.io/eminet_VR/x_oculus/oculus_1_buttons.html)
 
 * [test](https://aframe.io/aframe/examples/test/laser-controls/)
 
