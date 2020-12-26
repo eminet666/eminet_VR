@@ -16,6 +16,7 @@
 
         		this.el.addEventListener("gripdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
+                    boite1.object3D.color = 'orange';
         		});
 
                 this.el.addEventListener("thumbstickdown", function(event)	{
