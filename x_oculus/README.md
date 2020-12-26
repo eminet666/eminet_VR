@@ -11,6 +11,8 @@
 * [laser_0_base](https://eminet666.github.io/eminet_VR/x_oculus/laser_0_base.html)
 * [laser](https://eminet666.github.io/eminet_VR/x_oculus/laser.html)
 
+* [test](https://eminet666.github.io/eminet_VR/x_oculus/test/test.html)
+
 # liens
 [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)
 The cursor component and laser-controls components both build on top of the raycaster component.
