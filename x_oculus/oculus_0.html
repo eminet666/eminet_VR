@@ -1,0 +1,71 @@
+<!-- source : https://stemkoski.github.io/A-Frame-Examples/ -->
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+        <script>
+        AFRAME.registerComponent('gauche', {
+        	init: function()
+        	{
+                const utilisateur = document.querySelector('#utilisateur');
+                const boite = document.querySelector('#boite');
+                // console.log(AFRAME.utils.boite.getComponentProperty(boite, 'geometry.primitive'));
+                //console.log(boite);
+
+        		this.el.addEventListener("triggerdown", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
+        		});
+        	}
+
+        });
+
+
+        AFRAME.registerComponent('thumbstick-logging',{
+          init: function () {
+            this.el.addEventListener('thumbstickmoved', this.logThumbstick);
+          },
+          logThumbstick: function (evt) {
+            if (evt.detail.y > 0.95) { console.log("DOWN"); }
+            if (evt.detail.y < -0.95) { console.log("UP"); }
+            if (evt.detail.x < -0.95) { console.log("LEFT"); }
+            if (evt.detail.x > 0.95) { console.log("RIGHT"); }
+          }
+        });
+        </script>
+    </head>
+
+    <body>
+        <a-scene renderer="antialias: true">
+
+        	<a-entity id="utilisateur" position="0 0 0">
+        		<a-entity camera position="0 1.5 1" look-controls></a-entity>
+                <a-entity oculus-touch-controls="hand: left" thumbstick-logging gauche></a-entity>
+                <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+                </a-entity>
+        	</a-entity>
+
+        	<a-plane width="10" height="10" color="#999999"
+        		position=" 0 0 0" rotation="-90 0 0">
+        	</a-plane>
+
+        	<a-box position="-2 0.5 -3" color="blue"
+        		class = "collidable"
+        		mousey>
+        	</a-box>
+
+        	<a-box id="boite" position = "0 0.5 -3" color = "blue"
+        		class = "collidable"
+        		mousey>
+        	</a-box>
+
+        	<a-box position = "2 0.5 -3" color = "blue"
+        		class = "collidable"
+        		mousey>
+        	</a-box>
+
+        </a-scene>
+    </body>
+</html>
