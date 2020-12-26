@@ -1,4 +1,4 @@
-https://aframe.io/docs/1.1.0/components/oculus-touch-controls.html#events_triggerdown
+<!-- source : https://stemkoski.github.io/A-Frame-Examples/ -->
 <!DOCTYPE html>
 <html>
 
@@ -15,15 +15,8 @@ https://aframe.io/docs/1.1.0/components/oculus-touch-controls.html#events_trigge
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
-        		});
-
-                this.el.addEventListener("triggertouchstart", function(event)	{
                     utilisateur.object3D.position.z += 0.1;
         		});
-                this.el.addEventListener("triggertouchend", function(event)	{
-                    boite.object3D.rotation.y += 15;
-        		});
-
         	}
         });
         AFRAME.registerComponent('droite', {
@@ -32,17 +25,10 @@ https://aframe.io/docs/1.1.0/components/oculus-touch-controls.html#events_trigge
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite = document.querySelector('#boite');
 
-                this.el.addEventListener("triggerdown", function(event)	{
+        		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'green');
-        		});
-
-                this.el.addEventListener("triggertouchstart", function(event)	{
                     utilisateur.object3D.position.z -= 0.1;
         		});
-                this.el.addEventListener("triggertouchend", function(event)	{
-                    boite.object3D.rotation.y -= 15;
-        		});
-
         	}
 
         });
@@ -64,9 +50,12 @@ https://aframe.io/docs/1.1.0/components/oculus-touch-controls.html#events_trigge
         		position=" 0 0 0" rotation="-90 0 0">
         	</a-plane>
 
-        	<a-box position="-2 0.5 -3" color="blue"></a-box>
+        	<a-box position="-2 0.5 -3" color="blue"
+        		class = "collidable">
+        	</a-box>
+
         	<a-box id="boite" position = "0 0.5 -3" color = "blue"
-        		class="collidable">
+        		class = "collidable">
         	</a-box>
 
         	<a-box position = "2 0.5 -3" color = "blue"
