@@ -12,11 +12,11 @@
         	{
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite = document.querySelector('#boite');
-                // console.log(AFRAME.utils.boite.getComponentProperty(boite, 'geometry.primitive'));
-                //console.log(boite);
+                console.log(utilisateur);
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
+                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 -1');
         		});
         	}
 
