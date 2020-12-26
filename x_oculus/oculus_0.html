@@ -16,12 +16,24 @@
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
-                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 -1');
+                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 1');
         		});
         	}
 
         });
+        AFRAME.registerComponent('droite', {
+        	init: function()
+        	{
+                const utilisateur = document.querySelector('#utilisateur');
+                const boite = document.querySelector('#boite');
+                console.log(utilisateur);
 
+        		this.el.addEventListener("triggerdown", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(utilisateur, 'position', '0 0 1');
+        		});
+        	}
+
+        });
 
         AFRAME.registerComponent('thumbstick-logging',{
           init: function () {

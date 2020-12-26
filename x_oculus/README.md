@@ -11,7 +11,7 @@
 * [laser_0_base](https://eminet666.github.io/eminet_VR/x_oculus/laser_0_base.html)
 * [laser](https://eminet666.github.io/eminet_VR/x_oculus/laser.html)
 
-* [oculus_0](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0.html)
+* [oculus 0](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0.html)
 
 
 * [test](https://aframe.io/aframe/examples/test/laser-controls/)
