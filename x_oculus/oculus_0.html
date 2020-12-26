@@ -16,7 +16,7 @@
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
-                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 1');
+                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 -1');
         		});
         	}
 
@@ -55,7 +55,7 @@
         	<a-entity id="utilisateur" position="0 0 0">
         		<a-entity camera position="0 1.5 1" look-controls></a-entity>
                 <a-entity oculus-touch-controls="hand: left" thumbstick-logging gauche></a-entity>
-                <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+                <a-entity oculus-touch-controls="hand: right" thumbstick-logging droite></a-entity>
                 </a-entity>
         	</a-entity>
 
