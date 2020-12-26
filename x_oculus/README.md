@@ -16,7 +16,9 @@
 
 * oculus controls
 ![manettes](./manettes.png)
-    * [oculus_0](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0_trigger.html)
+    * [oculus_trigger](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0_trigger.html)
+    * [oculus_buttons](https://eminet666.github.io/eminet_VR/x_oculus/oculus_1_buttons.html)
+
 
 
 * [test](https://aframe.io/aframe/examples/test/laser-controls/)
