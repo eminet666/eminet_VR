@@ -16,7 +16,9 @@
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
-                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 -1');
+                    let posz = AFRAME.utils.entity.getComponentProperty(utilisateur, 'position');
+                    posz -= 0.01
+                    AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 '+posz');
         		});
         	}
 
@@ -29,7 +31,9 @@
                 console.log(utilisateur);
 
         		this.el.addEventListener("triggerdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(utilisateur, 'position', '0 0 1');
+                    let posz = AFRAME.utils.entity.getComponentProperty(utilisateur, 'position');
+                    posz -= 0.01
+                    AFRAME.utils.entity.setComponentProperty(utilisateur, 'position', '0 0 '+posz');
         		});
         	}
 
