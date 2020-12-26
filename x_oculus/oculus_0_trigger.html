@@ -15,8 +15,7 @@
 
         		this.el.addEventListener("triggerdown", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
-                    // AFRAME.utils.entity.setComponentProperty(boite, 'position', '0 0 '+posz);
-                    boite.object3D.position.z += 0.1;
+                    utilisateur.object3D.position.z += 0.1;
         		});
         	}
         });
@@ -27,31 +26,12 @@
                 const boite = document.querySelector('#boite');
 
         		this.el.addEventListener("triggerdown", function(event)	{
-                    // let posz = AFRAME.utils.entity.getComponentProperty(utilisateur, 'position');
-                    // posz -= 0.01
-                    // AFRAME.utils.entity.setComponentProperty(utilisateur, 'position', '0 0 '+posz);
+                    AFRAME.utils.entity.setComponentProperty(boite, 'color', 'green');
+                    utilisateur.object3D.position.z -= 0.1;
         		});
         	}
 
         });
-        AFRAME.registerComponent('logging', {
-            init: function()
-            {
-                    console.log("cliqué");
-                    const boite = document.querySelector('#boite');
-                    // let pos = AFRAME.utils.entity.getComponentProperty(this.el, 'position');
-                    // console.log(pos.z);
-                    // pos = AFRAME.utils.coordinates.parse(pos);
-                    // // console.log(pos);
-                    // // console.log(pos.x);
-                    // // console.log(pos.x+"_"+pos.y+"_"+pos.z);
-                    console.log(boite.object3D.position.z);
-            }
-
-        });
-
-
-
 
         AFRAME.registerComponent('thumbstick-logging',{
           init: function () {
@@ -86,7 +66,7 @@
         	</a-box>
 
         	<a-box id="boite" position = "0 0.5 -3" color = "blue"
-        		class = "collidable" logging>
+        		class = "collidable">
         	</a-box>
 
         	<a-box position = "2 0.5 -3" color = "blue"
