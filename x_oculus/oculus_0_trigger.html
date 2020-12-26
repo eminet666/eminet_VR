@@ -1,4 +1,6 @@
 <!-- https://aframe.io/docs/1.1.0/components/oculus-touch-controls.html#events_triggerdown -->
+<!-- events : triggerdown / triggerup / triggertouchstart / triggertouchend / triggerchange -->
+
 <!DOCTYPE html>
 <html>
 
@@ -20,9 +22,6 @@
                 this.el.addEventListener("triggertouchstart", function(event)	{
                     utilisateur.object3D.position.z += 0.1;
         		});
-                this.el.addEventListener("triggertouchend", function(event)	{
-                    boite.object3D.rotation.y += 15;
-        		});
 
         	}
         });
@@ -38,9 +37,6 @@
 
                 this.el.addEventListener("triggertouchstart", function(event)	{
                     utilisateur.object3D.position.z -= 0.1;
-        		});
-                this.el.addEventListener("triggertouchend", function(event)	{
-                    boite.object3D.rotation.y -= 15;
         		});
 
         	}
