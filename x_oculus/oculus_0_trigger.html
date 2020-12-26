@@ -13,10 +13,10 @@
         	init: function()
         	{
                 const utilisateur = document.querySelector('#utilisateur');
-                const boite = document.querySelector('#boite');
+                const boite2 = document.querySelector('#boite2');
 
         		this.el.addEventListener("triggerdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite, 'color', 'red');
+                    AFRAME.utils.entity.setComponentProperty(boite2, 'color', 'red');
         		});
 
                 this.el.addEventListener("triggertouchstart", function(event)	{
@@ -28,10 +28,10 @@
         	init: function()
         	{
                 const utilisateur = document.querySelector('#utilisateur');
-                const boite = document.querySelector('#boite');
+                const boite2 = document.querySelector('#boite2');
 
                 this.el.addEventListener("triggerdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite, 'color', 'green');
+                    AFRAME.utils.entity.setComponentProperty(boite2, 'color', 'green');
         		});
 
                 this.el.addEventListener("triggertouchstart", function(event)	{

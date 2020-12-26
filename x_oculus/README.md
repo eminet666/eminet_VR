@@ -14,7 +14,7 @@
     * [laser_0_base](https://eminet666.github.io/eminet_VR/x_oculus/laser_0_base.html)
     * [laser](https://eminet666.github.io/eminet_VR/x_oculus/laser.html)
 
-* oculus controls
+### oculus controls
 ![manettes](./manettes.png)
     * [oculus_trigger](https://eminet666.github.io/eminet_VR/x_oculus/oculus_0_trigger.html)
     * [oculus_buttons](https://eminet666.github.io/eminet_VR/x_oculus/oculus_1_buttons.html)
