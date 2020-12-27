@@ -8,21 +8,14 @@
         <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
         <script>
         AFRAME.registerComponent('gauche', {
-            init: function () {
-              const utilisateur = document.querySelector('#utilisateur');
-              this.el.addEventListener('thumbrightstart', () => { this.deplacement('x', 0.9) })
-              this.el.addEventListener('thumbrightend', () => { this.deplacement('x', 0.1) })
-              this.el.addEventListener('thumbleftstart', () => { this.deplacement('x', -0.9) })
-              this.el.addEventListener('thumbleftend', () => { this.deplacement('x', -0.1) })
-              this.el.addEventListener('thumbupstart', () => { this.deplacement('y', 0.9) })
-              this.el.addEventListener('thumbupend', () => { this.deplacement('y', 0.1) })
-              this.el.addEventListener('thumbdownstart', () => { this.deplacement('y', -0.9) })
-              this.el.addEventListener('thumbdownend', () => { this.deplacement('y', -0.1) })
-            },
-            deplacement: function (direction, distance) {
-              const position = utilisateur.getAttribute('position')
-              position[direction] += distance
-              utilisateur.setAttribute('position', position)
+            init: function()
+            {
+                const utilisateur = document.querySelector('#utilisateur');
+
+                this.el.addEventListener("thumbstickmoved", function(event)	{
+                    utilisateur.object3D.position.z -= event.detail.y/20;
+                    utilisateur.object3D.position.x -= event.detail.x/20;
+                });
             }
         });
         AFRAME.registerComponent('droite', {
@@ -37,20 +30,37 @@
                 });
         	}
         });
-        AFRAME.registerComponent('rotation-reader', {
-          tick: function () {
-            // `this.el` is the element.
-            // `object3D` is the three.js object.
 
-            // `rotation` is a three.js Euler using radians. `quaternion` also available.
-            console.log(this.el.object3D.rotation);
-
-            // `position` is a three.js Vector3.
-            console.log(this.el.object3D.position);
-          }
-        });
-
-
+        // AFRAME.registerComponent('rotation-reader', {
+        //   tick: function () {
+        //     // `this.el` is the element.
+        //     // `object3D` is the three.js object.
+        //
+        //     // `rotation` is a three.js Euler using radians. `quaternion` also available.
+        //     console.log(this.el.object3D.rotation);
+        //
+        //     // `position` is a three.js Vector3.
+        //     console.log(this.el.object3D.position);
+        //   }
+        // });
+        // AFRAME.registerComponent('gauche', {
+        //     init: function () {
+        //       const utilisateur = document.querySelector('#utilisateur');
+        //       this.el.addEventListener('thumbrightstart', () => { this.deplacement('x', 0.9) })
+        //       this.el.addEventListener('thumbrightend', () => { this.deplacement('x', 0.1) })
+        //       this.el.addEventListener('thumbleftstart', () => { this.deplacement('x', -0.9) })
+        //       this.el.addEventListener('thumbleftend', () => { this.deplacement('x', -0.1) })
+        //       this.el.addEventListener('thumbupstart', () => { this.deplacement('y', 0.9) })
+        //       this.el.addEventListener('thumbupend', () => { this.deplacement('y', 0.1) })
+        //       this.el.addEventListener('thumbdownstart', () => { this.deplacement('y', -0.9) })
+        //       this.el.addEventListener('thumbdownend', () => { this.deplacement('y', -0.1) })
+        //     },
+        //     deplacement: function (direction, distance) {
+        //       const position = utilisateur.getAttribute('position')
+        //       position[direction] += distance
+        //       utilisateur.setAttribute('position', position)
+        //     }
+        // });
 
         </script>
     </head>

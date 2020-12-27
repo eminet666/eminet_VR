@@ -28,7 +28,7 @@
 * [aframe extras](https://github.com/n5ro/aframe-extras)
 * [movement-controls](https://github.com/n5ro/aframe-extras/tree/master/src/controls)
 
-les composants **cursor**, **xxx-controls** sont construits a partir du composant **raycaster**
+les composants **cursor**, **xxx-controls** sont construits à partir du composant **raycaster**
 
 ### components
 * [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)
