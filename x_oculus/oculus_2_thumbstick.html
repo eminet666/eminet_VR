@@ -16,7 +16,7 @@
                 this.el.addEventListener("thumbstickmoved", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'yellow');
                     utilisateur.object3D.position.x += event.detail.y/20;
-                    utilisateur.object3D.position.y += event.detail.x/20;
+                    utilisateur.object3D.position.z += event.detail.x/20;
                 });
         	}
         });
@@ -27,25 +27,11 @@
                 const boite3 = document.querySelector('#boite3');
 
                 this.el.addEventListener("thumbstickmoved", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'orange');
+                    AFRAME.utils.entity.setComponentProperty(boite3, 'color', 'orange');
                     utilisateur.object3D.rotation.y += event.detail.y/20;
                 });
         	}
         });
-
-        AFRAME.registerComponent('thumbstick-logging',{
-          init: function () {
-            this.el.addEventListener('thumbstickmoved', this.logThumbstick);
-          },
-          logThumbstick: function (evt) {
-            if (evt.detail.y > 0.95) { console.log("DOWN"); }
-            if (evt.detail.y < -0.95) { console.log("UP"); }
-            if (evt.detail.x < -0.95) { console.log("LEFT"); }
-            if (evt.detail.x > 0.95) { console.log("RIGHT"); }
-          }
-        });
-
-
         </script>
     </head>
 
