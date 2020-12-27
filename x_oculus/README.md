@@ -37,6 +37,7 @@ les composants **cursor**, **xxx-controls** sont construits a partir du composan
 * [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
 * [tracked-controls](https://github.com/aframevr/aframe/blob/master/docs/components/tracked-controls.md)
 * [keyboard-controls](https://github.com/n5ro/aframe-extras/issues/149)
+* [thumb controls](https://github.com/supermedium/superframe/tree/master/components/thumb-controls/)
 * [controls] (https://github.com/n5ro/aframe-extras/tree/master/src/controls)
 
 ### autres
