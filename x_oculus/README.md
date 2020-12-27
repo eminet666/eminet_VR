@@ -25,6 +25,8 @@
 ## liens
 ### docs
 * [doc controleurs_fr](https://sodocumentation.net/aframe/topic/10112/controls--component-)
+* [aframe extras](https://github.com/n5ro/aframe-extras)
+* [movement-controls](https://github.com/n5ro/aframe-extras/tree/master/src/controls)
 
 les composants **cursor**, **xxx-controls** sont construits a partir du composant **raycaster**
 
@@ -33,6 +35,8 @@ les composants **cursor**, **xxx-controls** sont construits a partir du composan
 * [laser-controls](https://github.com/aframevr/aframe/blob/master/docs/components/laser-controls.md)
 * [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
 * [tracked-controls](https://github.com/aframevr/aframe/blob/master/docs/components/tracked-controls.md)
+* [keyboard-controls](https://github.com/n5ro/aframe-extras/issues/149)
+* [controls] (https://github.com/n5ro/aframe-extras/tree/master/src/controls)
 
 ### autres
 * [déplacement le long d'un chemin](https://github.com/protyze/aframe-alongpath-component)
