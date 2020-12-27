@@ -20,6 +20,8 @@
 * [oculus_buttons](https://eminet666.github.io/eminet_VR/x_oculus/oculus_1_buttons.html)
 * [oculus_thumbstick](https://eminet666.github.io/eminet_VR/x_oculus/oculus_2_thumbstick.html)
 
+* [playground](https://eminet666.github.io/eminet_VR/x_oculus/playground.html)
+* [wall](https://eminet666.github.io/eminet_VR/x_oculus/wall.html)
 <!-- * [test](https://aframe.io/aframe/examples/test/laser-controls/) -->
 
 ## liens
