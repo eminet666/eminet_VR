@@ -23,7 +23,7 @@
 * [test](https://aframe.io/aframe/examples/test/laser-controls/)
 
 ## liens
-* doc
+### doc
     * [doc controleurs_fr](https://sodocumentation.net/aframe/topic/10112/controls--component-)
 
 The cursor component and laser-controls components both build on top of the raycaster component.

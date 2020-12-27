@@ -24,10 +24,30 @@
                     boite1.object3D.position.z += 0.1;
                 });
 
-                this.el.addEventListener("thumbstickmoved", function(event)	{
-                    utilisateur.object3D.position.z += evt.detail.y;
-                    utilisateur.object3D.position.x += evt.detail.x;
+                // this.el.addEventListener("thumbstickmoved", function(event)	{
+                //     utilisateur.object3D.position.z += evt.detail.y;
+                //     utilisateur.object3D.position.x += evt.detail.x;
+                // });
+
+                this.el.addEventListener("thumbstickdown", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'orange');
                 });
+                this.el.addEventListener("thumbstickup", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'yellow');
+                });
+                this.el.addEventListener("thumbsticktouchstart", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'cyan');
+                });
+                this.el.addEventListener("thumbsticktouchend", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'grey');
+                });
+                this.el.addEventListener("thumbstickchanged", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'black');
+                });
+                this.el.addEventListener("thumbstickmoved", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'silver');
+                });
+
 
         	}
         });
