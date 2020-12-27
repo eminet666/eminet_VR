@@ -26,7 +26,7 @@
 ### docs
 * [doc controleurs_fr](https://sodocumentation.net/aframe/topic/10112/controls--component-)
 
-les composants **cursor**, **xxx-controls* sont construits a partir du composant **raycaster**
+les composants **cursor**, **xxx-controls** sont construits a partir du composant **raycaster**
 
 ### components
 * [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)

@@ -15,8 +15,8 @@
 
                 this.el.addEventListener("thumbstickmoved", function(event)	{
                     AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'yellow');
-                    utilisateur.object3D.position.x -= event.detail.y/20;
-                    utilisateur.object3D.position.z -= event.detail.x/20;
+                    utilisateur.object3D.position.z -= event.detail.y/20;
+                    utilisateur.object3D.position.y -= event.detail.x/20;
                 });
         	}
         });
