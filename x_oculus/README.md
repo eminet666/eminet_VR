@@ -26,7 +26,8 @@
 ### docs
 * [doc controleurs_fr](https://sodocumentation.net/aframe/topic/10112/controls--component-)
 
-The cursor component and laser-controls components both build on top of the raycaster component.
+les composants **cursor**, **xxx-controls* sont construits a partir du composant **raycaster**
+
 ### components
 * [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)
 * [laser-controls](https://github.com/aframevr/aframe/blob/master/docs/components/laser-controls.md)
