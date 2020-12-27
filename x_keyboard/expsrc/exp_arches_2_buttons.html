@@ -4,81 +4,45 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/arrow.css">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aframe-environment-component@2.0.0/dist/aframe-environment-component.min.js"></script>
-	<!-- <script src="js/aframe-environment-component.min.js"></script> -->
-	<script src="./js/extended-wasd-controls.js"></script>
+	<script src="../js/extended-wasd-controls.js"></script>
 
-<style>
+    <style>
 
-body
-{
-	/* disable long press in iOS? */
-	-webkit-touch-callout: none;
-}
-
-.mainUI
-{
-	border: 0px solid pink;
-	position: fixed;
-	top: 0px;
-	width:99%;
-	height:99%;
-	z-index: 1;
-	pointer-events: none; /* allow click-through in transparent areas */
-}
-
-.regionUI
-{
-	border: 0px solid yellow;
-	position: absolute;
-	display: flex;
-	flex-direction: row;
-	pointer-events: none;
-}
-
-.buttonUI
-{
-	border: 0px solid lime;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	pointer-events: auto;
-	filter: drop-shadow(0px 0px 20px white);
-}
-
-.skyColor
-{
-	filter: hue-rotate(240deg) saturate(100%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-.baseColor
-{
-	filter: hue-rotate(24deg) saturate(68%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-.grayColor
-{
-	filter: hue-rotate(0deg) saturate(0%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-</style>
+    body { -webkit-touch-callout: none;  }   /* disable long press in iOS? */
+    .mainUI {
+    	border: 0px solid pink;
+        position: fixed; top: 0px; width:99%; height:99%; z-index: 1;
+    	pointer-events: none; /* allow click-through in transparent areas */
+    }
+    .regionUI {
+    	border: 0px solid yellow;
+    	position: absolute; display: flex; flex-direction: row;
+        pointer-events: none;
+    }
+    .buttonUI {
+    	border: 0px solid lime;
+    	display: flex; flex-direction: column; justify-content: center;
+    	pointer-events: auto;
+    }
+    </style>
 
 </head>
 
 <body>
 
-<!-- note: by using red base images for buttons, can tint (HSV) using filter: hue-rotate(); etc. -->
-
 <div class="mainUI" id="uiDiv" oncontextmenu="return false;">
 
 	<!-- top-left -->
-	<div class="regionUI skyColor" style="top: 10px; left: 10px;" oncontextmenu="return false;">
+	<div class="regionUI" style="top: 10px; left: 10px;" oncontextmenu="return false;">
 		<div class="buttonUI">
-	    	<img src="images/buttons/red/up.png" id="buttonMoveUp" /><br/>
-	    	<img src="images/buttons/red/down.png" id="buttonMoveDown" />
+            <div class="arrowed" id="buttonMoveUp"><div class="arrow up"></div></div>
+            <div class="arrowed" id="buttonMoveDown"><div class="arrow down"></div></div>
 	    </div>
 	</div>
+    ←↑→↓
 
 	<!-- top-right -->
 	<div class="regionUI" style="top: 10px; right: 10px;">
@@ -89,16 +53,16 @@ body
 	</div>
 
 	<!-- bottom-right -->
-	<div class="regionUI baseColor" style="bottom: 10px; right: 10px;">
+	<div class="regionUI" style="bottom: 10px; right: 10px;">
 		<div class="buttonUI">
-	    	<img src="images/buttons/red/left.png" id="buttonMoveLeft" />
+            <div class="arrowed" id="buttonMoveLeft"><div class="arrow left"></div></div>
 	    </div>
     	<div class="buttonUI">
-	    	<img src="images/buttons/red/up.png" id="buttonMoveForward" /><br/>
-	    	<img src="images/buttons/red/down.png" id="buttonMoveBackward" />
+            <div class="arrowed" id="buttonMoveForward"><div class="arrow up"></div></div><br/>
+            <div class="arrowed" id="buttonMoveBackward"><div class="arrow down"></div></div>
 	    </div>
 	    <div class="buttonUI">
-	    	<img src="images/buttons/red/right.png" id="buttonMoveRight" />
+            <div class="arrowed" id="buttonMoveRight"><div class="arrow right"></div></div>
 	    </div>
 	</div>
 
@@ -168,13 +132,9 @@ body
   		}
 	});
 
-
 </script>
 
-<!--
-	disable press "F" to enter fullscreen mode
-	disable WASD controls attached to default camera
- -->
+<!-- disable press "F" to enter fullscreen mode disable WASD controls attached to default camera -->
 <a-scene
 	environment="preset: arches; shadow: true;"
 	keyboard-shortcuts="enterVR: false;"
