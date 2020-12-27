@@ -27,11 +27,11 @@
     * [doc controleurs_fr](https://sodocumentation.net/aframe/topic/10112/controls--component-)
 
 The cursor component and laser-controls components both build on top of the raycaster component.
-* components
-    * [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)
-    * [laser-controls](https://github.com/aframevr/aframe/blob/master/docs/components/laser-controls.md)
-    * [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
-    * [tracked-controls](https://github.com/aframevr/aframe/blob/master/docs/components/tracked-controls.md)
+### components
+* [raycaster](https://github.com/aframevr/aframe/blob/master/docs/components/raycaster.md)
+* [laser-controls](https://github.com/aframevr/aframe/blob/master/docs/components/laser-controls.md)
+* [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
+* [tracked-controls](https://github.com/aframevr/aframe/blob/master/docs/components/tracked-controls.md)
 
 * autres
     * [déplacement le long d'un chemin](https://github.com/protyze/aframe-alongpath-component)
