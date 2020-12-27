@@ -13,29 +13,11 @@
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite1 = document.querySelector('#boite1');
 
-        		this.el.addEventListener("gripdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'red');
-        		});
-
-                this.el.addEventListener("xbuttondown", function(event)	{
-                    boite1.object3D.position.z -= 0.1;
-        		});
-                this.el.addEventListener("ybuttondown", function(event)	{
-                    boite1.object3D.position.z += 0.1;
-                });
-
-                // this.el.addEventListener("thumbstickmoved", function(event)	{
-                //     utilisateur.object3D.position.z += evt.detail.y;
-                //     utilisateur.object3D.position.x += evt.detail.x;
-                // });
-
                 this.el.addEventListener("thumbstickmoved", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'silver');
-                    utilisateur.object3D.position.z += event.detail.y;
-                    utilisateur.object3D.position.x += event.detail.x;
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'yellow');
+                    utilisateur.object3D.position.z += event.detail.y/10;
+                    utilisateur.object3D.position.x += event.detail.x/10;
                 });
-
-
         	}
         });
         AFRAME.registerComponent('droite', {
@@ -44,15 +26,9 @@
                 const utilisateur = document.querySelector('#utilisateur');
                 const boite3 = document.querySelector('#boite3');
 
-                this.el.addEventListener("gripdown", function(event)	{
-                    AFRAME.utils.entity.setComponentProperty(boite3, 'color', 'green');
-        		});
-
-                this.el.addEventListener("abuttondown", function(event)	{
-                    boite3.object3D.position.z -= 0.1;
-        		});
-                this.el.addEventListener("bbuttondown", function(event)	{
-                    boite3.object3D.position.z += 0.1;
+                this.el.addEventListener("thumbstickmoved", function(event)	{
+                    AFRAME.utils.entity.setComponentProperty(boite1, 'color', 'orange');
+                    utilisateur.object3D.rotation.y += event.detail.y/10;
                 });
         	}
         });
