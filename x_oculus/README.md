@@ -43,3 +43,5 @@ les composants **cursor**, **xxx-controls** sont construits a partir du composan
 ### autres
 * [déplacement le long d'un chemin](https://github.com/protyze/aframe-alongpath-component)
 * [interactions mobile](https://ar-js-org.github.io/AR.js-Docs/ui-events/)
+
+### exemples
