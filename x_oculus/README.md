@@ -38,6 +38,7 @@ les composants **cursor**, **xxx-controls** sont construits a partir du composan
 * [keyboard-controls](https://github.com/n5ro/aframe-extras/issues/149)
 * [thumb controls](https://github.com/supermedium/superframe/tree/master/components/thumb-controls/)
 * [controls](https://github.com/n5ro/aframe-extras/tree/master/src/controls)
+* [super hands](https://github.com/wmurphyrd/aframe-super-hands-component)
 
 ### autres
 * [déplacement le long d'un chemin](https://github.com/protyze/aframe-alongpath-component)
