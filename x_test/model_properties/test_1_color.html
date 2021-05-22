@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+		<script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+		<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <script>
+			AFRAME.registerComponent('modify', {
+				init: function() {
+					// Wait for model to load.
+					this.el.addEventListener('model-loaded', () => {
+						// Grab the mesh / scene.
+						const obj = this.el.getObject3D('mesh');
+						// Go over the submeshes and modify materials we want.
+						obj.traverse(node => {
+							console.log("objet : "+node.name); // affiche la liste des objets
+							if (node.name.indexOf('Suzanne') !== -1) {
+								console.log(node);			   // affiche les propriétés de l'objet
+								node.material.color.set('red');
+							}
+						});
+					});
+				}
+			});
+        </script>
+
+
+  </head>
+
+  <body style='margin : 0px; overflow: hidden;'>
+
+		<a-scene background="color: skyblue">
+			<a-assets>
+				<a-asset-item id="glbModel" src="./suzanne.glb"></a-asset-item>
+			</a-assets>
+
+			<a-entity   id ="modele"
+						position="0 1 -5"
+						rotation="0 0 0"
+						gltf-model="#glbModel"
+						modify>
+			 </a-entity>
+    	</a-scene>
+
+  </body>
+</html>
