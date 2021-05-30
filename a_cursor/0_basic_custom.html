@@ -13,7 +13,13 @@
     <a-scene>
 
         <a-camera position="0 1.6 4" look-controls wasd-controls>
-              <a-cursor></a-cursor>
+              <a-cursor position="0 0 -3"
+                        geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;"
+                        material="color: cyan; shader: flat"
+                        fuse= "true">
+                        <a-animation begin="fusing" easing="ease-in" attribute="scale"
+                        fill="backwards" from="1 1 1" to="0.2 0.2 0.2" dur="1500"></a-animation>
+              </a-cursor>
         </a-camera>
 
         <a-box position="0 1 0" material="color: green">
