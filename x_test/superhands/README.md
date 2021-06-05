@@ -6,5 +6,6 @@
 [examples](https://wmurphyrd.github.io/aframe-super-hands-component/examples/) |
 
 ## tests
-[physics](https://eminet666.github.io/eminet_VR/x_test/superhands/0_exp_physics_handscontrol.html) |
-[no physics](https://eminet666.github.io/eminet_VR/x_test/superhands/1_exp_nophysics_handscontrol.html)
+[exp physics](https://eminet666.github.io/eminet_VR/x_test/superhands/0_exp_physics_handscontrol.html) |
+[exp no physics](https://eminet666.github.io/eminet_VR/x_test/superhands/1_exp_nophysics_handscontrol.html) |
+[drag](https://eminet666.github.io/eminet_VR/x_test/superhands/0_exp_physics_handscontrol.html) |
