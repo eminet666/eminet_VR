@@ -5,7 +5,7 @@
     <title>A-Frame Super Hands - 6DOF With Physics _ MouseControl</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
 
@@ -32,11 +32,11 @@
 <body>
     <a-scene background="color: #5280A7" physics environment="shadow: true">
         <a-assets>
-            <a-mixin id="cube" geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33" hoverable grabbable
+            <!-- <a-mixin id="cube" geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33" hoverable grabbable
                 stretchable draggable event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
                 event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
                 dynamic-body shadow>
-            </a-mixin>
+            </a-mixin> -->
             <a-mixin id="touch" physics-collider phase-shift collision-filter="collisionForces: false"
                 static-body="shape: sphere; sphereRadius: 0.02" super-hands="colliderEvent: collisions;
                               colliderEventProperty: els;
@@ -54,11 +54,22 @@
             </a-entity>
         </a-entity>
 
-        <!-- objets -->
-        <a-entity class="cube" mixin="cube" position="0 0.265 -1" material="color: red"></a-entity>
+        <a-entity class="cube" position="0 0.5 -1" geometry="primitive: box;" material="color: green" 
+            hoverable grabbable draggable 
+            event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true;"
+            event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false;" 
+            event-set__dragstart="_event: drag-start; material.color: green;
+                                      material.wireframe: true;
+                                      geometry.width: 0.25; geometry.height: 0.25; geometry.depth: 0.25; "
+            event-set__dragend="_event: drag-end; material.color: red;
+                                    material.wireframe: false; 
+                                    geometry.width: 1; geometry.height: 1; geometry.depth: 1; " 
+            dynamic-body shadow>
+        </a-entity>
 
-        <!-- ground collider keeps objets from falling -->
-        <a-box static-body width="100" height="0.01" depth="100" visible="true" color="#CCC"></a-box>
+        <!-- sol -->
+        <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="true" color="#CCC"></a-box>
+
         
     </a-scene>
 </body>
