@@ -1,0 +1,32 @@
+<!-- source : https://aframe.io/docs/1.2.0/components/oculus-touch-controls.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+</head>
+
+<body>
+    <a-scene background="color: #5280A7" renderer="antialias: true">
+        <a-assets>
+            <a-asset-item id="main_d" src="./assets/main_d.glb"></a-asset-item>
+            <a-asset-item id="main_g" src="./assets/main_g.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity position="0 0 0">
+            <a-entity camera position="0 1.5 1" look-controls></a-entity>
+            <a-entity id="lefthand" oculus-touch-controls="hand: left; model:false">
+                <a-entity gltf-model="#main_g"></a-entity>
+            </a-entity>
+            <a-entity id="righthand" oculus-touch-controls="hand: right; model:false">
+                <a-entity gltf-model="#main_d"></a-entity>
+            </a-entity>
+
+        </a-entity>
+
+    </a-scene>
+</body>
+
+</html>

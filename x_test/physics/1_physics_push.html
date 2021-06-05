@@ -1,0 +1,68 @@
+<!-- https://aframe.io/docs/1.2.0/introduction/html-and-primitives.html -->
+<!-- attention : la physic ne marche plus avec la 1.2.0 _ bug en cours de résolution -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script> -->
+    <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+    <script>
+        /* Force Pushable component.
+         * cursor clicks will apply a strong impulse, pushing the entity away from the viewer.
+         */
+        AFRAME.registerComponent('force-pushable', {
+            schema: {
+                force: {
+                    default: 10
+                }
+            },
+            init: function () {
+                this.pStart = new THREE.Vector3();
+                this.sourceEl = this.el.sceneEl.querySelector('[camera]');
+                this.el.addEventListener('click', this.forcePush.bind(this));
+            },
+            forcePush: function () {
+                var force,
+                    el = this.el,
+                    pStart = this.pStart.copy(this.sourceEl.getAttribute('position'));
+
+                // Compute direction of force, normalize, then scale.
+                force = el.body.position.vsub(pStart);
+                force.normalize();
+                force.scale(this.data.force, force);
+
+                el.body.applyImpulse(force, el.body.position);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7" physics="debug: true">
+
+        <!-- Dynamic box -->
+        <a-box position="0 2 -1" rotation="0 45 0" color="#4CC3D9" dynamic-body></a-box>
+
+        <!-- Pushable box -->
+        <a-box force-pushable position="0 4 -1" scale="0.5 0.5 0.5" rotation="0 45 0" color="#grey" dynamic-body></a-box>
+
+        <!-- Floor -->
+        <a-plane position="0 0 -2" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+
+       <!-- Player -->
+       <a-entity camera look-controls wasd-controls position="0 1.6 0">
+           <a-entity cursor position="0 0 -0.5" geometry="primitive: circle; radius: 0.01; segments: 4;"
+               material="color: #FF4444; shader: flat"></a-entity>
+       </a-entity>
+
+       <a-entity static-body="shape: sphere; sphereRadius: 0.02;" hand-controls="hand: left"
+           sphere-collider="objects: [dynamic-body];" grab></a-entity>
+       <a-entity static-body="shape: sphere; sphereRadius: 0.02;" hand-controls="hand: right"
+           sphere-collider="objects: [dynamic-body];" grab></a-entity>
+
+
+    </a-scene>
+</body>
+
+</html>
