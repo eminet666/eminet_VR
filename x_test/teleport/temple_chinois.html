@@ -11,22 +11,22 @@
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
     </script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
-</head>
-<script>
-    AFRAME.registerComponent("input-listen", {
-        init: function () {
-            //X-button Pressed
-            this.el.addEventListener("xbuttondown", function (e) {
-                this.emit("teleportstart");
-            });
+    <script>
+        AFRAME.registerComponent("input-listen", {
+            init: function () {
+                //X-button Pressed
+                this.el.addEventListener("xbuttondown", function (e) {
+                    this.emit("teleportstart");
+                });
 
-            //X-button Released
-            this.el.addEventListener("xbuttonup", function (e) {
-                this.emit("teleportend");
-            });
-        }
-    });
-</script>
+                //X-button Released
+                this.el.addEventListener("xbuttonup", function (e) {
+                    this.emit("teleportend");
+                });
+            }
+        });
+    </script>
+</head>
 
 <body>
     <a-scene physics="debug: false; gravity: 0; restitution: 0.9; " background="color: #AAAAAA">
@@ -36,9 +36,11 @@
             </a-asset-item>
         </a-assets>
 
+        <!-- espace -->
         <a-entity id="glbtest" gltf-model="#model" position="0 0 0" scale="0.5 0.5 0.5">
         </a-entity>
 
+        <!-- joueur -->
         <a-entity id="cameraRig">
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
             </a-entity>
@@ -53,6 +55,7 @@
                     align="center" color="#FFFFFF"></a-text>
             </a-entity>
         </a-entity>
+        
     </a-scene>
 </body>
 
