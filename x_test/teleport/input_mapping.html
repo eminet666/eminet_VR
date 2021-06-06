@@ -98,20 +98,9 @@
                         right: 'righthand'
                     }
                 },
-                'vive-controls': {
-                    'grip.down': 'changeTask',
-                    'trackpad.down': 'logtask1',
-                    'trackpad.doubletouch': 'doubletouch',
-                    'trackpad.doublepress': 'doublepress',
-                    // Activators for down, up, touchstart and touchend are optionals you can just write the event without the .
-                    'trackpaddpadleftdown': 'dpadleft',
-                    'trackpaddpadright.longpress': 'dpadrightlong'
-                },
                 'oculus-touch-controls': {
+                    'trigger.down': 'logdefault',
                     'abutton.down': 'changeTask'
-                },
-                'windows-motion-controls': {
-                    'grip.down': 'changeTask'
                 },
                 keyboard: {
                     't_up': 'logdefault',
@@ -119,17 +108,9 @@
                 }
             },
             task2: {
-                'vive-controls': {
-                    'trigger.down': 'logtask2',
-                    'grip.down': 'changeTask'
-                },
                 'oculus-touch-controls': {
                     'trigger.down': 'logtask2',
                     'abutton.down': 'changeTask'
-                },
-                'windows-motion-controls': {
-                    'trigger.down': 'logtask2',
-                    'grip.down': 'changeTask'
                 },
                 keyboard: {
                     'y_up': 'logtask2',
