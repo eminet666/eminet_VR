@@ -10,8 +10,9 @@
 [input mapping](https://eminet666.github.io/eminet_VR/x_test/teleport/input_mapping.html)
 
 ### tests
-[laser](https://aframe.io/aframe/examples/test/laser-controls/)
-[track control](https://aframe.io/aframe/examples/showcase/tracked-controls/)
+* [laser](https://aframe.io/aframe/examples/test/laser-controls/)
+* [track control](https://aframe.io/aframe/examples/showcase/tracked-controls/)
 
-[example](https://github.com/TakashiYoshinaga/Oculus-Quest-Interaction-Sample)
-[test](https://eminet666.github.io/eminet_VR/x_test/teleport/test.html)
+* [github](https://github.com/TakashiYoshinaga/Oculus-Quest-Interaction-Sample) |
+  [example](https://quest-demo.glitch.me/) |
+  [test](https://eminet666.github.io/eminet_VR/x_test/teleport/test.html)
