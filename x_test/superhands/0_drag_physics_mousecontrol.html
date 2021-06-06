@@ -1,0 +1,71 @@
+<!-- actions: https://github.com/wmurphyrd/aframe-super-hands-component#gesture-events -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/super-hands/dist/super-hands.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
+    <script>
+        // forward mouse and touch events to the super-hands entity
+        AFRAME.registerComponent('capture-mouse', {
+            init: function () {
+                this.eventRepeater = this.eventRepeater.bind(this)
+                this.el.sceneEl.addEventListener('loaded', () => {
+                    this.el.sceneEl.canvas.addEventListener('mousedown', this.eventRepeater)
+                    this.el.sceneEl.canvas.addEventListener('mouseup', this.eventRepeater)
+                    this.el.sceneEl.canvas.addEventListener('touchstart', this.eventRepeater)
+                    this.el.sceneEl.canvas.addEventListener('touchmove', this.eventRepeater)
+                    this.el.sceneEl.canvas.addEventListener('touchend', this.eventRepeater)
+                }, {
+                    once: true
+                })
+            },
+            eventRepeater: function (evt) {
+                if (evt.type.startsWith('touch')) {
+                    evt.preventDefault()
+                    // avoid repeating touchmove because it interferes with look-controls
+                    if (evt.type === 'touchmove') {
+                        return
+                    }
+                }
+                this.el.emit(evt.type, evt.detail)
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7" environment="shadow: true" physics="debug: true">
+
+        <!-- joueur -->
+        <a-entity camera look-controls wasd-controls position="0 1 1" capture-mouse 
+            raycaster="objects: .cube" cursor="rayOrigin:mouse"
+            body="type: static; shape: sphere; sphereRadius: 0.001" 
+            super-hands="colliderEvent: raycaster-intersection;
+                         colliderEventProperty: els;
+                         colliderEndEvent:raycaster-intersection-cleared;
+                         colliderEndEventProperty: clearedEls;">
+        </a-entity>
+
+        <!-- objet -->
+        <a-entity class="cube" position="0 3 -1" geometry="primitive: box;" material="color: red" hoverable grabbable
+            draggable event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true;"
+            event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false;" event-set__dragstart="_event: drag-start; material.color: green;
+                                      material.wireframe: true;
+                                      geometry.width: 0.25; geometry.height: 0.25; geometry.depth: 0.25; "
+            event-set__dragend="_event: drag-end; material.color: red;
+                                    material.wireframe: false; 
+                                    geometry.width: 1; geometry.height: 1; geometry.depth: 1; " dynamic-body shadow>
+        </a-entity>
+
+        <!-- sol -->
+        <!-- <a-box body="type: static; shape: box" width=100 height=0.001 depth=100 visible="true" color="#CCC"></a-box> -->
+        <a-plane static-body width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+    </a-scene>
+
+</body>
+
+</html>
