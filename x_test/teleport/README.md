@@ -5,6 +5,13 @@
 [github](https://github.com/fernandojsg/aframe-teleport-controls) |
 [examples](https://fernandojsg.com/aframe-teleport-controls/)
 
-### tests
+### local
 [base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html) |
 [input mapping](https://eminet666.github.io/eminet_VR/x_test/teleport/input_mapping.html)
+
+### tests
+[laser](https://aframe.io/aframe/examples/test/laser-controls/)
+[track control](https://aframe.io/aframe/examples/showcase/tracked-controls/)
+
+[example](https://github.com/TakashiYoshinaga/Oculus-Quest-Interaction-Sample)
+[test](https://eminet666.github.io/eminet_VR/x_test/teleport/test.html)
