@@ -6,5 +6,5 @@
 [examples](https://fernandojsg.com/aframe-teleport-controls/)
 
 ### tests
-[base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html)
+[base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html) |
 [input mapping](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html)
