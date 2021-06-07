@@ -1,0 +1,44 @@
+<!-- https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
+    </script>
+    <script src="https://unpkg.com/aframe-input-mapping-component/dist/aframe-input-mapping-component.min.js">
+    </script>
+    <script src="https://unpkg.com/aframe-thumb-controls-component@1.1.0/dist/aframe-thumb-controls-component.min.js">
+    </script>
+
+</head>
+
+<body>
+    <a-scene>
+
+
+        <a-box position="0 0 -3" rotation="-45 0 0" color="red"></a-box>
+        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <!-- nav-mesh: protecting us from running thru things  -->
+        <a-entity id="navmesh-Hello" gltf-model="assets/gltf/AdvHelloWorldnavmesh.gltf" visible="false" nav-mesh=""></a-entity>
+        <!-- Basic movement and teleportation  -->
+        <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;"
+            navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable"
+            position="0 0 0" rotation="0 0 0">
+            <!-- camera -->
+            <a-entity id="head" camera="active: true" position="0 1.6 0"
+                look-controls="pointerLockEnabled: true; reverseMouseDrag: true"></a-entity>
+            <!-- Left Controller -->
+            <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #15ACCF"
+                teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; button: trigger; curveShootingSpeed: 18; landingMaxAngle: 60"
+                visible="true"></a-entity>
+            <!-- Right Controller -->
+            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #15ACCF" laser-controls
+                raycaster="showLine: true; far: 10; interval: 0; objects: .clickable, a-link;"
+                line="color: #7cfc00; opacity: 0.5" visible="true"></a-entity>
+        </a-entity>
+
+    <a-scene>
+</body>
+</html>

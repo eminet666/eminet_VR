@@ -19,3 +19,7 @@
 * [github](https://github.com/TakashiYoshinaga/Oculus-Quest-Interaction-Sample) |
   [example](https://quest-demo.glitch.me/) |
   [test](https://eminet666.github.io/eminet_VR/x_test/teleport/temple_chinois.html)
+
+### a regarder
+[article](https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc) |
+[basic](https://eminet666.github.io/eminet_VR/x_test/teleport/basic_mouvement.html)
