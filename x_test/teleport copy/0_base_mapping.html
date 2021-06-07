@@ -5,27 +5,12 @@
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
     </script>
     <script src="https://unpkg.com/aframe-input-mapping-component/dist/aframe-input-mapping-component.min.js"></script>
+    <script src="./mappings.js"></script>
     <script src="./skygradient.js"></script>
-
-    <script>
-        AFRAME.registerComponent("input-listen", {
-            init: function () {
-                //X-button Pressed
-                this.el.addEventListener("xbuttondown", function (e) {
-                    this.emit("teleportstart");
-                });
-
-                //X-button Released
-                this.el.addEventListener("xbuttonup", function (e) {
-                    this.emit("teleportend");
-                });
-            }
-        });
-    </script>
 </head>
 
 <body>
@@ -39,7 +24,7 @@
         </a-entity>
         
         <!-- hand controls -->        
-        <!-- <a-entity position="0 1.6 0">
+        <a-entity position="0 1.6 0">
             <a-entity camera wasd-controls look-controls></a-entity>
             <a-entity teleport-controls="startEvents: teleportstart; endEvents: teleportend; type: line"
                       oculus-touch-controls="hand: left">
@@ -47,22 +32,7 @@
             <a-entity teleport-controls="startEvents: teleportstart; endEvents: teleportend; type: line"
                       oculus-touch-controls="hand: right">
             </a-entity>
-        </a-entity> -->
-
-        <!-- joueur -->
-        <a-entity id="cameraRig">
-            <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
-            <a-entity id="ctlL" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend"
-                hand-controls="hand: left" input-listen>
-                <a-text value="X: Teleport" position="0 0.05 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center"
-                    color="#FF0000"></a-text>
-            </a-entity>
-            <a-entity id="ctlR" hand-controls="hand: right" input-listen>
-                <a-text value="This is your hand!" position="0 0.05 0" rotation="-90 0 0" scale="0.1 0.1 0.1"
-                    align="center" color="#FF0000"></a-text>
-            </a-entity>
         </a-entity>
-
     </a-scene>
 </body>
 

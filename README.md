@@ -3,9 +3,9 @@
 ## aframe
 * camera : 
 [entity](https://eminet666.github.io/eminet_VR/x_camera/0_camera.html) |
-[entity](https://eminet666.github.io/eminet_VR/x_camera/1_look-controls.html) |
-[entity](https://eminet666.github.io/eminet_VR/x_camera/2_wasd-controls.html) |
-[entity](https://eminet666.github.io/eminet_VR/x_camera/3_hand-controls.html)
+[look-controls](https://eminet666.github.io/eminet_VR/x_camera/1_look-controls.html) |
+[wasd-controls](https://eminet666.github.io/eminet_VR/x_camera/2_wasd-controls.html) |
+[hand-controls](https://eminet666.github.io/eminet_VR/x_camera/3_hand-controls.html)
 
 
 ## composants
