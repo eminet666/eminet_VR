@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -15,12 +15,8 @@
             <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg" crossorigin="anonymous" />
         </a-assets>
 
-        <a-entity id="leftHand" oculus-touch-controls="hand: left" gearvr-controls="hand: left"
-            daydream-controls="hand: left" vive-controls="hand: left">
-        </a-entity>
-        <a-entity id="rightHand" oculus-touch-controls="hand: right" gearvr-controls="hand: right"
-            daydream-controls="hand: right" vive-controls="hand: right">
-        </a-entity>
+        <a-entity id="leftHand" oculus-touch-controls="hand: left"></a-entity>
+        <a-entity id="rightHand" oculus-touch-controls="hand: right"></a-entity>
 
         <a-plane src="#groundTexture" rotation="-90 0 0" height="100" width="100"></a-plane>
         <a-light type="ambient" color="#445451"></a-light>
@@ -102,20 +98,9 @@
                         right: 'righthand'
                     }
                 },
-                'vive-controls': {
-                    'grip.down': 'changeTask',
-                    'trackpad.down': 'logtask1',
-                    'trackpad.doubletouch': 'doubletouch',
-                    'trackpad.doublepress': 'doublepress',
-                    // Activators for down, up, touchstart and touchend are optionals you can just write the event without the .
-                    'trackpaddpadleftdown': 'dpadleft',
-                    'trackpaddpadright.longpress': 'dpadrightlong'
-                },
                 'oculus-touch-controls': {
+                    'trigger.down': 'logdefault',
                     'abutton.down': 'changeTask'
-                },
-                'windows-motion-controls': {
-                    'grip.down': 'changeTask'
                 },
                 keyboard: {
                     't_up': 'logdefault',
@@ -123,17 +108,9 @@
                 }
             },
             task2: {
-                'vive-controls': {
-                    'trigger.down': 'logtask2',
-                    'grip.down': 'changeTask'
-                },
                 'oculus-touch-controls': {
                     'trigger.down': 'logtask2',
                     'abutton.down': 'changeTask'
-                },
-                'windows-motion-controls': {
-                    'trigger.down': 'logtask2',
-                    'grip.down': 'changeTask'
                 },
                 keyboard: {
                     'y_up': 'logtask2',
