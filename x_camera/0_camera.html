@@ -1,0 +1,33 @@
+<!-- https://aframe.io/docs/1.2.0/components/camera.html -->
+<!-- https://aframe.io/docs/1.2.0/primitives/a-camera.html -->
+<!-- 
+- component defines from which perspective the user views the scene. 
+- camera is commonly paired with controls components that allow input devices to move and rotate the camera.
+- when moving or rotating the camera relative to the scene, use a camera rig. 
+- default camera : if a camera is not specified, A-Frame will inject a default camera:
+    <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 0" data-aframe-default-camera></a-entity> 
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+        <a-entity id="rig" position="0 1.6 0">
+            <a-entity id="camera" camera></a-entity>
+        </a-entity>
+
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+    <a-scene>
+</body>
+
+</html>
+
+
+

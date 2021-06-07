@@ -1,5 +1,13 @@
 # eminet_VR
 
+## aframe
+* camera : 
+[entity](https://eminet666.github.io/eminet_VR/x_camera/0_camera.html) |
+[entity](https://eminet666.github.io/eminet_VR/x_camera/1_look-controls.html) |
+[entity](https://eminet666.github.io/eminet_VR/x_camera/2_wasd-controls.html) |
+[entity](https://eminet666.github.io/eminet_VR/x_camera/3_hand-controls.html)
+
+
 ## composants
 * [physics](https://eminet666.github.io/eminet_VR/x_test/physics)
 - <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
