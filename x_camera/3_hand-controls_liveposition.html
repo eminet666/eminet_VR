@@ -5,6 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('rotation-reader', {
+            tick: function () {
+                // `this.el` is the element, `object3D` is the three.js object.
+
+                // `rotation` is a three.js Euler using radians. `quaternion` also available.
+                //console.log("rotation : "+this.el.object3D.rotation);
+
+                // `position` is a three.js Vector3.
+                var pos = {
+                    x: this.el.object3D.position.x.toFixed(2),
+                    z: this.el.object3D.position.z.toFixed(2)
+                }
+                console.log("x: " + pos.x + ", z: " + pos.z);
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -13,13 +30,13 @@
         <a-entity id="rig" position="0 1.6 0">
             <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"></a-entity>
             <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
-            <a-text value="position" position="0 1 0" rotation="-90 0 0" scale="0.5 0.5 0.5" align="center"
-                color="#FF0000"></a-text>
+            <a-text rotation-reader value="position" position="0 1 0" rotation="-45 0 0" scale="0.25 0.25 0.25"
+                align="center" color="#FF0000"></a-text>
             <a-entity id="camera" camera look-controls></a-entity>
 
         </a-entity>
 
-        <a-box position="0 0.5 -3" rotation="0 -45 0" color="green"></a-box>
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
     </a-scene>
