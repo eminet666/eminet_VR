@@ -1,0 +1,47 @@
+<!-- https://gist.github.com/Strae/8b62ee637699b4218b53b3f158351864 -->
+<!-- remarque : marche aussi si on change le nom de l'objet dans le modèle -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('model-opacity', {
+            schema: {
+                default: 1.0
+            },
+            init: function () {
+                this.el.addEventListener('model-loaded', this.update.bind(this));
+            },
+            update: function () {
+                var mesh = this.el.getObject3D('mesh');
+                var data = this.data;
+                if (!mesh) {
+                    return;
+                }
+                mesh.traverse(function (node) {
+                    if (node.isMesh) {
+                        node.material.opacity = data;
+                        node.material.transparent = data < 1.0;
+                        node.material.needsUpdate = true;
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+    <a-scene background="color: #ECECEC">
+        <a-assets>
+            <a-asset-item id="model" src="suzanne.glb">
+            </a-asset-item>
+        </a-assets>
+        <a-entity gltf-model="#model" position="0 1 -3" model-opacity="0.5"></a-entity>
+    </a-scene>
+
+</body>
+
+</html>
