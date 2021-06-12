@@ -27,16 +27,16 @@
 <body>
     <a-scene background="color: #5280A7">
 
-        <a-entity id="rig" position="0 1.6 0">
+        <a-entity id="rig" position="0 1.6 0" rotation-reader>
             <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"></a-entity>
             <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
-            <a-text rotation-reader value="position" position="0 1 0" rotation="-45 0 0" scale="0.25 0.25 0.25"
+            <a-text value="position" position="0 1 0" rotation="-45 0 0" scale="0.25 0.25 0.25"
                 align="center" color="#FF0000"></a-text>
             <a-entity id="camera" camera look-controls></a-entity>
 
         </a-entity>
 
-        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="yellow"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
     </a-scene>
