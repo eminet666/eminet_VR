@@ -32,16 +32,18 @@
 <body>
     <a-scene background="color: #5280A7">
 
-        <a-entity id="rig" position="0 1.6 0" wasd-controls rotation-reader>
+        <a-entity id="rig">
             <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"></a-entity>
             <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
-            <a-text id="a-pos" value="position" position="0 1 -1" rotation="0 0 0" scale="0.3 0.3 0.3"
-                align="center" color="#FF0000"></a-text>
-            <a-entity id="camera" camera look-controls></a-entity>
-
+            <a-entity id="camera" camera position="0 1.6 0" look-controls wasd-controls rotation-reader>
+                <a-text id="a-pos" value="position" position="0 0 -1"
+                        rotation="0 0 0" scale="0.5 0.5 0.5" align="center"
+                        color="#FF0000">
+                </a-text>
+            </a-entity>
         </a-entity>
 
-        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
     </a-scene>
