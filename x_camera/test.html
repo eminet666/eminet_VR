@@ -34,14 +34,14 @@
 
 
         <a-entity id="camera" camera position="0 1.6 0" look-controls wasd-controls rotation-reader>
-            <a-entity id="leftHand" oculus-touch-controls="hand: left"></a-entity>
-            <a-entity id="rightHand" oculus-touch-controls="hand: right"></a-entity>
             <a-text id="a-pos" value="position" position="0 0 -1" rotation="0 0 0" scale="0.5 0.5 0.5" align="center"
                 color="#FF0000">
             </a-text>
         </a-entity>
+        <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"></a-entity>
+        <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
 
-        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="cyan"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
     </a-scene>
