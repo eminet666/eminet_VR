@@ -19,11 +19,11 @@
                     z: this.el.object3D.position.z.toFixed(2)
                 }
                 var livepos = "x: " + pos.x + ", z: " + pos.z;
-                // console.log("x: " + pos.x + ", z: " + pos.z);
+                console.log(livepos);
                 var sceneEl = document.querySelector('a-scene');
                 var pos = sceneEl.querySelector('#a-pos');
                 pos.setAttribute('value', livepos);
-                // console.log(pos.getAttribute('value'));
+                console.log(pos.getAttribute('value'));
             },
         });
     </script>
@@ -32,12 +32,12 @@
 <body>
     <a-scene background="color: #5280A7">
 
-        <a-entity id="rig" position="0 1.6 0" rotation-reader>
+        <a-entity id="rig" position="0 1.6 0" wasd-controls rotation-reader>
             <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"></a-entity>
             <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
             <a-text id="a-pos" value="position" position="0 1 -1" rotation="0 0 0" scale="0.3 0.3 0.3"
                 align="center" color="#FF0000"></a-text>
-            <a-entity id="camera" camera wasd-controls look-controls></a-entity>
+            <a-entity id="camera" camera look-controls></a-entity>
 
         </a-entity>
 
