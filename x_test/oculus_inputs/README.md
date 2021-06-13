@@ -6,4 +6,4 @@
 [sample2 (meme exemple)](https://quest-test2.glitch.me/)
 
 ### local
-[base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html) |
+[base](https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/0_base.html) |
