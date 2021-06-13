@@ -7,30 +7,31 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
     </script>
+    <script>
+        AFRAME.registerComponent('input-listen', {
+            init: function () {
+                //grip button is pressed or not _ "this.el" reffers ctlR or L in this function
+                this.el.grip = false;
+
+                //X-buttorn Pressed 
+                this.el.addEventListener('xbuttondown', function (e) {
+                    //Start pointing position to teleport  
+                    this.emit('teleportstart');
+                });
+
+                //X-buttorn Released 
+                this.el.addEventListener('xbuttonup', function (e) {
+                    //Jump to pointed position
+                    this.emit('teleportend');
+                });
+                
+                //console.log(this);
+            },
+
+        });
+    </script>
 </head>
-<script>
-    AFRAME.registerComponent('input-listen', {
-        init: function () {
-            //grip button is pressed or not _ "this.el" reffers ctlR or L in this function
-            this.el.grip = false;
 
-            //X-buttorn Pressed 
-            this.el.addEventListener('xbuttondown', function (e) {
-                //Start pointing position to teleport  
-                this.emit('teleportstart');
-            });
-
-            //X-buttorn Released 
-            this.el.addEventListener('xbuttonup', function (e) {
-                //Jump to pointed position
-                this.emit('teleportend');
-            });
-
-            //console.log(this);
-        },
-
-    });
-</script>
 
 <body>
     <a-scene background="color: #5280A7">
