@@ -11,7 +11,8 @@
 
 ### test : 
 [base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html) |
-[cage](https://eminet666.github.io/eminet_VR/x_test/teleport/cage.html)
+[cage](https://eminet666.github.io/eminet_VR/x_test/teleport/cage.html) |
+[min](https://eminet666.github.io/eminet_VR/x_test/teleport/min.html)
 
 ### a regarder
 [article](https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc) |
