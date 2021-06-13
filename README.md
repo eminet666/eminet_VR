@@ -3,7 +3,8 @@
 ## aframe
 * [camera](https://eminet666.github.io/eminet_VR/x_camera/)
 
-
+# oculus
+[inputs]((https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/))
 
 ## composants
 * [physics](https://eminet666.github.io/eminet_VR/x_test/physics)
@@ -14,3 +15,4 @@
 
 ## autres
 * [hands](https://eminet666.github.io/eminet_VR/x_test/hands/)
+* [skygradient](https://eminet666.github.io/eminet_VR/x_test/skygradient/)
