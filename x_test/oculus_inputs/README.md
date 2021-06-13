@@ -6,6 +6,5 @@
 [sample2 (meme exemple)](https://quest-test2.glitch.me/)
 
 ### local
-[boutons](https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/0_buttons.html) |
-[manettes](https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/1_manettes.html) |
+[hands boutons](https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/0_buttons.html) |
 [hands positions](https://eminet666.github.io/eminet_VR/x_test/oculus_inputs/1_hands_positions.html)
