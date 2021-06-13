@@ -9,10 +9,11 @@
 [example](https://quest-demo.glitch.me/) |
 [test](https://eminet666.github.io/eminet_VR/x_test/teleport/temple_chinois.html)
 
-### test : 
+### local
 [base](https://eminet666.github.io/eminet_VR/x_test/teleport/0_base.html) |
 [cage](https://eminet666.github.io/eminet_VR/x_test/teleport/cage.html) |
-[min](https://eminet666.github.io/eminet_VR/x_test/teleport/min.html)
+[min](https://eminet666.github.io/eminet_VR/x_test/teleport/min.html) |
+[playser teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/player_teleport.html)
 
 ### a regarder
 [article](https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc) |
