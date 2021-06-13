@@ -29,19 +29,17 @@
         const ctlR = document.getElementById("ctlR");
         const txt1 = document.getElementById("txt1");
         const txt2 = document.getElementById("txt2");
-
-        //Getting Position of Left Controller.
+       
         const timer = setInterval(() => {
+            //Getting Position of Left Controller.
             var l = ctlR.object3D.position;
             txt2.setAttribute("value", "R-Position: " + l.x.toFixed(2) + ", " + l.y.toFixed(2) + ", " + l.z
                 .toFixed(2));
-        }, 100);
 
-        //Getting Position of Right Controller.
-        const timer = setInterval(() => {
-        var r = ctlR.object3D.position;
-        txt2.setAttribute("value", "R-Position: " + r.x.toFixed(2) + ", " + r.y.toFixed(2) + ", " + r.z
-        .toFixed(2));
+            //Getting Position of Right Controller.
+            var r = ctlR.object3D.position;
+            txt2.setAttribute("value", "R-Position: " + r.x.toFixed(2) + ", " + r.y.toFixed(2) + ", " + r.z
+            .toFixed(2));
         }, 100);
 
     </script>
