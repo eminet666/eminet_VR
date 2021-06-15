@@ -14,11 +14,11 @@
                 //console.log("rotation : "+this.el.object3D.rotation);
 
                 // `position` is a three.js Vector3.
-                var pos = {
+                var live = {
                     x: this.el.object3D.position.x.toFixed(2),
                     z: this.el.object3D.position.z.toFixed(2)
                 }
-                var livepos = "x: " + pos.x + ", z: " + pos.z;
+                var livepos = "x: " + live.x + ", z: " + live.z;
                 console.log(livepos);
                 var sceneEl = document.querySelector('a-scene');
                 var pos = sceneEl.querySelector('#a-pos');
