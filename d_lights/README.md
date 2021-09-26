@@ -2,19 +2,19 @@
 
 #### aframe docs
 * documentation : [aframe doc](https://aframe.io/docs/1.2.0/components/light.html)
-* exemples: [default](./aframe_doc/default.html) | 
+* exemples: [default](./aframe_doc/light_0_default.html) | 
 [properties](./aframe_doc/light_1_properties.html) | 
 [ambiant](./aframe_doc/light_2_type_1_ambiant.html)| 
 [directional](./aframe_doc/light_2_type_2_directional.html) |
 [dir-target](./aframe_doc/light_2_type_2_directional_target.html) |
 [hemisphere](./aframe_doc/light_2_type_3_hemisphere.html) | 
-[point](./light_2_type_4_point.html) |
-[spot](./light_2_type_5_spot.html)
+[point](./aframe_doc/light_2_type_4_point.html) |
+[spot](./aframe_doc/light_2_type_5_spot.html)
 
 #### tuto
 * source : [tuto](https://aframe-course.glitch.me/0800-lights.html)
 * exemple : [default](./tuto/lights_0_default.html) | 
-[disable](./lights_0_desabledefault.html) |
+[disable](./tuto/lights_0_desabledefault.html) |
 [ambiant](./tuto/lights_1_ambiant.html) | 
 [directional](./tuto/lights_2_directional.html) |
 [hemisphere](./tuto/lights_3_hemisphere.html) | 
