@@ -1,16 +1,15 @@
 ## lights
-* [aframe doc](https://aframe.io/docs/1.2.0/components/light.html)
-
-[default](./default.html) | [properties](./light_1_properties.html) | 
+* documentation : [aframe doc](https://aframe.io/docs/1.2.0/components/light.html)
+* exemples: [default](./default.html) | [properties](./light_1_properties.html) | 
 [ambiant](./light_2_type_1_ambiant.html)| [directional](./light_2_type_2_directional.html) |
 [dir-target](./light_2_type_2_directional_target.html) |
 [hemisphere](./light_2_type_3_hemisphere.html) | [](./light_2_type_4_point.html) |
 [spot](./light_2_type_5_spot.html)
 
-* [tuto](https://aframe-course.glitch.me/0800-lights.html)
-[default](./lights_0_default.html) | [disable](./lights_0_desabledefault.html) |
+* source : [tuto](https://aframe-course.glitch.me/0800-lights.html)
+* exemple : [default](./lights_0_default.html) | [disable](./lights_0_desabledefault.html) |
 [ambiant](./lights_1_ambiant.html) | [directional](./lights_2_directional.html) |
-[hemisphere]()./lights_3_hemisphere.html) | [point](./lights_4_point.html) |
+[hemisphere](./lights_3_hemisphere.html) | [point](./lights_4_point.html) |
 [spot](./lights_5_spot.html) | [spot_target](./lights_6_spot_target.html) |
 [shadow](./lights_7_shadow.html)
 
