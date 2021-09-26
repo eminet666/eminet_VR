@@ -2,7 +2,7 @@
 
 ## chapitres
 
-* [light](./d_lights/README.MD)
+* [lights](./d_lights/README.md)
 
 
 
