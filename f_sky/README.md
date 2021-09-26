@@ -5,11 +5,6 @@
 * exemples : [color](./sky_0_color.html) | 
 [image](./sky_1_image.html) | 
 * propriétés : 
-| Aligné à gauche  | Centré          | Aligné à droite |
-| :--------------- |:---------------:| -----:|
-| Aligné à gauche  |   ce texte        |  Aligné à droite |
-| Aligné à gauche  | est             |   Aligné à droite |
-| Aligné à gauche  | centré          |    Aligné à droite |
 
 | Attribute 	     |Component Mapping        | Default Value
 | :--------------- |:----------------------- | :-----:|
@@ -38,4 +33,16 @@
 [repères](./landscape_full.html) | 
 
 * [360 galerie _ notok](./landscape_2_galerie_360_notok.html)
+
+#### skygradient (component shader)
+* source : dans le fichier skygradient.js
+* outil : [color picker](https://www.htmlcsscolor.com/)
+* exemples : [base](./0_base.html) | [personnalisé](./1_perso.html) 
+
+#### skygradient (component) NON TESTE
+* source : [github component](https://github.com/zcanter/aframe-gradient-sky)
+
+
+
+
 
