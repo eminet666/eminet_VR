@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A-Frame Arches Environment &amp; Ocean Base</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+
+<script src="https://unpkg.com/aframe-extras/dist/aframe-extras.min.js"></script>
+
+<script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+
+<script src="https://unpkg.com/aframe-teleport-controls/dist/aframe-teleport-controls.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<a-scene>
+
+  <!-- See https://feiss.github.io/aframe-environment-component/ for all presets -->
+
+  <a-entity environment="preset: arches; groundTexture: none; fog: 0.9" position="0 -0.8 0"></a-entity>
+
+  <!-- See https://github.com/donmccurdy/aframe-extras/tree/master/src/primitives for all options -->
+
+  <a-ocean color="#92E2E2" width="250" depth="250" density="150" speed="2" opacity="0.5"></a-ocean>
+
+  <a-entity id="cameraRig">
+    <a-entity id="head" camera position="0 1.6 0" wasd-controls look-controls>
+    </a-entity>
+    <a-entity oculus-touch-controls="hand: left" raycaster="objects: .collider" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities: .environmentGround .environmentDressing; button: grip"></a-entity>
+    <a-entity oculus-touch-controls="hand: right" raycaster="objects: .collider" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; collisionEntities: .environmentGround .environmentDressing; button: grip; type: line"></a-entity>
+  </a-entity>
+
+</a-scene>
+<!-- partial -->
+  
+</body>
+</html>

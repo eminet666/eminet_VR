@@ -1,0 +1,28 @@
+<!-- aframe doc : https://aframe.io/docs/1.2.0/primitives/a-curvedimage.html -->
+<!-- component : https://github.com/protyze/aframe-curve-component -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="my-image" src="./assets/panorama.jpg">
+        </a-assets>
+
+        <!-- Using the asset management system. -->
+        <!-- <a-curvedimage src="#my-image" height="3" radius="5.7" theta-length="72" 
+            rotation="0 100 0" scale="1 1 1"> </a-curvedimage> -->
+        <a-curvedimage src="#my-image" height="2.0159" radius="5" theta-length="90" theta-start="135"></a-curvedimage>
+
+        <!-- Defining the URL inline. Not recommended but more comfortable for web developers. -->
+        <!-- <a-curvedimage src="another-image.png"></a-curvedimage> -->
+    </a-scene>
+
+</body>
+
+</html>

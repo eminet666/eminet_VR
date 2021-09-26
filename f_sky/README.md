@@ -3,7 +3,7 @@
 #### aframe docs
 * documentation : [aframe doc](https://aframe.io/docs/1.2.0/primitives/a-sky.html)
 * exemples : [color](./sky_0_color.html) | 
-[image](./sky_1_image.html) | 
+[image](./sky_1_image.html) 
 * propriétés : 
 
 | Attribute 	     |Component Mapping        | Default Value
@@ -30,8 +30,9 @@
 * source : [tuto](https://aframe-school-textures.glitch.me/solution.html)
 * exemples : [base](./landscape_0_base.html) | 
 [repères](./landscape_0_base_reperes.html) | 
-[repères](./landscape_full.html) | 
+[full](./landscape_full.html)  
 
+#### exemple galerie _ NOTOK
 * [360 galerie _ notok](./landscape_2_galerie_360_notok.html)
 
 #### skygradient (component shader)
@@ -42,7 +43,14 @@
 #### skygradient (component) NON TESTE
 * source : [github component](https://github.com/zcanter/aframe-gradient-sky)
 
+#### images 360°
 
+
+#### curved images
+* source : [aframe doc](https://aframe.io/docs/1.2.0/primitives/a-curvedimage.html)
+* outil : [calculator](https://stefie.github.io/aframe-curvedimage-calculator/)
+* variante = component [github](https://github.com/protyze/aframe-curve-component) | 
+[github.io](https://protyze.github.io/aframe-curve-component/)
 
 
 

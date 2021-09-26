@@ -1,8 +1,23 @@
 # eminet_VR
 
+## tutorials
+* [principes](https://riptutorial.com/aframe)
+* [aframe school](https://aframe.io/aframe-school/#/)
+* [glitch](https://aframe-course.glitch.me/index.html)
+* [video](https://www.youtube.com/watch?v=ktjMCanKNLk&list=PL8MkBHej75fJD-HveDzm4xKrciC5VfYuV)
+
+## exemples
+* [aframe](https://aframe.io/aframe/examples/)
+* [superframe](https://supermedium.com/superframe/)
+* [stemkoski](https://stemkoski.github.io/A-Frame-Examples/)
+* [google](https://docs.google.com/document/d/11L_-frJxPHXak6DTp85VDrlc1q1IKaIpXXJOuzlbTYU/edit?usp=sharing)
+
+
+
 ## chapitres
 
 * [lights](./d_lights/README.md)
+* [textures](./e_textures/README.md)
 * [sky](./f_sky/README.md)
 
 
