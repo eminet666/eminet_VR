@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!--Meta-->
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1">
+
+    <!--External JS Files from THREE.JS -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!--Sky Forge -->
+    <!-- <script src="./interpolation-engine.js"></script>
+    <script src="./a-starry-sky.v1.0.0.min.js"></script> -->
+
+    <!--A-Ocean-->
+    <script src="./a-water.v0.1.0.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!--Scene Scripts-->
+</head>
+
+<body>
+    <a-scene id="scene-root" light="defaultLightsEnabled: false;" shadow="type: pcfsoft"
+        renderer="antialias: true; sortObjects: true; alpha: false;">
+        <!-- <a-starry-sky web-worker-src="../../../assets/js_libraries/a_starry_sky/wasm/starry-sky-web-worker.js">
+            <sky-assets-dir>
+                <sky-time>
+                    <sky-speed>100</sky-speed>
+                </sky-time>
+                <sky-assets-dir>
+                    <sky-assets-dir dir="../../../assets/js_libraries/a_starry_sky/">
+                        <sky-assets-dir dir="assets">
+                            <sky-assets-dir dir="moon" moon-path></sky-assets-dir>
+                            <sky-assets-dir dir="star_data" star-path></sky-assets-dir>
+                            <sky-assets-dir dir="blue_noise" blue-noise-path></sky-assets-dir>
+                            <sky-assets-dir dir="solar_eclipse" solar-eclipse-path></sky-assets-dir>
+                        </sky-assets-dir>
+                    </sky-assets-dir>
+                </sky-assets-dir>
+                <sky-lighting>
+                    <sky-ground-color>
+                        <sky-ground-color-red>88</sky-ground-color-red>
+                        <sky-ground-color-green>108</sky-ground-color-green>
+                        <sky-ground-color-blue>112</sky-ground-color-blue>
+                    </sky-ground-color>
+                    <sky-shadow-camera-size>
+                        128
+                    </sky-shadow-camera-size>
+                    <sky-shadow-camera-resolution>
+                        512
+                    </sky-shadow-camera-resolution>
+                    <sky-atmospheric-perspective-density>
+                        0.002
+                    </sky-atmospheric-perspective-density>
+                </sky-lighting>
+            </sky-assets-dir>
+        </a-starry-sky> -->
+
+        <a-assets timeout="60000">
+            <audio id="ocean-loop" src="/assets/js_libraries/a_ocean/a_ocean_v_0_1_0/sounds/ocean-loop.mp3"
+                preload="true"></audio>
+            <audio id="seagulls" src="/assets/js_libraries/a_ocean/a_ocean_v_0_1_0/sounds/seagulls.mp3"
+                preload="true"></audio>
+            <audio id="wind" src="/assets/js_libraries/a_ocean/a_ocean_v_0_1_0/sounds/wind-trees.mp3"
+                preload="true"></audio>
+            <audio id="insects" src="/assets/js_libraries/a_ocean/a_ocean_v_0_1_0/sounds/insects.mp3"
+                preload="true"></audio>
+            <a-asset-item id="island" src="/assets/js_libraries/a_ocean/a_ocean_v_0_1_0/3d-models/Island.glb">
+            </a-asset-item>
+        </a-assets>
+
+        <!-- Ocean sound -->
+        <a-entity sound="src: #ocean-loop; autoplay: true; loop: true; positional: false; volume: 0.3;"></a-entity>
+
+        <!-- wind in trees -->
+        <a-entity position="0.0 150.0 -70.0"
+            sound="src: #wind; autoplay: true; loop: true; positional: true; rolloffFactor: 0.01; volume: 10;">
+        </a-entity>
+
+        <!-- insects 1 -->*--
+        <a-entity id="insect-noise-1" position="70.0 160.0 2.0"
+            sound="src: #insects; autoplay: true; loop: true; positional: true; rolloffFactor: 0.05; volume: 2;">
+        </a-entity>
+
+        <!-- insects 2 -->
+        <a-entity id="insect-noise-2" position="70.0 160.0 -100.0"
+            sound="src: #insects; autoplay: true; loop: true; positional: true; rolloffFactor: 0.05; volume: 2;">
+        </a-entity>
+
+        <!-- seagulls -->
+        <a-entity id="seagull-noise" position="0.0 300.0 -70.0"
+            sound="src: #seagulls; autoplay: true; loop: true; positional: true; rolloffFactor: 0.01; volume: 3;">
+        </a-entity>
+
+        <a-entity id="rig" movement-controls="speed: 4;" position="0 150 0;">
+            <a-entity camera="near: 0.1; far: 7000.0;" look-controls="pointerLockEnabled: true"
+                wasd-controls="acceleration: 300" position="0 1.6 0"></a-entity>
+        </a-entity>
+
+        <!-- <a-entity id="rig" movement-controls position="0 150 0">
+        <a-entity camera="near: 0.1; far: 7000;" look-controls wasd-controls="acceleration: 120"></a-entity>
+      </a-entity>-->
+
+        <!-- The ocean we want to create -->
+        <a-ocean ocean-state="large_normal_map: /assets/js_libraries/a_ocean/a_ocean_v_0_1_0/image-dir/a-water-assets/water-normal-1.png;
+      small_normal_map: /assets/js_libraries/a_ocean/a_ocean_v_0_1_0/image-dir/a-water-assets/water-normal-2.png;      
+"></a-ocean>
+
+        <!-- The scene model for our island and buildings -->
+        <a-gltf-model src="#island" shadow="cast: true; receive: true;" position="0 0 0" scale="100.0 100.0 100.0">
+        </a-gltf-model>
+
+    </a-scene>
+
+    <!-- we have to manually re-add the shadow on our gltf model -->
+    <script type="text/javascript">
+        let seagullNoise = document.querySelector('#seagull-noise');
+        let insectNoise1 = document.querySelector('#insect-noise-1');
+        let insectNoise2 = document.querySelector('#insect-noise-2');
+
+        //Change the volume of my background sonds so seagulls are out in the day and
+        //crickets are out at night... I really should expose the values below through
+        //functions on the AStarrySky object as they're rather useful.
+        let interval = setInterval(function () {
+            try {
+                starrySky = document.querySelector('a-starry-sky').components.starryskywrapper.skyDirector;
+                let sinOfSunPosition = Math.sin(starrySky.skyState.sun.position.y);
+                let seagullNoiseVolume = Math.max(3.0 * sinOfSunPosition, 0.001);
+                seagullNoise.setAttribute('sound',
+                    "src: #seagulls; autoplay: true; loop: true; positional: true; rolloffFactor: 0.01; volume: " +
+                    seagullNoiseVolume + ";");
+                let insectNoise1Volume = Math.max(-2.0 * sinOfSunPosition, 0.001);
+                insectNoise1.setAttribute('sound',
+                    "src: #insects; autoplay: true; loop: true; positional: true; rolloffFactor: 0.05; volume: " +
+                    insectNoise1Volume + ";");
+                let insectNoise2Volume = Math.max(-2.0 * sinOfSunPosition, 0.001);
+                insectNoise2.setAttribute('sound',
+                    "src: #insects; autoplay: true; loop: true; positional: true; rolloffFactor: 0.05; volume: " +
+                    insectNoise2Volume + ";");
+            } catch (e) {
+                //Do Nothing, this often fails at the beginning of the code when things aren't loaded yet.
+            }
+        }, 1000);
+
+        //I think the GLTF loader isn't properly adding shadows so I need to traverse the model and add
+        //them back in, but then, I could be wrong...
+        document.querySelector('a-gltf-model').addEventListener('model-loaded', function (object) {
+            object.detail.model.traverse(function (child) {
+                if (child.isMesh) {
+                    child.castShadow = true;
+                    child.receiveShadow = true;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- source : https://glitch.com/edit/#!/acute-proximal-dog?path=index.html%3A45%3A0 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- version 1.0.4 nécessairement -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <!-- <script src="//samsunginternet.github.io/a-frame-components/dist/ocean-plane.js"></script> -->
+    <script src="./ocean-plane.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <!-- <img id="water-normal"
+                src="//raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/waternormals.jpg"
+                crossorigin="anonymous" />
+            <img id="skysphere"
+                src="//threejsfundamentals.org/threejs/resources/images/equirectangularmaps/tears_of_steel_bridge_2k.jpg"
+                crossorigin="anonymous" /> -->
+            <img id="water-normal" src="waternormals.jpg" />
+            <img id="skysphere" src="tears_of_steel_bridge_2k.jpg" />
+        </a-assets>
+
+        <a-sky src="#skysphere" position="0 -1 0" rotation="0 0 0"></a-sky>
+
+        <a-ocean-plane material="normalMap: #water-normal; sphericalEnvMap: #skysphere;"></a-ocean-plane>
+    </a-scene>
+</body>
+
+</html>

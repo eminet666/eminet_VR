@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+  <script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+
+
+  <script>
+    AFRAME.registerShader('my-custom', {
+      schema: {
+        u_time: { type: 'number', is: 'uniform', default: '0.0' }
+      },
+
+      // Setting raw to true uses THREE.RawShaderMaterial instead of ShaderMaterial
+      raw: false,
+
+      // Here, we're going to use the default vertex shader by omitting vertexShader.
+
+      fragmentShader: `
+        precision mediump float;
+        //uniform float u_time;
+
+        void main() {
+          // gl_FragColor = vec4(1.0,0.0,1.0,1.0);
+          gl_FragColor = vec4(abs(sin(u_time)),0.0,0.0,1.0);
+        } 
+      `
+    });
+  </script>
+
+  <!-- Declaration of the A-Frame scene. -->
+  <a-scene>
+    <a-box 
+      material="shader:my-custom; u_time: 0.1" 
+      position="0 0 -5">
+    </a-box>
+  </a-scene>
+
+</body>
+
+</html>

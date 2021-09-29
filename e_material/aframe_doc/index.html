@@ -1,0 +1,59 @@
+<!-- source : https://stackoverflow.com/questions/50052976/texture-for-illuminated-objects-in-aframe -->
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="./sky.js"></script>
+    <script src="./earth.js"></script>
+</head>
+
+<body>
+
+    <script>
+        AFRAME.registerComponent('sun-position-setter', {
+            init: function () {
+                var skyEl = this.el;
+                var orbitEl = this.el.sceneEl.querySelector('#orbit');
+
+                orbitEl.addEventListener('componentchanged',
+                    function changeSun(evt) {
+                        var sunPosition;
+                        var phase;
+                        var phi;
+
+                        if (evt.detail.name !== 'rotation') {
+                            return;
+                        }
+
+                        sunPosition = orbitEl.getAttribute('rotation');
+
+                        if (sunPosition === null) {
+                            return;
+                        }
+
+                        phase = (sunPosition.y / 360); // varies from 0 to 1
+                        phi = 2 * Math.PI * (phase - 0.5); // varies from 0 to two pi
+                        skyEl.setAttribute('material', 'sunDirection', {
+                            x: Math.cos(phi), // use x and y to indicate 2D rotation vector
+                            y: Math.sin(phi),
+                            z: phase // use z to indicate the phase
+                        });
+                        skyEl.setAttribute('material', 'worldDayTex', '#worldDay');
+                        skyEl.setAttribute('material', 'worldNightTex', '#worldNight');
+                    }
+                );
+            }
+        });
+    </script>
+
+    <a-scene>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" width="1" height="3" color="#4CC3D9" shadow></a-box>     
+      <a-plane position="0 0 -3" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+</body>
+
+</html>
