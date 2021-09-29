@@ -5,7 +5,7 @@
 * [lights](./d_lights/README.md)
 * [textures](./e_textures/README.md)
 * [sky](./f_sky/README.md)
-<!-- 
+
 ## tutorials
 * [principes](https://riptutorial.com/aframe)
 * [aframe school](https://aframe.io/aframe-school/#/)
@@ -37,4 +37,4 @@
 ## autres
 * [hands](https://eminet666.github.io/eminet_VR/x_test/hands/)
 * [skygradient](https://eminet666.github.io/eminet_VR/x_test/skygradient/)
- -->
+
