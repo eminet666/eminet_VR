@@ -2,9 +2,16 @@
 
 ## chapitres
 
+* [4.0 model](./4.0_models)
+* [4.1 model compression](./4.1_model_compression)
+* [4.2 model actions](./4.2_model_actions)
+
+<!-- 
 * [lights](./d_lights/README.md)
 * [textures](./e_textures/README.md)
-* [sky](./f_sky/README.md)
+* [sky](./f_sky/README.md) 
+-->
+
 <!-- 
 ## tutorials
 * [principes](https://riptutorial.com/aframe)
