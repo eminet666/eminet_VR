@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #CCC" gltf-model="dracoDecoderPath: ./draco/;">
+
+        <a-assets>
+            <a-asset-item id="polypheme" src="./assets/polypheme.glb"></a-asset-item>
+        </a-assets>
+
+        <a-entity gltf-model="#polypheme" position="0 1 -2" rotation="0 -90 0" scale="8 8 8"
+            modify-materials></a-entity>
+        <a-camera></a-camera>
+    </a-scene>
+</body>
+
+</html>

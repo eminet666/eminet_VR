@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <!-- <a-scene> -->
+    <a-scene light="defaultLightsEnabled: false">
+
+        <a-box position="-1 2 -3" rotation="-55 -30 25" color="silver"></a-box>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="gray" material="color: #FFF">
+        </a-plane>
+
+        <a-entity light="type: hemisphere; color: #F00; groundColor: #0F0; intensity: 2">
+        </a-entity>
+
+        <a-sky color="#5280A7"></a-sky>
+    </a-scene>
+
+</body>
+
+</html>
