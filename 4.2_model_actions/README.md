@@ -1,4 +1,6 @@
-# Animation-Controls
+# model action
+
+
 
 # cours
 https://aframe-course.glitch.me/0900-3d-models.html
