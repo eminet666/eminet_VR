@@ -5,7 +5,7 @@
 [example cage physics](https://quest-demo.glitch.me/) |
 
 ### local
-* [new](./new.html) |
+* [new](./new.html) | [positions](./positions.html)
 * [min](https://eminet666.github.io/eminet_VR/x_test/teleport/min.html) |
 [playser teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/player_teleport.html)
 * [cage](https://eminet666.github.io/eminet_VR/x_test/teleport/cage.html) |
