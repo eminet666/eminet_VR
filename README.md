@@ -1,11 +1,11 @@
 # eminet_VR
 
 ## chapitres
-
 * [4.0 model](./4.0_models)
 * [4.1 model compression](./4.1_model_compression)
 * [4.2 model actions](./4.2_model_actions)
 
+## suite
 * [teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/)
 * [hands](https://eminet666.github.io/eminet_VR/x_test/hands/)
 
