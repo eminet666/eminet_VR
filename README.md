@@ -6,6 +6,9 @@
 * [4.1 model compression](./4.1_model_compression)
 * [4.2 model actions](./4.2_model_actions)
 
+* [teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/)
+* [hands](https://eminet666.github.io/eminet_VR/x_test/hands/)
+
 <!-- 
 * [lights](./d_lights/README.md)
 * [textures](./e_textures/README.md)
