@@ -5,7 +5,7 @@
 [example cage physics](https://quest-demo.glitch.me/) |
 
 ### local
-* [mininum](./minimum.html) |
+* [new](./new.html) |
 * [min](https://eminet666.github.io/eminet_VR/x_test/teleport/min.html) |
 [playser teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/player_teleport.html)
 * [cage](https://eminet666.github.io/eminet_VR/x_test/teleport/cage.html) |
@@ -19,5 +19,5 @@
 [article](https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc) |
 [basic ici](https://eminet666.github.io/eminet_VR/x_test/teleport/basic_mouvement.html) |
 [new helloworld la](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html) |
-[spiderman demo](https://spiderman.webvr.link/)
+[spiderman demo](https://spiderman.webvr.link/) |
 [thumb control](https://supermedium.com/superframe/components/thumb-controls/examples/basic/)

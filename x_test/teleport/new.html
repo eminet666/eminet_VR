@@ -1,0 +1,27 @@
+<!-- https://github.com/fernandojsg/aframe-teleport-controls/blob/master/README.md -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
+    </script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
+        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <a-entity id="cameraRig">
+            <!-- camera -->
+            <a-entity id="head" camera wasd-controls look-controls></a-entity>
+            <!-- hand controls -->
+            <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+            <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
