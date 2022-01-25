@@ -1,12 +1,37 @@
-<!-- https://github.com/fernandojsg/aframe-teleport-controls/blob/master/README.md -->
+<!-- source : https://quest-demo.glitch.me/ -->
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
     </script>
+    <script>
+        AFRAME.registerComponent('input-listen', {
+            init: function () {
+                //grip button is pressed or not _ "this.el" reffers ctlR or L in this function
+                this.el.grip = false;
+
+                //X-buttorn Pressed 
+                this.el.addEventListener('xbuttondown', function (e) {
+                    //Start pointing position to teleport  
+                    this.emit('teleportstart');
+                });
+
+                //X-buttorn Released 
+                this.el.addEventListener('xbuttonup', function (e) {
+                    //Jump to pointed position
+                    this.emit('teleportend');
+                });
+                
+                //console.log(this);
+            },
+
+        });
+    </script>
 </head>
+
 
 <body>
     <a-scene background="color: #5280A7">
@@ -15,11 +40,25 @@
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <a-entity id="cameraRig">
-            <!-- camera -->
-            <a-entity id="head" camera wasd-controls look-controls></a-entity>
-            <!-- hand controls -->
-            <a-entity id="left-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
-            <a-entity id="right-hand" teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;"></a-entity>
+            <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
+            </a-entity>
+            <a-entity id="ctlL" 
+                teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head;" 
+                oculus-touch-controls="hand: left">
+            </a-entity>
+            <!-- <a-entity id="ctlL"
+                teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents: teleportend"
+                raycaster="objects: .collidable; far:1.2; " oculus-touch-controls="hand: left" input-listen>
+                <a-text value="Trigger: shoot a ball\nGrip: Grab large object\nX: Teleport" position="0 0.08 0"
+                    rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
+            </a-entity> -->
+            <!-- <a-entity id="ctlR" raycaster="objects: .collidable; far:1.2; " oculus-touch-controls="hand: right"
+                input-listen>
+                <a-text value="Trigger: shoot a ball\nGrip: Grab large object\nA: Remove small balls"
+                    position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
+            </a-entity> -->
         </a-entity>
     </a-scene>
 </body>
