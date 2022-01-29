@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- <script>
+    <script>
         AFRAME.registerComponent('currentposition', {
             tick: function () {
                 // `this.el` is the element, `object3D` is the three.js object.
@@ -21,10 +21,11 @@
                     y: this.el.object3D.position.x.toFixed(2),
                     z: this.el.object3D.position.z.toFixed(2)
                 }
-                console.log(this.el.id + " x: " + pos.x + ", y: " + pos.y + ", z: " + pos.z);
+                var pos = sceneEl.querySelector('#a-pos');
+                pos.setAttribute('value', "x: "+pos.x+", y: "+pos.y+", z: "+pos.z);
             }
         });
-    </script> -->
+    </script>
 </head>
 
 
@@ -34,15 +35,6 @@
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
-        <!-- <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
-                  haptics__trigger="events: triggerdown; dur: 200; force: 1.0"
-                  currentposition>
-        </a-entity>
-        <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
-                  haptics__trigger="events: triggerdown; dur: 1000; force: 0.25"
-                  currentposition>
-        </a-entity> -->
-
         <!-- PLAYER -->
         <a-entity id="cameraRig">
             
@@ -50,19 +42,19 @@
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
             <!-- LEFT HAND -->
-            <a-entity id="gauche" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
+            <a-entity id="gauche" currentposition
+                      hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtleft" value="position" position="0 0.08 0"
                         rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
-                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
             </a-entity>
             
             <!-- RIGHT HAND -->
-            <a-entity id="droite" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+            <a-entity id="droite" currentposition 
+                      hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtright" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
-                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
             </a-entity>
         </a-entity>
 
