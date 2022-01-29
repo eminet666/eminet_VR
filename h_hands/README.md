@@ -5,7 +5,7 @@
 [toons](./0_hands_toons.html) 
 * [3Dmodels](./1_hands_3Dmodels.html) 
 * [vibrations](./2_hands_vibrations.html) 
-* [positions_2](./3_hands_positions.html)
+* [positions_3](./3_hands_positions.html)
 
 
 <!-- 

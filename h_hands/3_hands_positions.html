@@ -16,15 +16,19 @@
                 //console.log("rotation : "+this.el.object3D.rotation);
 
                 // `position` is a three.js Vector3.
-                var pos = {
+
+                var live = {
                     x: this.el.object3D.position.x.toFixed(2),
                     y: this.el.object3D.position.x.toFixed(2),
                     z: this.el.object3D.position.z.toFixed(2)
                 }
+                var livepos = "x: " + live.x + ", y: " + live.y + ", z: " + live.z;
                 var sceneEl = document.querySelector('a-scene');
-                var pos = sceneEl.querySelector('#a-pos');
-                pos.setAttribute('value', "x: "+pos.x+", y: "+pos.y+", z: "+pos.z);
+                var pos = sceneEl.querySelector('#txtleft');
+                pos.setAttribute('value', livepos);
+
             }
+            
         });
     </script>
 </head>
@@ -51,7 +55,7 @@
             </a-entity>
             
             <!-- RIGHT HAND -->
-            <a-entity id="droite" currentposition 
+            <a-entity id="droite"  
                       hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtright" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
