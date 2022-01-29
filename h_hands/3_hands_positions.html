@@ -1,0 +1,47 @@
+<!-- reference : https://github.com/supermedium/superframe/tree/master/components/haptics/ -->
+<!-- source : https://supermedium.com/superframe/components/haptics/examples/basic/ -->
+<!-- Presser les gachettes avant pour faire vibrer les manettes -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('currentposition', {
+            tick: function () {
+                // `this.el` is the element, `object3D` is the three.js object.
+
+                // `rotation` is a three.js Euler using radians. `quaternion` also available.
+                //console.log("rotation : "+this.el.object3D.rotation);
+
+                // `position` is a three.js Vector3.
+                var pos = {
+                    x: this.el.object3D.position.x.toFixed(2),
+                    y: this.el.object3D.position.x.toFixed(2),
+                    z: this.el.object3D.position.z.toFixed(2)
+                }
+                console.log(this.el.id + " x: " + pos.x + ", y: " + pos.y + ", z: " + pos.z);
+            }
+        });
+    </script>
+</head>
+
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+                  haptics__trigger="events: triggerdown; dur: 200; force: 1.0"
+                  currentposition>
+        </a-entity>
+        <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
+                  haptics__trigger="events: triggerdown; dur: 1000; force: 0.25"
+                  currentposition>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>

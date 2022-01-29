@@ -1,10 +1,11 @@
 ## hands
 
-* [lowpoly](https://eminet666.github.io/eminet_VR/x_test/hands/0_hands_lowpoly.html) |
-[highpoly](https://eminet666.github.io/eminet_VR/x_test/hands/0_hands_highpoly.html) |
-[toons](https://eminet666.github.io/eminet_VR/x_test/hands/0_hands_toons.html) 
-* [3Dmodels](https://eminet666.github.io/eminet_VR/x_test/hands/1_hands_3Dmodels.html) 
-* [vibrations](https://eminet666.github.io/eminet_VR/x_test/hands/2_hands_vibrations.html) 
+* [lowpoly](./0_hands_lowpoly.html) |
+[highpoly](./0_hands_highpoly.html) |
+[toons](./0_hands_toons.html) 
+* [3Dmodels](./1_hands_3Dmodels.html) 
+* [vibrations](./2_hands_vibrations.html) 
+* [positions](./3_hands_positions.html)
 
 
 <!-- 
