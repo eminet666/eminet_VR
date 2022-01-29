@@ -5,3 +5,11 @@
 [toons](https://eminet666.github.io/eminet_VR/x_test/hands/0_hands_toons.html) 
 * [3Dmodels](https://eminet666.github.io/eminet_VR/x_test/hands/1_hands_3Dmodels.html) 
 * [vibrations](https://eminet666.github.io/eminet_VR/x_test/hands/2_hands_vibrations.html) 
+
+
+<!-- 
+todolist
+- contrôle étendu des mains : hand-tracking-controls-extras
+https://github.com/gftruj/aframe-hand-tracking-controls-extras 
+https://github.com/aframevr/aframe/issues/4690
+-->
