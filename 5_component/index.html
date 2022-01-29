@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
+  <head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -15,7 +15,7 @@
 	            el.addEventListener('model-loaded', () => {
 	              console.log(el.id+" chargé");
 	              });
-	            this.el.addEventListener('model-error', () => {
+	            el.addEventListener('model-error', () => {
 	                // Grab the mesh / scene.
 	                console.log("erreur");
 	              });
@@ -31,12 +31,19 @@
 				<a-asset-item id="glbModel" src="./models/homme.glb"></a-asset-item>
 			</a-assets>
 
-			<a-entity   id ="modele"
+			<a-entity   id ="modele1"
 						scale="1 1 1"
 						position="0 0 -5"
 						rotation="0 90 0"
 						loaded
 						gltf-model="#glbModel">
+			</a-entity>
+			<a-entity id="modele2" 
+				scale="1 1 1" 
+				position="1 0 -5" 
+				rotation="0 90 0" 
+				loaded 
+				gltf-model="#glbModel">
 			</a-entity>
     	</a-scene>
 
