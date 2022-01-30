@@ -10,12 +10,6 @@
     <script>
         AFRAME.registerComponent('currentposition', {
             tick: function () {
-                // `this.el` is the element, `object3D` is the three.js object.
-
-                // `rotation` is a three.js Euler using radians. `quaternion` also available.
-                //console.log("rotation : "+this.el.object3D.rotation);
-
-                // `position` is a three.js Vector3.
 
                 var live = {
                     x: this.el.object3D.position.x.toFixed(2),
@@ -49,15 +43,15 @@
             
             <!-- LEFT HAND -->
             <a-entity id="gauche" currentposition
-                      hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
-                <a-text id="txtgauche" value="position" position="0 0.08 0"
-                        rotation="-90 0 0" scale="0.1 0.1 0.1" 
+                      hand-controls="hand: left;">
+                <a-text id="txtgauche" value="position" 
+                        position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
             </a-entity>
             
             <!-- RIGHT HAND -->
             <a-entity id="droite" currentposition
-                      hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+                      hand-controls="hand: right;">
                 <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
