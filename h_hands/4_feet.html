@@ -1,6 +1,4 @@
-<!-- reference : https://github.com/supermedium/superframe/tree/master/components/haptics/ -->
-<!-- source : https://supermedium.com/superframe/components/haptics/examples/basic/ -->
-<!-- Presser les gachettes avant pour faire vibrer les manettes -->
+<!-- source : model3D feet : https://free3d.com/3d-model/foot-v1--788401.html -->
 <!DOCTYPE html>
 <html>
 
@@ -28,9 +26,13 @@
     </script>
 </head>
 
-
 <body>
     <a-scene background="color: #5280A7">
+
+        <a-assets>
+            <a-asset-item id="piedgauche" src="./assets/piedgauche.glb"></a-asset-item>
+            <a-asset-item id="pieddroite" src="./assets/piedgauche.glb"></a-asset-item>
+        </a-assets>
 
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
@@ -42,16 +44,16 @@
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
             <!-- LEFT HAND -->
-            <a-entity id="gauche" currentposition
-                      hand-controls="hand: left;">
+            <a-entity id="gauche" currentposition hand-controls="hand: left;">
+                <a-entity gltf-model="#piedgauche"></a-entity>
                 <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
             </a-entity>
             
             <!-- RIGHT HAND -->
-            <a-entity id="droite" currentposition
-                      hand-controls="hand: right;">
+            <a-entity id="droite" currentposition hand-controls="hand: right;">
+                <a-entity gltf-model="#piedgauche"></a-entity>
                 <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
