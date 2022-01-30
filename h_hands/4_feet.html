@@ -19,7 +19,8 @@
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
-
+                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                pied.setAttribute('position', '{ x: +'+live.x +", y: 0.1, z:"+live.z+"}");
             }
             
         });
@@ -30,12 +31,12 @@
     <a-scene background="color: #5280A7">
 
         <a-assets>
-            <a-asset-item id="piedgauche" src="./assets/piedgauche.glb"></a-asset-item>
-            <a-asset-item id="pieddroite" src="./assets/pieddroite.glb"></a-asset-item>
+            <a-asset-item id="leftfoot" src="./assets/piedgauche.glb"></a-asset-item>
+            <a-asset-item id="rightfoot" src="./assets/pieddroite.glb"></a-asset-item>
         </a-assets>
 
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
-        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+        <a-plane width="10" height="10" color="gray" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <!-- PLAYER -->
         <a-entity id="cameraRig">
@@ -44,15 +45,14 @@
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
             <!-- LEFT HAND -->
-            <a-entity id="gauche" currentposition hand-controls="hand: left;">
-                <a-entity gltf-model="#piedgauche"></a-entity>
+            <a-entity id="gauche" currentposition hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
             </a-entity>
             
             <!-- RIGHT HAND -->
-            <a-entity id="droite" currentposition hand-controls="hand: right;">
+            <a-entity id="droite" currentposition hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-entity gltf-model="#piedgauche"></a-entity>
                 <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
@@ -60,7 +60,11 @@
             </a-entity>
         </a-entity>
 
-
+        <!-- PIEDS -->
+        <a-entity id="piedgauche" gltf-model="#leftfoot" 
+                  rotation="-90 0 180" position="-0.2 0.5 -2"></a-entity>
+        <a-entity id="pieddroite" gltf-model="#rightfoot" 
+                  rotation="-90 0 180" position="0.2 0.5 -2"></a-entity>
 
     </a-scene>
 
