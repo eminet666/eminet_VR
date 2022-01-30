@@ -19,10 +19,11 @@
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
-                //var pied = sceneEl.querySelector('#pied'+this.el.id);
-                var log = sceneEl.querySelector('#txtlog');
+                               
                 var newpos = "{ x: "+ live.x +", y: 0, z: "+ live.z +" }";
-                //console.log(newpos);
+                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                pied.setAttribute('position', newpos);
+                var log = sceneEl.querySelector('#txtlog');
                 log.setAttribute('value', newpos);
             }
             

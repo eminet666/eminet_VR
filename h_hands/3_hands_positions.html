@@ -27,7 +27,6 @@
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
-
             }
             
         });
@@ -45,10 +44,8 @@
         <a-entity id="cameraRig">
             
             <!-- TETE -->
-            <a-entity id="head" currentposition camera wasd-controls look-controls position="0 1.6 0">
-                <a-text id="txthead" value="position" position="0 0 -0.5" rotation="-90 0 0"
-                        scale="0.1 0.1 0.1" align="center" color="#FFFFFF">
-                </a-text>
+            <a-entity id="head" currentposition
+                    camera wasd-controls look-controls position="0 1.6 0">
             </a-entity>
             
             <!-- LEFT HAND -->
@@ -70,7 +67,8 @@
             </a-entity>
         </a-entity>
 
-
+        <a-text id="txthead" value="position" position="0 1.6 -1" rotation="0 0 0" 
+                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text>
 
     </a-scene>
 
