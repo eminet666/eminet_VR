@@ -20,7 +20,8 @@
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
-                pied.setAttribute('position', '{ x: +'+live.x +", y: 0.1, z:"+live.z+"}");
+                //pied.setAttribute('position', '{ x: +'+live.x +", y: 0.1, z:"+live.z+"}");
+                pied.setAttribute('position', { x: 0, y: 0.5, z: -1 });
             }
             
         });
