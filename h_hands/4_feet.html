@@ -21,9 +21,8 @@
                 pos.setAttribute('value', livepos);
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 var newpos = "{ x: "+ live.x +", y: 0, z: "+ live.z +" }";
-                console.log(newpos);
-                //pied.setAttribute('position', );
-                //pied.setAttribute('position', { x: 0, y: 0.5, z: -1 });
+                //console.log(newpos);
+                pied.setAttribute('position', newpos);
             }
             
         });
