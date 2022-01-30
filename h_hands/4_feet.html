@@ -21,6 +21,7 @@
                 pos.setAttribute('value', livepos);
                                
                 var newpos = "{ x: "+ live.x +", y: 0, z: "+ live.z +" }";
+                newpos = "{x: 0, y: 1, z: -2}";
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
                 var log = sceneEl.querySelector('#txtlog');
