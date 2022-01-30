@@ -19,9 +19,9 @@
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
-                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                //var pied = sceneEl.querySelector('#pied'+this.el.id);
                 //pied.setAttribute('position', '{ x: +'+live.x +", y: 0.1, z:"+live.z+"}");
-                pied.setAttribute('position', { x: 0, y: 0.5, z: -1 });
+                //pied.setAttribute('position', { x: 0, y: 0.5, z: -1 });
             }
             
         });
@@ -63,9 +63,9 @@
 
         <!-- PIEDS -->
         <a-entity id="piedgauche" gltf-model="#leftfoot" 
-                  rotation="-90 0 180" position="-0.2 0.5 -2"></a-entity>
+                  rotation="-90 0 180" position="-0.2 0.2 -2"></a-entity>
         <a-entity id="pieddroite" gltf-model="#rightfoot" 
-                  rotation="-90 0 180" position="0.2 0.5 -2"></a-entity>
+                  rotation="-90 0 180" position="0.2 0.2 -2"></a-entity>
 
     </a-scene>
 
