@@ -24,7 +24,7 @@
                 }
                 var livepos = "x: " + live.x + ", y: " + live.y + ", z: " + live.z;
                 var sceneEl = document.querySelector('a-scene');
-                console.log('#txt'+this.el.id);
+                //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
 
@@ -45,14 +45,19 @@
         <a-entity id="cameraRig">
             
             <!-- TETE -->
-            <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+            <a-entity id="head" currentposition camera wasd-controls look-controls position="0 1.6 0">
+                <a-text id="txthead" value="position" position="0 0 -0.5" rotation="-90 0 0"
+                        scale="0.1 0.1 0.1" align="center" color="#FFFFFF">
+                </a-text>
+            </a-entity>
             
             <!-- LEFT HAND -->
             <a-entity id="gauche" currentposition
                       hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtgauche" value="position" position="0 0.08 0"
                         rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                        align="center" color="#FFFFFF"></a-text>
+                        align="center" color="#FFFFFF">
+                    </a-text>
             </a-entity>
             
             <!-- RIGHT HAND -->
@@ -60,7 +65,8 @@
                       hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                        align="center" color="#FFFFFF"></a-text>
+                        align="center" color="#FFFFFF">
+                </a-text>
             </a-entity>
         </a-entity>
 

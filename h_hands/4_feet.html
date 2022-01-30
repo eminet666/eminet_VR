@@ -19,10 +19,11 @@
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', livepos);
-                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                //var pied = sceneEl.querySelector('#pied'+this.el.id);
+                var log = sceneEl.querySelector('#txtlog');
                 var newpos = "{ x: "+ live.x +", y: 0, z: "+ live.z +" }";
                 //console.log(newpos);
-                pied.setAttribute('position', newpos);
+                log.setAttribute('value', newpos);
             }
             
         });
@@ -64,9 +65,15 @@
 
         <!-- PIEDS -->
         <a-entity id="piedgauche" gltf-model="#leftfoot" 
-                  rotation="-90 0 180" position="-0.2 0 -2"></a-entity>
+                  rotation="-90 0 180" position="-0.2 0 -2">
+        </a-entity>
         <a-entity id="pieddroite" gltf-model="#rightfoot" 
-                  rotation="-90 0 180" position="0.2 0 -2"></a-entity>
+                  rotation="-90 0 180" position="0.2 0 -2">
+        </a-entity>
+
+        <!-- LOG  -->
+        <a-text id="txtlog" value="position" position="0 1.6 -1" rotation="0 0 0"
+                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text>
 
     </a-scene>
 
