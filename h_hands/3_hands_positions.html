@@ -26,9 +26,9 @@
                 var sceneEl = document.querySelector('a-scene');
                 //console.log('#txt'+this.el.id);
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
+                //pos.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                 pos.setAttribute('value', livepos);
-            }
-            
+            }            
         });
     </script>
 </head>
@@ -47,7 +47,7 @@
             <a-entity id="head" currentposition
                     camera wasd-controls look-controls position="0 1.6 0">
                     <a-text id="txthead" value="position" position="0 0 -0.5"
-                            width="0.5" align="center" color="#F00">
+                            width="1" align="center" color="#F00">
                     </a-text>
             </a-entity>
             
