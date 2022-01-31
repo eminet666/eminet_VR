@@ -3,6 +3,7 @@
 ### local
 * [player_position](./player_positions.html)
 * [player_teleport](./player_teleport.html)
+* [player_teleport_world](./player_teleport_world.html)
 
 <!-- 
 * [new](./new.html) | [positions](./positions.html)
