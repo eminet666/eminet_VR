@@ -16,15 +16,15 @@
                
                 var rot = this.el.object3D.getWorldQuaternion(quaternion);
                 var rY = "ry ="+(rot.y*(180/Math.PI)).toFixed(2);
-                console.log(rY);
+                //console.log(rY);
 
                 var pos = this.el.object3D.getWorldPosition(position);
                 var xz = "x="+pos.x.toFixed(2)+" _ z ="+pos.z.toFixed(2);
-                console.log(xz);
+                //console.log(xz);
 
                 var sceneEl = document.querySelector('a-scene');
                 var pos = sceneEl.querySelector('#txthead');
-                console.log(pos);
+                //console.log(pos);
                 pos.setAttribute('value', xz+"\n"+rY);
             }
         });
