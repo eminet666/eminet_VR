@@ -11,40 +11,25 @@
         // PLAYER _ POSITION : <a-entity camera look-controls position-reader>
         AFRAME.registerComponent('position-reader', {
             tick: function () {
-                var rot = this.el.object3D.rotation;
-                var rY = "ry ="+(rot.y*(180/Math.PI)).toFixed(2);
-                console.log(rY);
-
-                var pos = this.el.object3D.position;
-                var xz = "x="+pos.x.toFixed(2)+" _ z ="+pos.z.toFixed(2);
-                console.log(xz);
+                var wposition = new THREE.Vector3();
+                var wpos = this.el.object3D.getWorldPosition(wposition);
 
                 var sceneEl = document.querySelector('a-scene');
-                var pos = sceneEl.querySelector('#txthead');
-                console.log(pos);
-                pos.setAttribute('value', xz+"\n"+rY);
-                }
-        });
+                var head = sceneEl.querySelector('#head');
+                head.setAttribute('position', wpos.x+" "+wpos.y+" "+wpos.z)
 
-        // PLAYER _ POSITION : <a-entity camera look-controls position-reader>
-        AFRAME.registerComponent('world-position-reader', {
-            tick: function () {
-                var position = new THREE.Vector3();
-                var quaternion = new THREE.Quaternion();
-               
-                var rot = this.el.object3D.getWorldQuaternion(quaternion);
+                var rot = this.el.object3D.rotation;
                 var rY = "ry ="+(rot.y*(180/Math.PI)).toFixed(2);
                 //console.log(rY);
 
-                var pos = this.el.object3D.getWorldPosition(position);
+                var pos = this.el.object3D.position;
                 var xz = "x="+pos.x.toFixed(2)+" _ z ="+pos.z.toFixed(2);
                 //console.log(xz);
 
-                var sceneEl = document.querySelector('a-scene');
                 var pos = sceneEl.querySelector('#txthead');
                 //console.log(pos);
                 pos.setAttribute('value', xz+"\n"+rY);
-            }
+                }
         });
 
         AFRAME.registerComponent('input-listen', {
@@ -79,10 +64,10 @@
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <!-- PLAYER -->
-        <a-entity id="cameraRig" world-position-reader>
+        <a-entity id="cameraRig">
             <!-- TETE -->
             <a-entity id="head" camera look-controls wasd-controls 
-                      position="0 1.6 0">
+                      position-reader position="0 1.6 0">
                 <a-text id="txthead" value="position" position="0 0 -1" rotation="0 0 0" scale="0.5 0.5 0.5"
                     align="center" color="#FF0000">
                 </a-text>

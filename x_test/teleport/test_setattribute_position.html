@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
+        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+    </a-scene>
+
+    <script>
+        (function () {
+            
+            var box1 = document.createElement('a-box'); 
+            var box2 = document.createElement('a-box');
+            document.querySelector('a-scene').appendChild(box1); 
+            document.querySelector('a-scene').appendChild(box2);
+            box1.setAttribute('position', {
+                x: 1,
+                y: 0,
+                z: -3
+            }); 
+            box2.setAttribute('position', '-1 0 -3');
+        })(); 
+    </script>
+
+
+</body>
+
+</html>
+
+
+
