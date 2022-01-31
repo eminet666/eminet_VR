@@ -5,11 +5,11 @@
 * [4.1 model compression](./4.1_model_compression)
 * [4.2 model actions](./4.2_model_actions)
 
-* [camera](https://eminet666.github.io/eminet_VR/g_camera/)
-* [hands](https://eminet666.github.io/eminet_VR/h_hands/)
+* [camera](./g_camera/)
+* [hands](./h_hands/)
 
 ## suite
-* [teleport](https://eminet666.github.io/eminet_VR/x_test/teleport/)
+* [teleport](./x_test/teleport/)
 
 
 <!-- 

@@ -8,25 +8,22 @@
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js">
     </script>
     <script>
-        AFRAME.registerComponent('rotation-reader', {
+         // PLAYER _ POSITION : <a-entity camera look-controls position-reader>
+        AFRAME.registerComponent('position-reader', {
             tick: function () {
-                // `this.el` is the element, `object3D` is the three.js object.
+                var rot = this.el.object3D.rotation;
+                var rY = "ry ="+(rot.y*(180/Math.PI)).toFixed(2);
+                //console.log(rY);
 
-                // `rotation` is a three.js Euler using radians. `quaternion` also available.
-                //console.log("rotation : "+this.el.object3D.rotation);
+                var pos = this.el.object3D.position;
+                var xz = "x="+pos.x.toFixed(2)+" _ z ="+pos.z.toFixed(2);
+                console.log(xz);
 
-                // `position` is a three.js Vector3.
-                var pos = {
-                    x: this.el.object3D.position.x.toFixed(2),
-                    z: this.el.object3D.position.z.toFixed(2)
-                }
-                var livepos = "x: " + pos.x + ", z: " + pos.z;
-                console.log(livepos);
                 var sceneEl = document.querySelector('a-scene');
-                var pos = sceneEl.querySelector('#a-pos');
-                pos.setAttribute('value', livepos);
-                console.log(pos.getAttribute('value'));
-            },
+                var pos = sceneEl.querySelector('#txthead');
+                //console.log(pos);
+                pos.setAttribute('value', xz+"\n"+rY);
+            }
         });
 
         AFRAME.registerComponent('input-listen', {
@@ -57,24 +54,36 @@
 <body>
     <a-scene background="color: #5280A7">
 
-        <a-entity id="cameraRig">
-            <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: toon; color: #ccccff"
-                teleport-controls="cameraRig: #cameraRig; teleportOrigin: #head; startEvents: teleportstart; endEvents:
-                teleportend" input-listen>
-                <a-text value="X: Teleport" position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                align="center" color="#FFFFFF"></a-text>
-            </a-entity>
-            <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: toon; color: #ccccff"></a-entity>
-            <a-entity id="head" camera position="0 1.6 0" look-controls wasd-controls rotation-reader>
-                <a-text id="a-pos" value="position" position="0 0 -1"
-                        rotation="0 0 0" scale="0.5 0.5 0.5" align="center"
-                        color="#FF0000">
-                </a-text>
-            </a-entity>
-        </a-entity>
-
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <!-- PLAYER -->
+        <a-entity id="cameraRig">
+            <!-- TETE -->
+            <a-entity id="head" camera look-controls wasd-controls 
+                      position-reader position="0 1.6 0">
+                <a-text id="txthead" value="position" position="0 0 -1" rotation="0 0 0" scale="0.5 0.5 0.5"
+                    align="center" color="#FF0000">
+                </a-text>
+            </a-entity>
+
+            <!-- LEFT HAND -->
+            <a-entity id="leftHand" input-listen
+                hand-controls="hand: left; handModelStyle: toon; color: #ccccff"
+                teleport-controls="cameraRig: #cameraRig; 
+                                   teleportOrigin: #head; 
+                                   startEvents: teleportstart; 
+                                   endEvents: teleportend" >
+                <a-text value="X: Teleport" 
+                        position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
+                        align="center" color="#FFFFFF">
+                </a-text>
+            </a-entity>
+            <!-- RIGH HAND -->
+            <a-entity id="rightHand" 
+                hand-controls="hand: right; handModelStyle: toon; color: #ccccff">
+            </a-entity>
+        </a-entity>
 
     </a-scene>
 </body>
