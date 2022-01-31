@@ -79,10 +79,10 @@
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <!-- PLAYER -->
-        <a-entity id="cameraRig">
+        <a-entity id="cameraRig" world-position-reader>
             <!-- TETE -->
             <a-entity id="head" camera look-controls wasd-controls 
-                       world-position-reader position="0 1.6 0">
+                      position="0 1.6 0">
                 <a-text id="txthead" value="position" position="0 0 -1" rotation="0 0 0" scale="0.5 0.5 0.5"
                     align="center" color="#FF0000">
                 </a-text>
