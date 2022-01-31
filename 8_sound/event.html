@@ -46,12 +46,13 @@
 		<a-scene background="color: skyblue">
 			<a-assets>
 				<a-asset-item id="glbModel" src="./models/homme.glb"></a-asset-item>
-				<audio id="vol" src="./assets/vol.mp3" preload="auto" volume="1"></audio>
+				<img id="img360" crossorigin="anonymous" src="./assets/grece.jpg" />
+				<audio id="vol" src="./assets/cigale.mp3" preload="auto" volume="1"></audio>
 			</a-assets>
 
 			<a-entity   id="modele"
 						scale="1 1 1"
-						position="0 0 -5"
+						position="0 0 -3"
 						rotation="0 90 0"
 						loaded
 						gltf-model="#glbModel">
@@ -61,6 +62,8 @@
 					  sound="src: #vol"
 					  sound_loaded>
 			</a-entity>
+
+			<a-sky src="#img360" position="-2.06 10 -20" rotation="0 95 0"></a-sky>
 
     	</a-scene>
 
