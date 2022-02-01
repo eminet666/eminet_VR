@@ -24,8 +24,9 @@
                 console.log(newpos);
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
-                // var log = sceneEl.querySelector('#txtlog');
-                // log.setAttribute('value', newpos);
+
+                var log = sceneEl.querySelector('#txtlog');
+                log.setAttribute('value', newpos);
             }
             
         });
@@ -57,7 +58,7 @@
             </a-entity>
             
             <!-- RIGHT HAND -->
-            <a-entity id="droite" currentposition hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+            <a-entity id="droite" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-entity gltf-model="#piedgauche"></a-entity>
                 <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
@@ -74,8 +75,8 @@
         </a-entity>
 
         <!-- LOG  -->
-        <!-- <a-text id="txtlog" value="position" position="0 1.6 -1"
-                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text> -->
+        <a-text id="txtlog" value="position" position="0 1.6 -1"
+                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text>
 
     </a-scene>
 
