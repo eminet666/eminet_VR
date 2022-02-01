@@ -20,12 +20,12 @@
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
-                // var newpos = live.x+" 0 "+live.y;
-                // // newpos = "{x: 0, y: 1, z: -2}";
-                // var pied = sceneEl.querySelector('#pied'+this.el.id);
-                // pied.setAttribute('position', newpos);
-                // var log = sceneEl.querySelector('#txtlog');
-                // log.setAttribute('value', newpos);
+                var newpos = live.x+" 0 "+live.y;
+                // newpos = "{x: 0, y: 1, z: -2}";
+                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                pied.setAttribute('position', newpos);
+                var log = sceneEl.querySelector('#txtlog');
+                log.setAttribute('value', newpos);
             }
             
         });
