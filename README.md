@@ -10,7 +10,7 @@
 * [hands](./h_hands/)
 
 ## suite
-* [teleport_6](./x_test/teleport/)
+* [teleport_7](./x_test/teleport/)
 
 
 <!-- 
