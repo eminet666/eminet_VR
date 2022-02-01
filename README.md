@@ -13,9 +13,9 @@
 * [teleport](./x_test/teleport/)
 
 <!-- 
-* [lights](./d_lights/README.md)
-* [textures](./e_textures/README.md)
-* [sky](./f_sky/README.md) 
+* [d_lights](./d_lights/README.md)
+* [e_textures](./e_textures/README.md)
+* [f_sky](./f_sky/README.md) 
 -->
 
 <!-- 
