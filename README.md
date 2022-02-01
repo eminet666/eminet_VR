@@ -7,7 +7,7 @@
 * [8_son](./8_sound)
 
 * [camera](./g_camera/)
-* [hands_4](./h_hands/)
+* [hands](./h_hands/)
 
 ## suite
 * [teleport](./x_test/teleport/)

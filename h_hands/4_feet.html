@@ -20,12 +20,12 @@
                 var pos = sceneEl.querySelector('#txt'+this.el.id);
                 pos.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
-                var newpos = live.x+" 0 "+live.y;
-                // newpos = "{x: 0, y: 1, z: -2}";
+                // var newpos = live.x+" 0.0 "+live.y;
+                newpos = "{x: 0, y: 1, z: -1}";
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
-                var log = sceneEl.querySelector('#txtlog');
-                log.setAttribute('value', newpos);
+                // var log = sceneEl.querySelector('#txtlog');
+                // log.setAttribute('value', newpos);
             }
             
         });
@@ -73,11 +73,9 @@
             </a-entity>
         </a-entity>
 
-
-
         <!-- LOG  -->
-        <a-text id="txtlog" value="position" position="0 1.6 -1"
-                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text>
+        <!-- <a-text id="txtlog" value="position" position="0 1.6 -1"
+                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text> -->
 
     </a-scene>
 
