@@ -17,13 +17,14 @@
                 var livepos = "x: " + live.x + ", y: " + live.y + ", z: " + live.z;
                 var sceneEl = document.querySelector('a-scene');
                 //console.log('#txt'+this.el.id);
-                var pos = sceneEl.querySelector('#txt'+this.el.id);
-                pos.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
+                var txt = sceneEl.querySelector('#txt'+this.el.id);
+                txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
-                var newpos = live.x+" 0 "+live.y;
-                // newpos = "{x: 0, y: 1, z: -2}";
+                var newpos = live.x+" 0.0 "+live.z;
+                console.log(newpos);
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
+
                 var log = sceneEl.querySelector('#txtlog');
                 log.setAttribute('value', newpos);
             }
@@ -49,14 +50,14 @@
             <!-- TETE -->
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
-            <!-- LEFT HAND -->
+            <!-- MAIN GAUCHE -->
             <a-entity id="gauche" currentposition hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
                 <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
             </a-entity>
             
-            <!-- RIGHT HAND -->
+            <!-- MAIN DROITE -->
             <a-entity id="droite" currentposition hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
                 <a-entity gltf-model="#piedgauche"></a-entity>
                 <a-text id="txtdroite" value="position"
@@ -66,14 +67,13 @@
 
             <!-- PIEDS -->
             <a-entity id="piedgauche" gltf-model="#leftfoot" 
-                      rotation="-90 0 180" position="-0.2 0 -2">
+                      rotation="-90 0 180" position="-0.25 0 0">
             </a-entity>
             <a-entity id="pieddroite" gltf-model="#rightfoot" 
-                      rotation="-90 0 180" position="0.2 0 -2">
+                      rotation="-90 0 180" position="0.25 0 0">
             </a-entity>
+
         </a-entity>
-
-
 
         <!-- LOG  -->
         <a-text id="txtlog" value="position" position="0 1.6 -1"
