@@ -5,6 +5,8 @@
 * [player_teleport](./player_teleport.html)
 * [player_teleport_world](./player_teleport_world.html)
 * [player_teleport_both](./player_teleport_both.html)
+* [exemple_cage](./cage.html)
+* [exemple_temple_choinois](./temple_chinois.html)
 
 <!-- 
 * [new](./new.html) | [positions](./positions.html)

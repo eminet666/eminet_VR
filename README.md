@@ -7,11 +7,10 @@
 * [8_son](./8_sound)
 
 * [camera](./g_camera/)
-* [hands](./h_hands/)
+* [hands_1](./h_hands/)
 
 ## suite
-* [teleport_7](./x_test/teleport/)
-
+* [teleport](./x_test/teleport/)
 
 <!-- 
 * [lights](./d_lights/README.md)
