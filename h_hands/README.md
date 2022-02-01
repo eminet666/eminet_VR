@@ -7,7 +7,7 @@
 * [vibrations](./2_hands_vibrations.html) 
 
 * [positions](./3_hands_positions.html)
-* [feet_9](./4_feet.html)
+* [feet_0](./4_feet.html)
 * [test_init_position](./test_init_pos.html)
 
 <!-- 

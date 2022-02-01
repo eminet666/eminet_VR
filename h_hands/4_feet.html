@@ -8,6 +8,7 @@
     <script>
         AFRAME.registerComponent('currentrotation', {
         tick: function () {
+            
             var rot = this.el.object3D.rotation;
             var newrot = " -90 "+(rot.y*(180/Math.PI))+" 180";
             console.log(newrot);
