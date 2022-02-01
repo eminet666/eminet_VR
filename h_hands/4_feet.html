@@ -9,7 +9,7 @@
         AFRAME.registerComponent('currentrotation', {
         tick: function () {
             var rot = this.el.object3D.rotation;
-            var newrot = " -90 "+rot.y+" 180";
+            var newrot = " -90 "+(rot.y*(180/Math.PI))+" 180";
             console.log(newrot);
 
             var sceneEl = document.querySelector('a-scene');
@@ -17,6 +17,10 @@
             var pieddroite = sceneEl.querySelector('#pieddroite');
             piedgauche.setAttribute('rotation', newrot);
             pieddroite.setAttribute('rotation', newrot);
+
+            var log = sceneEl.querySelector('#txtlog');
+            log.setAttribute('value', newrot);
+            
             }
         });
 
@@ -40,8 +44,8 @@
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
 
-                var log = sceneEl.querySelector('#txtlog');
-                log.setAttribute('value', newpos);
+                // var log = sceneEl.querySelector('#txtlog');
+                // log.setAttribute('value', newpos);
             }            
         });
     </script>
