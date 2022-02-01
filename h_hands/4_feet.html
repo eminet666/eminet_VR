@@ -63,15 +63,17 @@
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF"></a-text>
             </a-entity>
+
+            <!-- PIEDS -->
+            <a-entity id="piedgauche" gltf-model="#leftfoot" 
+                      rotation="-90 0 180" position="-0.2 0 -2">
+            </a-entity>
+            <a-entity id="pieddroite" gltf-model="#rightfoot" 
+                      rotation="-90 0 180" position="0.2 0 -2">
+            </a-entity>
         </a-entity>
 
-        <!-- PIEDS -->
-        <a-entity id="piedgauche" gltf-model="#leftfoot" 
-                  rotation="-90 0 180" position="-0.2 0 -2">
-        </a-entity>
-        <a-entity id="pieddroite" gltf-model="#rightfoot" 
-                  rotation="-90 0 180" position="0.2 0 -2">
-        </a-entity>
+
 
         <!-- LOG  -->
         <a-text id="txtlog" value="position" position="0 1.6 -1"
