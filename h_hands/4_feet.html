@@ -9,7 +9,7 @@
         AFRAME.registerComponent('currentrotation', {
         tick: function () {
             var rot = this.el.object3D.rotation;
-            var newrot = " 0 "+rot.y+" 0";
+            var newrot = " -90 "+rot.y+" 180";
             console.log(newrot);
 
             var sceneEl = document.querySelector('a-scene');
