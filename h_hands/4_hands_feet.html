@@ -37,11 +37,11 @@
 
                 var sceneEl = document.querySelector('a-scene');
                 //console.log('#txt'+this.el.id);
-                var txt = sceneEl.querySelector('#txt'+this.el.id);
-                txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
+                // var txt = sceneEl.querySelector('#txt'+this.el.id);
+                // txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
                 var newpos = live.x+" 0 "+live.z;
-                console.log(newpos);
+                //console.log(newpos);
                 var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
 

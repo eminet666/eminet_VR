@@ -45,7 +45,7 @@
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
             <!-- MAIN GAUCHE -->
-            <a-entity id="gauche" hand-controls="hand: left; model:false">
+            <a-entity id="gauche" oculus-touch-controls="hand: left; model:false">
                 <a-entity id="piedgauche" gltf-model="#leftfoot" rotation="-90 0 180"></a-entity>
                 <!-- <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
@@ -53,7 +53,7 @@
             </a-entity>
             
             <!-- MAIN DROITE -->
-            <a-entity id="droite" hand-controls="hand: right; model:false">
+            <a-entity id="droite" oculus-touch-controls="hand: right; model:false">
                 <a-entity id="piedgauche" gltf-model="#rightfoot" rotation="-90 0 180">
                 <!-- <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
