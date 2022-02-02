@@ -8,7 +8,7 @@
 
 * [positions](./3_hands_positions.html)
 * [hands_feet](./4_hands_feet.html)
-* [feet_5](./5_feet.html)
+* [feet_6](./5_feet.html)
 * [test_init_position](./test_init_pos.html)
 
 <!-- 
