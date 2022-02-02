@@ -44,7 +44,7 @@
             <!-- TETE -->
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
-            <!-- MAIN GAUCHE -->
+            <!-- MAIN GAUCHE : utiliser oculus-touch-controls pour model3D -->
             <a-entity id="gauche" oculus-touch-controls="hand: left; model:false">
                 <a-entity id="piedgauche" gltf-model="#leftfoot" rotation="-90 0 180"></a-entity>
                 <!-- <a-text id="txtgauche" value="position" 
@@ -52,7 +52,7 @@
                         align="center" color="#FFFFFF"></a-text> -->
             </a-entity>
             
-            <!-- MAIN DROITE -->
+            <!-- MAIN DROITE : utiliser oculus-touch-controls pour model3D -->
             <a-entity id="droite" oculus-touch-controls="hand: right; model:false">
                 <a-entity id="piedgauche" gltf-model="#rightfoot" rotation="-90 0 180">
                 <!-- <a-text id="txtdroite" value="position"
