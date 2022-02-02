@@ -38,11 +38,11 @@
                 var sceneEl = document.querySelector('a-scene');
                 //console.log('#txt'+this.el.id);
                 var txt = sceneEl.querySelector('#txt'+this.el.id);
-                txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
+                //txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
                 var newpos = live.x+" 0 "+live.z;
                 console.log(newpos);
-                var pied = sceneEl.querySelector('#pied'+this.el.id);
+                var pied = sceneEl.querySelector('#'+this.el.id);
                 pied.setAttribute('position', newpos);
 
                 // var log = sceneEl.querySelector('#txtlog');
@@ -74,10 +74,10 @@
                 <a-entity id="piedgauche" gltf-model="#leftfoot" 
                           rotation="-90 0 180">
                 </a-entity>
-                <a-text id="txtgauche" value="position" 
+                <!-- <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
                         align="center" color="#FFFFFF">
-                </a-text>
+                </a-text> -->
             </a-entity>
             
             <!-- MAIN DROITE -->
@@ -85,16 +85,17 @@
                 <a-entity id="pieddroite" gltf-model="#rightfoot" 
                           rotation="-90 0 180">
                 </a-entity>
-                <a-text id="txtdroite" value="position"
+                <!-- <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                        align="center" color="#FFFFFF"></a-text>
+                        align="center" color="#FFFFFF">
+                </a-text> -->
             </a-entity>
 
         </a-entity>
 
         <!-- LOG  -->
-        <a-text id="txtlog" value="position" position="0 1.6 -1"
-                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text>
+        <!-- <a-text id="txtlog" value="position" position="0 1.6 -1"
+                scale="0.5 0.5 0.5" align="center" color="#F00"></a-text> -->
 
     </a-scene>
 
