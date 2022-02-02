@@ -6,25 +6,6 @@
     <meta charset="utf-8">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script>
-        AFRAME.registerComponent('currentrotation', {
-        tick: function () {
-            
-            var rot = this.el.object3D.rotation;
-            var newrot = " -90 "+(rot.y*(180/Math.PI))+" 180";
-            console.log(newrot);
-
-            var sceneEl = document.querySelector('a-scene');
-            var piedgauche = sceneEl.querySelector('#piedgauche');
-            var pieddroite = sceneEl.querySelector('#pieddroite');
-            piedgauche.setAttribute('rotation', newrot);
-            pieddroite.setAttribute('rotation', newrot);
-
-            var log = sceneEl.querySelector('#txtlog');
-            log.setAttribute('value', newrot);
-            
-            }
-        });
-
         AFRAME.registerComponent('currentposition', {
             tick: function () {
 
@@ -34,20 +15,19 @@
                     z: this.el.object3D.position.z.toFixed(2)
                 }
                 var livepos = "x: " + live.x + ", y: " + live.y + ", z: " + live.z;
-
                 var sceneEl = document.querySelector('a-scene');
                 //console.log('#txt'+this.el.id);
                 var txt = sceneEl.querySelector('#txt'+this.el.id);
-                //txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
+                txt.setAttribute('value', '#txt'+this.el.id+" = "+livepos);
                                
-                var newpos = live.x+" 0 "+live.z;
+                var newpos = live.x+" 0.0 "+live.y;
                 console.log(newpos);
-                var pied = sceneEl.querySelector('#'+this.el.id);
+                var pied = sceneEl.querySelector('#pied'+this.el.id);
                 pied.setAttribute('position', newpos);
-
                 // var log = sceneEl.querySelector('#txtlog');
                 // log.setAttribute('value', newpos);
-            }            
+            }
+            
         });
     </script>
 </head>
@@ -61,7 +41,7 @@
         </a-assets>
 
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
-        <a-plane width="10" height="10" color="gray" position="0 0 0" rotation="-90 0 0"></a-plane>
+        <a-plane width="4" height="4" color="gray" position="0 0 -2" rotation="-90 0 0"></a-plane>
 
         <!-- PLAYER -->
         <a-entity id="cameraRig">
@@ -69,28 +49,28 @@
             <!-- TETE -->
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0"></a-entity>
             
-            <!-- MAIN GAUCHE -->
-            <a-entity id="gauche" hand-controls currentposition>
-                <a-entity id="piedgauche" gltf-model="#leftfoot" 
-                          rotation="-90 0 180">
-                </a-entity>
-                <!-- <a-text id="txtgauche" value="position" 
+            <!-- LEFT HAND -->
+            <a-entity id="gauche" currentposition hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
+                <a-text id="txtgauche" value="position" 
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                        align="center" color="#FFFFFF">
-                </a-text> -->
+                        align="center" color="#FFFFFF"></a-text>
             </a-entity>
             
-            <!-- MAIN DROITE -->
-            <a-entity id="droite" hand-controls currentposition>
-                <a-entity id="pieddroite" gltf-model="#rightfoot" 
-                          rotation="-90 0 180">
-                </a-entity>
-                <!-- <a-text id="txtdroite" value="position"
+            <!-- RIGHT HAND -->
+            <a-entity id="droite" currentposition hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+                <a-entity gltf-model="#piedgauche"></a-entity>
+                <a-text id="txtdroite" value="position"
                         position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" 
-                        align="center" color="#FFFFFF">
-                </a-text> -->
+                        align="center" color="#FFFFFF"></a-text>
             </a-entity>
 
+            <!-- PIEDS -->
+            <a-entity id="piedgauche" gltf-model="#leftfoot" 
+                      rotation="-90 0 180" position="-0.2 0 0">
+            </a-entity>
+            <a-entity id="pieddroite" gltf-model="#rightfoot" 
+                      rotation="-90 0 180" position="0.2 0 0">
+            </a-entity>
         </a-entity>
 
         <!-- LOG  -->
