@@ -11,6 +11,7 @@
 
 ## suite
 * [teleport](./x_test/teleport/)
+* [teleport_new](./x_test/teleport_new/)
 
 <!-- 
 * [d_lights](./d_lights/README.md)
