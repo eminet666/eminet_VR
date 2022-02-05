@@ -9,5 +9,5 @@ Thumbs.db
 
 # ignore rep
 **/nodejs
-/z_*
+**/z_*
 
