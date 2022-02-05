@@ -23,22 +23,22 @@
         <a-entity id="cameraRig">
             
             <!-- TETE -->
-            <a-entity id="head" camera position="0 1.6 0" 
+            <a-entity id="tete" camera position="0 1.6 0" 
                     look-controls wasd-controls>
             </a-entity>
 
             <!-- LEFT HAND -->
-            <a-entity id="gauche" hand-position hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
+            <a-entity id="maingauche" hand-position hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
             </a-entity>
 
             <!-- RIGHT HAND -->
-            <a-entity id="droite" hand-position hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+            <a-entity id="maintdroite" hand-position hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
             </a-entity>
 
             <!-- PIEDS -->
             <a-entity id="piedgauche" gltf-model="#leftfoot" 
                       rotation="-90 0 180"
-                      follow-head-rotation>
+                      follow-head-rotation follow-hand-position>
             </a-entity>
             <a-entity id="pieddroite" gltf-model="#rightfoot" 
                       rotation="-90 0 180"
