@@ -1,5 +1,10 @@
-// PLAYER _ POSITION (creer id="player sur camera")
-AFRAME.registerComponent('player-position', {
+// HEAD _ POSITION (sur objet entity-camera)
+// paramètrès :
+// trace : visible ou non
+// local : détection espace physique
+// world : détection espace virtuel
+// pivot : rotation de la tête
+AFRAME.registerComponent('head-position', {
     schema: {
         trace: { type: 'boolean', default: true },
         local: { type: 'boolean', default: true },
@@ -11,11 +16,11 @@ AFRAME.registerComponent('player-position', {
 
         function createLog() {
             var text = document.createElement('a-text');
-            document.querySelector('#player').appendChild(text);
+            document.querySelector('a-entity[camera]').appendChild(text);
             text.setAttribute('position', '0 0 -0.5');
             text.setAttribute('value', 'trace');
             text.setAttribute('width', 1);
-            text.setAttribute('id', 'tracetxt');
+            text.setAttribute('id', 'txtcamera');
             text.setAttribute('align', 'center');
             text.setAttribute('color', '#F00');
         };
@@ -45,7 +50,7 @@ AFRAME.registerComponent('player-position', {
                 message += '\n' + (rot.y * (180 / Math.PI)).toFixed(2);
             }
 
-            var info = document.querySelector('#tracetxt');
+            var info = document.querySelector('#txtcamera');
             info.setAttribute('value', message);
         }
     }

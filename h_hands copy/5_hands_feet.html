@@ -1,0 +1,54 @@
+<!-- source : model3D feet : https://free3d.com/3d-model/foot-v1--788401.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="myutils.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-assets>
+            <a-asset-item id="leftfoot" src="./assets/piedgauche.glb"></a-asset-item>
+            <a-asset-item id="rightfoot" src="./assets/pieddroite.glb"></a-asset-item>
+        </a-assets>
+
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
+        <a-plane width="10" height="10" color="gray" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <!-- PLAYER -->
+        <a-entity id="cameraRig">
+            
+            <!-- TETE -->
+            <a-entity id="head" camera position="0 1.6 0" 
+                    look-controls wasd-controls>
+            </a-entity>
+
+            <!-- LEFT HAND -->
+            <a-entity id="gauche" hand-position hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc">
+            </a-entity>
+
+            <!-- RIGHT HAND -->
+            <a-entity id="droite" hand-position hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc">
+            </a-entity>
+
+            <!-- PIEDS -->
+            <a-entity id="piedgauche" gltf-model="#leftfoot" 
+                      rotation="-90 0 180"
+                      follow-head-rotation>
+            </a-entity>
+            <a-entity id="pieddroite" gltf-model="#rightfoot" 
+                      rotation="-90 0 180"
+                      follow-head-rotation="trace: false">
+            </a-entity>
+
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>

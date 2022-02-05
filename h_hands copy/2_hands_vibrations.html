@@ -1,0 +1,28 @@
+<!-- reference : https://github.com/supermedium/superframe/tree/master/components/haptics/ -->
+<!-- source : https://supermedium.com/superframe/components/haptics/examples/basic/ -->
+<!-- Presser les gachettes avant pour faire vibrer les manettes -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-haptics-component/dist/aframe-haptics-component.min.js"></script>
+</head>
+
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"
+                  haptics__trigger="events: triggerdown; dur: 200; force: 1.0">
+        </a-entity>
+        <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"
+                  haptics__trigger="events: triggerdown; dur: 1000; force: 0.25">
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
