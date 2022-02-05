@@ -175,7 +175,7 @@ AFRAME.registerComponent('follow-hand-position', {
     tick: function () {
         var pos = this.data.hand.object3D.position;
         var newpos = pos.x + " 0 "+ pos.z;
-        this.el.setAttribute('position', );
+        this.el.setAttribute('position', newpos);
 
     }
 });
