@@ -178,13 +178,13 @@ AFRAME.registerComponent('follow-head-rotation', {
         };
     },
     tick: function () {
-        if (this.data.trace) {
             var rot = this.data.cam.object3D.rotation;
             var ry = (rot.y * (180 / Math.PI)).toFixed(2);
             var newrot = " -90 " + ry + " 180";
             //console.log(newrot);
             this.el.setAttribute('rotation', newrot);
-
+            
+        if (this.data.trace) {
             var sceneEl = document.querySelector('a-scene');
             var log = sceneEl.querySelector('#txtlog');
             log.setAttribute('value', ry);

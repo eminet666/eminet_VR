@@ -8,7 +8,7 @@
 
 * [camera](./g_camera/)
 * [hands](./h_hands/)
-* [hands](./h_hands_new/)
+* [hands new](./h_hands_new/)
 
 ## suite
 * [teleport](./x_test/teleport/)
