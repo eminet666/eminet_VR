@@ -1,4 +1,4 @@
-## teleport
+## teleport new (avec lib js)
 
 ### local
 * [player_position](./0_player_positions.html)
