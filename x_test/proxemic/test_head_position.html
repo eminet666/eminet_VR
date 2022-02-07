@@ -30,9 +30,10 @@
                 var el = this.el;
 
                 var headVector = new THREE.Vector3();
-                document.querySelector('#headpos_entity').setAttribute("value", el.object3D
-                    .getWorldPosition(headVector).x + " " + el.object3D.getWorldPosition(headVector).y +
-                    " " + el.object3D.getWorldPosition(headVector).z)
+                document.querySelector('#headpos_entity').setAttribute("value", 
+                    el.object3D.getWorldPosition(headVector).x.toFixed(2) + " " +
+                    el.object3D.getWorldPosition(headVector).y.toFixed(2) + " " +
+                    el.object3D.getWorldPosition(headVector).z.toFixed(2))
             }
         })
 
@@ -55,7 +56,7 @@
 
         <a-plane width="4" height="4" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
-        <a-entity camera wasd-controls look-controls headpos>
+        <a-entity camera wasd-controls look-controls headpos updateWorldPos>
             <a-entity entitypos></a-entity>
         </a-entity>
 
