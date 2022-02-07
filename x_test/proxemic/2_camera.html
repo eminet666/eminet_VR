@@ -6,16 +6,30 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
     <script src="https://unpkg.com/aframe-proxemic-component/dist/aframe-proxemic-component.min.js"></script>
+    <script src="./myutils.js"></script>
     <script>
-        AFRAME.registerComponent('updateWorldPos', {
+        AFRAME.registerComponent('toto', {
             tick: function () {
-                let el = this.el;
-                var originVec3 = new THREE.Vector3();
-                el.object3D.updateMatrixWorld();
-                originVec3.setFromMatrixPosition(el.object3D.matrixWorld);
+                console.log("ici");
+                var pos = this.el.object3D.position;
+                //var xz = "x=" + pos.x.toFixed(2) + " _ z =" + pos.z.toFixed(2);
+
+                var worldPos = pos.x + " " + pos.y + " " + pos.z;
+                this.el.object3D.setWorldPosition(pos);
+                
+                var wposition = new THREE.Vector3();
+                var wpos = this.el.object3D.getWorldPosition(wposition);
+                var xz = "x=" + pos.x.toFixed(2) + " _ z =" + pos.z.toFixed(2);
+                console.log(xz);
+                // var sceneEl = document.querySelector('a-scene');
+                // var pos = sceneEl.querySelector('#txthead');
+                // console.log(pos);
+                // pos.setAttribute('value', xz + "\n" + rY);
             }
         });
+
     </script>
+
 </head>
 
 <body>
@@ -30,7 +44,10 @@
         </a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
         
-        <a-camera position="0 1.6 0" look-controls wasd-controls updateWorldPos></a-camera>
+        <a-entity camera position="0 1.6 0" 
+           look-controls wasd-controls 
+           updateWorldPos head-position toto>
+        </a-entity>
     </a-scene>
 
 </body>
