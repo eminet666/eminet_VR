@@ -15,9 +15,10 @@
                 var el = this.el;
 
                 var headVector = new THREE.Vector3();
-                document.querySelector('#headpos').setAttribute("value", el.object3D.getWorldPosition(
-                        headVector).x + " " + el.object3D.getWorldPosition(headVector).y + " " + el
-                    .object3D.getWorldPosition(headVector).z)
+                document.querySelector('#headpos').setAttribute("value", 
+                    el.object3D.getWorldPosition(headVector).x.toFixed(2) + " " + 
+                    el.object3D.getWorldPosition(headVector).y.toFixed(2) + " " +
+                    el.object3D.getWorldPosition(headVector).z.toFixed(2))
             }
         })
 
@@ -34,6 +35,16 @@
                     " " + el.object3D.getWorldPosition(headVector).z)
             }
         })
+
+        AFRAME.registerComponent('updateWorldPos', {
+        tick: function () {
+        let el = this.el;
+        var originVec3 = new THREE.Vector3();
+        el.object3D.updateMatrixWorld();
+        originVec3.setFromMatrixPosition(el.object3D.matrixWorld);
+        }
+        });
+
     </script>
 
 
