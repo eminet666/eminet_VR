@@ -14,6 +14,7 @@
 * [teleport](./x_test/teleport/)
 * [teleport_new](./x_test/teleport_new/)
 * [demo fps](./x_demogame_fps)
+* [proxemic](./x_test/proxemic)
 
 <!-- 
 * [d_lights](./d_lights/README.md)
