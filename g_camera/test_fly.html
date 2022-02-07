@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent("fly", {
+            schema: {
+                stepFactor: {
+                    type: "number",
+                    default: 0.5
+                },
+                isFlying: {
+                    type: "boolean",
+                    default: true
+                }
+            },
+            tick: function () {
+                if (this.data.isFlying) {
+                    let newP = this.el.components.camera.camera.parent.position.add(this.el.components
+                        .camera.camera.getWorldDirection().multiplyScalar(this.data.stepFactor));
+                    this.el.setAttribute('position', newP)
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+        <a-camera id="camera" position="0 20 80" fly></a-camera>
+        <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+</body>
+
+</html>

@@ -12,3 +12,6 @@ remarque :
 * [2_camera_event_set](./2_camera.html)
 * [3_camera_function_4](./3_camera_function.html)
 * [test_head_position](./test_head_position.html)
+
+* [test fly](../../g_camera/4_camera_logger_position.html)
+* [camera log](../../g_camera/test_fly.html)

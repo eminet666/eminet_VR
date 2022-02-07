@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script
+        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@901286a8553d32c5e53d992843a5041a6001ef08/dist/aframe-master.min.js">
+    </script>
+
+        <!-- define camera logger component -->
+        <script>
+            AFRAME.registerComponent('camera-logger', {
+
+                schema: {
+                    timestamp: {
+                        type: 'int'
+                    },
+                    seconds: {
+                        type: 'int'
+                    } // default 0
+                },
+
+                log: function () {
+                    var cameraEl = this.el.sceneEl.camera.el;
+                    var rotation = cameraEl.getAttribute('rotation');
+                    var worldPos = new THREE.Vector3();
+                    worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+
+                    var message = "Time: " + this.data.seconds +
+                    "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " +
+                    worldPos.z.toFixed(2) +
+                    "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " +
+                    rotation.z.toFixed(2) + ")"
+                    console.log(message);
+                    
+                    var info = document.querySelector('#txtcamera');
+                    info.setAttribute('value', message);
+                },
+
+                play: function () {
+                    this.data.timestamp = Date.now();
+                    this.log();
+                },
+
+                tick: function () {
+                    if (Date.now() - this.data.timestamp > 1000) {
+                        this.data.timestamp += 1000;
+                        this.data.seconds += 1;
+                        this.log();
+                    }
+                },
+            });
+        </script>
+
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-plane width="4" height="4" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <a-entity camera wasd-controls look-controls camera-logger position="0 1.6 0">
+                <a-text id="txtcamera" value="position" position="0 0 -0.5" width="1" align="center" color="#F00">
+                </a-text>
+        </a-entity>
+
+    </a-scene>
+
+</body>
+
+</html>
+
+AFRAME.registerComponent('head-position', {
+schema: {
+trace: { type: 'boolean', default: true },
+local: { type: 'boolean', default: true },
+world: { type: 'boolean', default: true },
+pivot: { type: 'boolean', default: true }
+},
+init: function () {
+if (this.data.trace) { createLog();}
+
+function createLog() {
+var text = document.createElement('a-text');
+document.querySelector('a-entity[camera]').appendChild(text);
+text.setAttribute('position', '0 0 -0.5');
+text.setAttribute('value', 'trace');
+text.setAttribute('width', 1);
+text.setAttribute('id', 'txtcamera');
+text.setAttribute('align', 'center');
+text.setAttribute('color', '#F00');
+};
+
+},
+tick: function () {
+if (this.data.trace) {
+let x=0, z=0;
+
+if (this.data.local) {
+var pos = this.el.object3D.position;
+x += pos.x;
+z += pos.z;
+}
+
+if (this.data.world) {
+var wposition = new THREE.Vector3();
+var wpos = this.el.object3D.getWorldPosition(wposition);
+x += wpos.x;
+z += wpos.z;
+}
+
+var message = x.toFixed(2) + "_" + z.toFixed(2);
+
+if (this.data.pivot) {
+var rot = this.el.object3D.rotation;
+message += '\n' + (rot.y * (180 / Math.PI)).toFixed(2);
+}
+
+var info = document.querySelector('#txtcamera');
+info.setAttribute('value', message);
+}
+}
+});
+
