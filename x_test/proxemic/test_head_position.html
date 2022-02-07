@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script
+        src="https://cdn.jsdelivr.net/gh/aframevr/aframe@901286a8553d32c5e53d992843a5041a6001ef08/dist/aframe-master.min.js">
+    </script>
+
+    <script>
+        AFRAME.registerComponent('headpos', {
+            init: function () {
+
+            },
+            tick: function () {
+                var el = this.el;
+
+                var headVector = new THREE.Vector3();
+                document.querySelector('#headpos').setAttribute("value", el.object3D.getWorldPosition(
+                        headVector).x + " " + el.object3D.getWorldPosition(headVector).y + " " + el
+                    .object3D.getWorldPosition(headVector).z)
+            }
+        })
+
+        AFRAME.registerComponent('entitypos', {
+            init: function () {
+
+            },
+            tick: function () {
+                var el = this.el;
+
+                var headVector = new THREE.Vector3();
+                document.querySelector('#headpos_entity').setAttribute("value", el.object3D
+                    .getWorldPosition(headVector).x + " " + el.object3D.getWorldPosition(headVector).y +
+                    " " + el.object3D.getWorldPosition(headVector).z)
+            }
+        })
+    </script>
+
+
+</head>
+
+<body>
+    <a-scene background="color: #5280A7">
+
+        <a-plane width="4" height="4" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <a-entity camera wasd-controls look-controls headpos>
+            <a-entity entitypos></a-entity>
+        </a-entity>
+
+        <a-text id="headpos" value="camera" align="center" position="0 1.8 -2" color="red"></a-text>
+        <a-text id="headpos_entity" value="entity" align="center" position="0 1 -2" color="red"></a-text>
+    </a-scene>
+
+</body>
+
+</html>
