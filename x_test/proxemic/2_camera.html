@@ -14,12 +14,13 @@
 
         <a-box id="one" proximity-sensor="distance:1"
             width="0.5" height="0.5" depth="0.5" side="both" color="red" position="0 1.6 -4"
-            animation="property:position; from: 0 1.6 -4; to: 0 1.6 -0.5; dur: 3000; dir: alternate; loop: true"
+            animation="property:position; from: 0 1.6 -4; to: 0 1.6 -0.5; dur: 5000; dir: alternate; loop: true"
             event-set__proximityenter="material.color:blue" 
             event-set__proximityexit="material.color: red">
         </a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
-
+        
+        <a-camera position="0 1.6 0" look-controls wasd-controls></a-camera>
     </a-scene>
 
 </body>
