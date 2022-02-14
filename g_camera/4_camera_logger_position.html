@@ -25,10 +25,17 @@
                     var worldPos = new THREE.Vector3();
                     worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
 
+                    // var message = "Time: " + this.data.seconds +
+                    // "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " +
+                    // worldPos.z.toFixed(2) +
+                    // "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " +
+                    // rotation.z.toFixed(2) + ")"
+                    // console.log(message);
+
                     var message = "Time: " + this.data.seconds +
-                    "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " +
+                    "\n Position (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " +
                     worldPos.z.toFixed(2) +
-                    "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " +
+                    ");\n Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " +
                     rotation.z.toFixed(2) + ")"
                     console.log(message);
                     
