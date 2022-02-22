@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+  </head>
+  <body style='margin : 0px; overflow: hidden;'>
+
+		<a-scene background="color: skyblue">
+			<a-assets>
+				<a-asset-item id="glbModel" src="./assets/actions.glb"></a-asset-item>
+			</a-assets>
+
+			<a-entity   id ="modele"
+						position="0 0 -3"
+						rotation="0 0 0"
+						scale="1 1 1"
+						gltf-model="#glbModel"
+						animation-mixer="clip: golfdrive">
+			 </a-entity>
+    	</a-scene>
+  </body>
+</html>
