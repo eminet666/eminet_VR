@@ -16,6 +16,7 @@
 * [demo fps](./x_demogame_fps)
 * [proxemic](./x_test/proxemic)
 * [proximity](./x_test/proximity)
+* [data gui VR](./y_datgui)
 
 <!-- 
 * [d_lights](./d_lights/README.md)
