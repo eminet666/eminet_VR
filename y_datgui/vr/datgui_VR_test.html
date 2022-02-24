@@ -24,6 +24,7 @@
                 position = this.data.position;
                 target = this.data.target;
                 addGuiElements(scene, camera, renderer, target, position);
+                addGuiInputs();
             }
         });
 
@@ -41,7 +42,8 @@
                 gui.add(cible.scale, axis, 0, 10);
             });
             document.querySelector("[camera]").object3D.add(gui);
-
+        }
+        function addGuiInputs(){
             // Mouse input
             dat.GUIVR.enableMouse(camera, renderer);
 
@@ -53,7 +55,7 @@
             // VR input : https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
             var controls = ["left", "right"];
             controls.forEach(function(controllerSide) {
-            var id = controllerSide + "Control";
+            var id = controllerSide;
             var controllerEl = document.getElementById(id);
             var object3D = controllerEl.object3D;
             var vrInput = dat.GUIVR.addInputObject(object3D);
@@ -69,7 +71,7 @@
                 });
             });
 
-            scene.add(vrInput);
+            document.querySelector("[camera]").object3D.add(vrInput);
             });
         }
 
@@ -84,9 +86,8 @@
                     return;
                 }
                 scene = this.el.sceneEl.object3D;
-
                 var controls = document.querySelectorAll(this.data.query);
-
+                
                 controls.forEach(function (controllerEl) {
                     var object3D = controllerEl.object3D;
                     // https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
@@ -121,11 +122,10 @@
         <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
         <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
         
-        <a-entity camera position="0 1.6 0" look-controls wasd-controls>
-        </a-entity>
+        <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
 
-        <a-entity id="leftControl" hand-controls="left; handModelStyle: toon; color: #ccccff"></a-entity>
-        <a-entity id="rightControl" hand-controls="right; handModelStyle: toon; color: #ccccff"></a-entity>
+        <a-entity id="left" hand-controls="left; handModelStyle: toon; color: #ccccff"></a-entity>
+        <a-entity id="right" hand-controls="right; handModelStyle: toon; color: #ccccff"></a-entity>
 
     </a-scene>
 
