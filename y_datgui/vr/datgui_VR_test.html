@@ -14,7 +14,7 @@
 
         AFRAME.registerComponent("vr-dat-gui", {
             schema: {
-                position : { type : 'vec3', default : "0 2 -2"},
+                position : { type : 'vec3', default : "0 -0.5 -2"},
                 target: { type: 'string'},
             },
             init: function () {
@@ -30,11 +30,12 @@
 
         function addGuiElements(scene, camera, renderer, target, position) {
             gui = dat.GUIVR.create(target);
+            console.log(position.y)
             gui.position.x = position.x;
             gui.position.y = position.y;
-            gui.position.z = position.z;
+            gui.position.z = position.z;            
 
-            gui.rotation.y = -0.6;
+            //gui.rotation.y = -0.6;
             //gui.rotation.set({x : 0.17, y : 0.6, z : -0.08});
 
             var cible = document.querySelector(target).object3D;
@@ -47,10 +48,9 @@
             // Mouse input
             dat.GUIVR.enableMouse(camera, renderer);
 
-            // Gaze input?
-            // var gazeInput = dat.GUIVR.addInputObject(camera);
-            // only add the cursor, not the laser
-            // scene.add(gazeInput.cursor); 
+            // Gaze input? only add the cursor, not the laser
+            var gazeInput = dat.GUIVR.addInputObject(camera);
+            scene.add(gazeInput.cursor); 
 
             // VR input : https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
             var controls = ["left", "right"];
@@ -117,7 +117,7 @@
         vr-dat-gui="position: 0 0.5 -2; target: #sphere;"
         dat-gui-controller="query: [hand-controls]">
 
-        <a-box id="box" color="#4CC3D9" position="-1 0.5 -3" rotation="0 45 0"></a-box>
+        <a-box id="box" color="#4CC3D9" position="0 -0.5 -2" rotation="0 45 0"></a-box>
         <a-sphere id="sphere" color="#EF2D5E" position="0 1.25 -5" radius="1.25"></a-sphere>
         <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
         <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
