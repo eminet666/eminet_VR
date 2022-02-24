@@ -30,7 +30,6 @@
 
         function addGuiElements(scene, camera, renderer, target, position) {
             gui = dat.GUIVR.create(target);
-            console.log(position.y)
             gui.position.x = position.x;
             gui.position.y = position.y;
             gui.position.z = position.z;            
@@ -114,10 +113,10 @@
 <body>
 
     <a-scene background="color: skyblue" 
-        vr-dat-gui="position: 0 0.5 -2; target: #sphere;"
+        vr-dat-gui="position: 0 -0.5 -2; target: #sphere;"
         dat-gui-controller="query: [hand-controls]">
 
-        <a-box id="box" color="#4CC3D9" position="0 -0.5 -2" rotation="0 45 0"></a-box>
+        <a-box id="box" color="#4CC3D9" position="-1 0.5 -2" rotation="0 45 0"></a-box>
         <a-sphere id="sphere" color="#EF2D5E" position="0 1.25 -5" radius="1.25"></a-sphere>
         <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
         <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
