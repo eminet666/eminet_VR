@@ -3,7 +3,7 @@
 #### test
 * console
 * VR : 
-[test](./vr/datgui_VR_test.html) | [vr](./vr/datgui_VR.html) | [ref](./vr/datgui_VR_ref.html) |
+[test](./vr/datgui_VR_test.html) | [vr](./vr/datgui_VR.html) | [ref](./vr/datgui_VR_ref.html)
 
 #### documentation
 * console : [ref](https://github.com/dataarts/dat.gui) | [github](https://github.com/dataarts/dat.gui/blob/master/API.md) | [tutp](https://www.nowherenearithaca.com/2015/07/datgui-easy-way-to-allow-users-to.html)

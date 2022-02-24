@@ -4,17 +4,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
     <!-- <script src="https://vr.cwervo.com/js/vr/datguivr.min.js"></script> -->
     <script src="./datguivr.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@^3.0.0/dist/aframe-event-set-component.min.js"></script>
-
+    
     <script>
         var scene, camera, renderer, gui;
 
         AFRAME.registerComponent("vr-dat-gui", {
             schema: {
-                position : { type : 'vec3', default : "0 -0.5 -2"},
+                position : { type : 'vec3', default : { x: 1, y: -2, z: 3 } },
                 target: { type: 'string'},
             },
             init: function () {
@@ -42,6 +41,7 @@
                 gui.add(cible.scale, axis, 0.1, 2);
             });
             document.querySelector("[camera]").object3D.add(gui);
+            //console.log(gui);
         }
         function addGuiInputs(){
             // Mouse input
