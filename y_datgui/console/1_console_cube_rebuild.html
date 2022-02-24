@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Ambient Light GUI</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <script src="https://ambient-light-gui.glitch.me/dat.gui.js"></script>
+</head>
+<script>
+    AFRAME.registerComponent("dat-gui", {
+        schema: {
+            target: { type: 'string'},
+        },
+        update: function () {
+            let scene = this.el.sceneEl;
+            scene.addEventListener('loaded', e => {
+                let target = document.getElementById(this.data.target);
+                let mesh = target.getObject3D('mesh');
+                let params = mesh.geometry.parameters;
+
+                // interface
+                let gui = new dat.GUI();
+                let tnParams = gui.addFolder(this.data.target);
+                tnParams.add(params, "width", 1, 12).name('width').onChange(rebuild);
+                tnParams.add(params, "height", 1, 12).name('height').onChange(rebuild);
+                tnParams.add(params, "depth", 1, 12).name('depth').onChange(rebuild);
+                tnParams.open();
+                
+                function rebuild() {
+                    let newGeo = new THREE.BoxGeometry(params.width, params.height, params.depth);
+                    mesh.geometry.dispose();
+                    mesh.geometry = newGeo;                    
+                }
+            });
+        }
+    });
+</script>
+
+<body>
+    <a-scene background="color:#444">
+        <!-- <a-entity id="target" geometry="primitive: box; width:1; height: 1; depth: 1" 
+                  rotation="45 45 45" position="0 0 -4" material="color: #999">
+        </a-entity> -->
+        <a-entity id="target" geometry="primitive: box;" rotation="45 45 45" position="0 0 -4"
+            width="1" height="1" depth="1"
+            material="color: #999">
+        </a-entity>
+        <a-entity id="camera" dat-gui="target: target"></a-entity>
+    </a-scene>
+</body>
+
+</html>

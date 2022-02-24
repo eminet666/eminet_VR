@@ -1,0 +1,64 @@
+<!-- https://github.com/supermedium/superframe/tree/master/components/log/ -->
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="./aframe-log-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-layout-component@4.1.0/dist/aframe-layout-component.min.js"></script>
+
+    <script>
+        AFRAME.registerComponent('main', {
+            init: function () {
+                var self = this;
+
+                // Using setInterval for demo convenience, but in practice, should use tick.
+                setInterval(function () {
+                    self.logRandomColor();
+                }, 500);
+
+                setInterval(function () {
+                    self.logRandomNumber();
+                }, 250);
+
+                this.el.emit('log', { message: 'Logging started!' });
+            },
+
+            logRandomColor: function () {
+                var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+                AFRAME.log(colors[Math.floor(Math.random() * 7)], 'colorz');
+            },
+
+            logRandomNumber: function () {
+                AFRAME.log(Math.random() * 10000, 'numberz');
+            },
+
+            tick: function (t) {
+                AFRAME.log('Time: ' + t, 'time');
+            }
+        });
+    </script>
+
+
+</head>
+
+<body>
+
+    <a-scene background="color: skyblue" main>
+
+        <a-entity layout="type: line; margin: 1.2" position="-2 0 -3">
+            <a-entity log="channel: colorz" geometry="primitive: plane; height: 5" material="color: #222; shader: flat">
+            </a-entity>
+            <a-log channel="numberz"></a-log>
+            <a-entity log="channel: time" geometry="primitive: plane; height: 5" material="color: #FAFAFA"
+                text="color: #111"></a-entity>
+            <a-entity log="filter: o" geometry="primitive: plane; height: 5" material="opacity: 0.5"></a-entity>
+            <a-entity log geometry="primitive: plane; height: 5" material="color: #002B36" text="color: #6E878F">
+            </a-entity>
+        </a-entity>
+
+        <a-plane color="silver" rotation="-90 0 0" height="4" width="4"></a-plane>
+    </a-scene>
+
+</body>
+
+</html>

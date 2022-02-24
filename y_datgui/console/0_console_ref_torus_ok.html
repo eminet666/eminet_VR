@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Ambient Light GUI</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+    <script src="https://ambient-light-gui.glitch.me/dat.gui.js"></script>
+</head>
+<script>
+    AFRAME.registerComponent("dat-gui", {
+        update: function () {
+            let scene = this.el.sceneEl;
+            //console.log('scene: ', scene);
+            scene.addEventListener('loaded', e => {
+                let knotEl = document.getElementById('torusKnot')
+                let mesh = knotEl.getObject3D('mesh')
+                // console.log(knotEl.getObject3D('mesh').geometry.metadata.parameters)
+                console.log(knotEl.getObject3D('mesh').geometry.parameters)
+
+                // let tk3Dp = mesh.geometry.metadata.parameters;
+                let tk3Dp = mesh.geometry.parameters;
+                let gui = new dat.GUI();
+                let tnParams = gui.addFolder("Torus Knot");
+                tnParams.add(tk3Dp, "radius", 1, 12).name('radius').onChange(rebuild);
+                tnParams.add(tk3Dp, "p", 1, 12).name('p').onChange(rebuild);
+                tnParams.add(tk3Dp, "q", 1, 12).name('q').onChange(rebuild);
+                tnParams.open();
+                function rebuild() {
+                    let newGeo = new THREE.TorusKnotBufferGeometry(
+                        tk3Dp.radius, tk3Dp.tube, tk3Dp.tubularSegments, tk3Dp.radialSegments,
+                        tk3Dp.p, tk3Dp.q)
+                    mesh.geometry.dispose()
+                    mesh.geometry = newGeo
+                }
+            });
+        }
+    });
+</script>
+
+<body>
+    <a-scene background="color:#444">
+        <a-entity id="torusKnot" geometry="primitive: torusKnot; p:4; q: 5" position="0 0 -4" material="color: #999">
+        </a-entity>
+        <a-entity id="camera" camera orbit-controls="target: 0 0 -4" dat-gui></a-entity>
+        <a-entity id="ambientLight" light="type: ambient; intensity: 0.5"></a-entity>
+        <a-entity id="directionalLight" light="type: directional; target: #torusKnot" position="0 5 0"></a-entity>
+    </a-scene>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!-- src : https://codepen.io/donmccurdy/pen/KqXygv?editors=1111 -->
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+    <meta charset='UTF-8'>
+    <title>CodePen Demo</title>
+
+    <meta name="robots" content="noindex">
+
+    <link rel="shortcut icon" type="image/x-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+    <link rel="mask-icon"
+        href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+        color="#111">
+    <link rel="canonical" href="https://codepen.io/donmccurdy/pen/KqXygv?editors=1111">
+
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/dataarts/dat.guiVR/0f92945f/build/datguivr.js"></script>
+    <script src="https://cdn.rawgit.com/mflux/aframe-datguivr/d185c787/datguivr-aframe.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-box color="red" position="0 0 -2"></a-box>
+        <a-datgui name="settings" position="0 2 -1">
+            <a-gui-slider id="scaleControl" name="scale" step="0.01" min="0.01" max="4"></a-gui-slider>
+            <a-gui-dropdown name="options">
+                <a-gui-option value="0">Item 0</a-gui-option>
+                <a-gui-option value="1">Item 1</a-gui-option>
+            </a-gui-dropdown>
+            <a-gui-checkbox name="on or off" default="true"></a-gui-checkbox>
+            <a-gui-button name="click me"></a-gui-button>
+        </a-datgui>
+    </a-scene>
+
+
+</body>
+
+</html>
