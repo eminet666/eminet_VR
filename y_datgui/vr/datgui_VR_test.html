@@ -50,28 +50,27 @@
             // only add the cursor, not the laser
             // scene.add(gazeInput.cursor); 
 
-            // VR input
-              var controls = ["left", "right"];
-              controls.forEach(function(controllerSide) {
-                var id = controllerSide + "Control";
-                var controllerEl = document.getElementById(id);
-                var object3D = controllerEl.object3D;
-                // https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
-                var vrInput = dat.GUIVR.addInputObject(object3D);
+            // VR input : https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
+            var controls = ["left", "right"];
+            controls.forEach(function(controllerSide) {
+            var id = controllerSide + "Control";
+            var controllerEl = document.getElementById(id);
+            var object3D = controllerEl.object3D;
+            var vrInput = dat.GUIVR.addInputObject(object3D);
 
-                ["trigger", "trackpad", "grip"].forEach(function(baseEvent) {
-                  ["up", "down"].forEach(function(e) {
+            ["trigger", "trackpad", "grip"].forEach(function(baseEvent) {
+                ["up", "down"].forEach(function(e) {
                     controllerEl.addEventListener(baseEvent + e, function() {
-                      var gripEvent = baseEvent === "grip";
-                      //console.log( (gripEvent ? "gripped" : "pressed") + " " + controllerSide + " " + e );
-                      var value = e === "down";
-                      gripEvent ? vrInput.gripped(value) : vrInput.pressed(value);
+                        var gripEvent = baseEvent === "grip";
+                        //console.log( (gripEvent ? "gripped" : "pressed") + " " + controllerSide + " " + e );
+                        var value = e === "down";
+                        gripEvent ? vrInput.gripped(value) : vrInput.pressed(value);
                     });
-                  });
                 });
+            });
 
-                scene.add(vrInput);
-              });
+            scene.add(vrInput);
+            });
         }
 
         AFRAME.registerComponent('dat-gui-controller', {
@@ -111,21 +110,22 @@
 
 </head>
 
-<body translate="no">
+<body>
 
-    <a-scene background="color: skyblue">
-        <a-entity id="leftControl" hand-controls="left; handModelStyle: toon; color: #ccccff"></a-entity>
-        <a-entity id="rightControl" hand-controls="right; handModelStyle: toon; color: #ccccff"></a-entity>
+    <a-scene background="color: skyblue" 
+        vr-dat-gui="position: 0 0.5 -2; target: #sphere;"
+        dat-gui-controller="query: [hand-controls]">
 
         <a-box id="box" color="#4CC3D9" position="-1 0.5 -3" rotation="0 45 0"></a-box>
         <a-sphere id="sphere" color="#EF2D5E" position="0 1.25 -5" radius="1.25"></a-sphere>
         <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
         <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
         
-        <a-entity camera position="0 1.6 0" look-controls wasd-controls
-            vr-dat-gui="position: 1 1 -2; target: #sphere;"
-            dat-gui-controller="query: [hand-controls]">
+        <a-entity camera position="0 1.6 0" look-controls wasd-controls>
         </a-entity>
+
+        <a-entity id="leftControl" hand-controls="left; handModelStyle: toon; color: #ccccff"></a-entity>
+        <a-entity id="rightControl" hand-controls="right; handModelStyle: toon; color: #ccccff"></a-entity>
 
     </a-scene>
 
