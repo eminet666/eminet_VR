@@ -114,18 +114,21 @@
 
     <a-scene background="color: skyblue" 
         vr-dat-gui="position: 0 -0.5 -2; target: #sphere;"
-        dat-gui-controller="query: [hand-controls]">
+        dat-gui-controller="query: [oculus-touch-controls]">
 
         <a-box id="box" color="#4CC3D9" position="-1 0.5 -2" rotation="0 45 0"></a-box>
         <a-sphere id="sphere" color="#EF2D5E" position="0 1.25 -5" radius="1.25"></a-sphere>
         <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
         <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
-        
-        <a-entity camera position="0 1.6 0" look-controls wasd-controls>
 
+        
+        <a-entity position="0 0 0">
+            <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
+            <a-entity id="left" oculus-touch-controls="hand: left;"></a-entity>
+            <a-entity id="right" oculus-touch-controls="hand: right;"></a-entity>        
         </a-entity>
-            <a-entity id="left" hand-controls="left"></a-entity>
-            <a-entity id="right" hand-controls="right"></a-entity>
+        
+
 
     </a-scene>
 
