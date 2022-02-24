@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <!-- <script src="https://vr.cwervo.com/js/vr/datguivr.min.js"></script> -->
     <script src="./datguivr.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^3.0.0/dist/aframe-event-set-component.min.js"></script>
@@ -39,7 +39,7 @@
 
             var cible = document.querySelector(target).object3D;
             ["x", "y", "z"].forEach(function (axis) {
-                gui.add(cible.scale, axis, 0, 10);
+                gui.add(cible.scale, axis, 0.1, 2);
             });
             document.querySelector("[camera]").object3D.add(gui);
         }
