@@ -16,23 +16,23 @@
                 //grip button is pressed or not 
                 //"this.el" reffers to left oi right id 
                 this.el.grip = false;
-
+                let traceflag = this.data.trace;
 
                 //Y-buttorn Pressed 
                 this.el.addEventListener('ybuttondown', function (e) {
                     togglehelp();
-                    if (this.data.trace) trace("y down");
+                    if (traceflag) trace("y down");
                 });
 
                 //X-buttorn Pressed 
                 this.el.addEventListener('xbuttonup', function (e) {
                     this.emit('y up');
-                    if (this.data.trace) trace("y up");
+                    if (traceflag) trace("y up");
                 });
                 //X-buttorn Pressed 
                 this.el.addEventListener('xbuttondown', function (e) {
                     this.emit('x down');
-                    if (this.data.trace) trace("x down");
+                    if (traceflag) trace("x down");
                 });
                 //X-buttorn Released 
                 this.el.addEventListener('xbuttonup', function (e) {
@@ -101,7 +101,7 @@
     <a-scene background="color: #5280A7"
         keyboard-controller="key: t; event: test; target: #boite">
 
-        <a-box id="boite" test position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
+        <a-box id="boite" test position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <!-- player -->

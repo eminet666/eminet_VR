@@ -16,7 +16,7 @@
 * [demo fps](./x_demogame_fps)
 * [proxemic](./x_test/proxemic)
 * [proximity](./x_test/proximity)
-* [oculus input_1](./x_test/oculus_inputs/README.md)
+* [oculus input](./x_test/oculus_inputs/)
 * [data gui VR](./y_datgui)
 
 
