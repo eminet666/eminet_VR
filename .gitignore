@@ -5,6 +5,7 @@ Thumbs.db
 
 # ignore files
 **/z_*.*
+**/!_*.*
 /todo.txt
 
 # ignore rep

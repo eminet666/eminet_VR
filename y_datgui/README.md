@@ -8,7 +8,6 @@
 #### documentation
 * console : 
 [ref](https://github.com/dataarts/dat.gui) | [github](https://github.com/dataarts/dat.gui/blob/master/API.md) | [tutp](https://www.nowherenearithaca.com/2015/07/datgui-easy-way-to-allow-users-to.html)
-
 * three.js VR : 
 [ref](https://github.com/dataarts/dat.guiVR) | [wiki](https://github.com/dataarts/dat.guiVR/wiki) | [api doc](https://github.com/dataarts/dat.guiVR/wiki/API-and-Examples) 
 * aframe VR : [aframe](https://github.com/mflux/aframe-datguivr)
@@ -31,3 +30,5 @@ links :
 - https://github.com/dataarts/dat.guiVR
 - https://github.com/mflux/aframe-datguivr
 - https://github.com/cwervo/aframe-datgui-component
+
+* [new link](https://githubhelp.com/vfasteng)

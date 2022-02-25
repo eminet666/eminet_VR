@@ -1,0 +1,201 @@
+<!-- src : https://codepen.io/cwervo/pen/RgLWXK -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <!-- <script src="https://vr.cwervo.com/js/vr/datguivr.min.js"></script> -->
+    <script src="./datguivr.js"></script>
+    <script src="./datguivr-aframe.js"></script>
+    
+    <script>
+        AFRAME.registerComponent("gui", {
+            schema: {
+                name: { type: "string" },
+                properties: { type: "array" },
+                position: { type: "vec3" },
+                inheritPosition: { default: false }
+            },
+            init: function () {
+                var that = this;
+                this.el.sceneEl.addEventListener("render-target-loaded", function () {
+                    const scene = that.el.sceneEl.object3D;
+                    const { camera, renderer } = that.el.sceneEl;
+                    dat.GUIVR.enableMouse(camera, renderer);
+                });
+
+                var scene = this.el.sceneEl.object3D;
+                var gui = dat.GUIVR.create(this.data.name);
+                //console.log("pos:", this.el.object3D.position.clone());
+                var guiPos = new THREE.Vector3(0, 0, 0);
+                if (this.data.position) {
+                    ["x", "y", "z"].forEach(function (axis) {
+                        guiPos[axis] = this[axis];
+                    }, this.data.position);
+                }
+                if (this.data.inheritPosition) {
+                    ["x", "y", "z"].forEach(function (axis) {
+                        guiPos[axis] += this[axis];
+                    }, this.el.object3D.position);
+                }
+                gui.position.set(guiPos.x, guiPos.y, guiPos.z);
+
+                //console.log("data:", this.data.properties);
+                var thisObject = this.el.object3D;
+                this.data.properties.forEach(function (prop) {
+                    prop = prop.split(".");
+                    console.log("len", prop.length);
+                    var min = 0;
+                    var max = 10;
+                    if (prop.length == 1) {
+                        gui.add(thisObject[prop[0]], min, max);
+                    } else {
+                        var propController = gui.add(thisObject[prop[0]], prop[1], min, max);
+                        propController.name(prop[0] + "." + prop[1]);
+                    }
+                });
+                gui.name = this.data.name + "GUI";
+                scene.add(gui);
+            }
+        });
+    </script>    
+    
+    <!-- <script>
+        var scene, camera, renderer, gui;
+
+        AFRAME.registerComponent("vr-dat-gui", {
+            schema: {
+                position: { type: 'vec3', default: { x: 1, y: -2, z: 3 } },
+                target: { type: 'string' },
+            },
+            init: function () {
+                scene = document.querySelector("a-scene").object3D;
+                camera = this.el.camera;
+                renderer = this.el.renderer;
+                position = this.data.position;
+                target = this.data.target;
+                //addGuiElements(scene, camera, renderer, target, position);
+                addGuiInputs();
+            }
+        });
+
+        function addGuiElements(scene, camera, renderer, target, position) {
+            gui = dat.GUIVR.create(target);
+            gui.position.x = position.x;
+            gui.position.y = position.y;
+            gui.position.z = position.z;
+
+            //gui.rotation.y = -0.6;
+            //gui.rotation.set({x : 0.17, y : 0.6, z : -0.08});
+
+            var cible = document.querySelector(target).object3D;
+            ["x", "y", "z"].forEach(function (axis) {
+                gui.add(cible.scale, axis, 0.1, 2);
+            });
+            document.querySelector("[camera]").object3D.add(gui);
+            //console.log(gui);
+        }
+        function addGuiInputs() {
+            // Mouse input
+            dat.GUIVR.enableMouse(camera, renderer);
+
+            // Gaze input? only add the cursor, not the laser
+            var gazeInput = dat.GUIVR.addInputObject(camera);
+            scene.add(gazeInput.cursor);
+
+            // VR input : https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
+            var controls = ["left", "right"];
+            controls.forEach(function (controllerSide) {
+                var id = controllerSide;
+                var controllerEl = document.getElementById(id);
+                var object3D = controllerEl.object3D;
+                var vrInput = dat.GUIVR.addInputObject(object3D);
+
+                ["trigger", "trackpad", "grip"].forEach(function (baseEvent) {
+                    ["up", "down"].forEach(function (e) {
+                        controllerEl.addEventListener(baseEvent + e, function () {
+                            var gripEvent = baseEvent === "grip";
+                            //console.log( (gripEvent ? "gripped" : "pressed") + " " + controllerSide + " " + e );
+                            var value = e === "down";
+                            gripEvent ? vrInput.gripped(value) : vrInput.pressed(value);
+                        });
+                    });
+                });
+
+                document.querySelector("[camera]").object3D.add(vrInput);
+            });
+        }
+
+        AFRAME.registerComponent('dat-gui-controller', {
+            schema: {
+                query: { default: "" }
+            },
+
+            init: function () {
+                if (this.data.query === "") {
+                    console.warn("Dat-gui-controller: no query, please add one");
+                    return;
+                }
+                scene = this.el.sceneEl.object3D;
+                var controls = document.querySelectorAll(this.data.query);
+
+                controls.forEach(function (controllerEl) {
+                    var object3D = controllerEl.object3D;
+                    // https://github.com/dataarts/dat.guiVR/wiki/Input-Support-(Vive-Controllers,-Mouse,-etc)
+                    var vrInput = dat.GUIVR.addInputObject(object3D);
+
+                    ['trigger', 'trackpad', 'grip'].forEach(function (baseEvent) {
+                        ['up', 'down'].forEach(function (e) {
+                            controllerEl.addEventListener(baseEvent + e, function () {
+                                var gripEvent = baseEvent === 'grip';
+                                console.log((gripEvent ? 'gripped' : 'pressed') + " " + controllerEl + " " + e);
+                                var value = e === "down";
+                                gripEvent ? vrInput.gripped(value) : vrInput.pressed(value);
+                            });
+                        });
+                    });
+                    scene.add(vrInput);
+                });
+            }
+        });
+    </script> -->
+
+</head>
+
+<body>
+
+    <a-scene background="color: skyblue" 
+        dat-gui-controller="query: [oculus-touch-controls]">
+
+
+        <a-datgui name="settings" position="0 1 -2"
+                controller-left="#left" controller-right="#right" target-el="#sphere">
+
+            <a-gui-slider id="x" name="scale" step="0.01" min="0.1" max="2"></a-gui-slider>
+            <a-gui-slider id="y" name="scale" step="0.01" min="0.1" max="2"></a-gui-slider>
+            <a-gui-slider id="z" name="scale" step="0.01" min="0.1" max="2"></a-gui-slider>
+            <!-- <a-gui-dropdown name="options">
+                <a-gui-option value="0">Item 0</a-gui-option>
+                <a-gui-option value="1">Item 1</a-gui-option>
+            </a-gui-dropdown>
+            <a-gui-checkbox name="on or off" default="true"></a-gui-checkbox>
+            <a-gui-button name="click me"></a-gui-button> -->
+        </a-datgui>
+
+        <a-box id="box" color="#4CC3D9" position="-1 0.5 -2" rotation="0 45 0"></a-box>
+        <a-sphere id="sphere" color="#EF2D5E" position="0 1.25 -5" radius="1.25"></a-sphere>
+        <a-cylinder color="#FFC66E" height="1.5" position="1 0.75 -3" radius="0.5"></a-cylinder>
+        <a-plane color="#7BC8A4" height="4" position="0 0 -4" rotation="-90 0 0" width="4"></a-plane>
+
+        <a-entity position="0 0 0">
+            <a-entity camera position="0 1.6 0" look-controls wasd-controls></a-entity>
+            <a-entity id="left" oculus-touch-controls="hand: left;"></a-entity>
+            <a-entity id="right" oculus-touch-controls="hand: right;"></a-entity>        
+        </a-entity>
+        
+    </a-scene>
+
+</body>
+
+</html>

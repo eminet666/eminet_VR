@@ -16,7 +16,12 @@
 * [demo fps](./x_demogame_fps)
 * [proxemic](./x_test/proxemic)
 * [proximity](./x_test/proximity)
+* [oculus input](./x_test/oculus_inputs/README.md)
 * [data gui VR](./y_datgui)
+
+
+## ref
+* [github](https://github.com/aframevr/aframe)
 
 <!-- 
 * [d_lights](./d_lights/README.md)
