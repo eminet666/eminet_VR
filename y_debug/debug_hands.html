@@ -1,0 +1,135 @@
+<!-- source : https://quest-demo.glitch.me/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+        let helpvisible = true;
+
+        AFRAME.registerComponent('debug-hands', {
+            schema: {
+                trace: { type: 'boolean', default: false},
+            },
+            init: function () {
+                //grip button is pressed or not 
+                //"this.el" reffers to left oi right id 
+                this.el.grip = false;
+                let traceflag = this.data.trace;
+
+                //Y-buttorn Pressed 
+                this.el.addEventListener('ybuttondown', function (e) {
+                    togglehelp();
+                    if (traceflag) trace("y down");
+                });
+
+                //X-buttorn Pressed 
+                this.el.addEventListener('xbuttonup', function (e) {
+                    this.emit('y up');
+                    if (traceflag) trace("y up");
+                });
+                //X-buttorn Pressed 
+                this.el.addEventListener('xbuttondown', function (e) {
+                    this.emit('x down');
+                    if (traceflag) trace("x down");
+                });
+                //X-buttorn Released 
+                this.el.addEventListener('xbuttonup', function (e) {
+                    this.emit('x up');
+                    if (this.data.trace) trace("x up");
+                });
+            },
+
+        });
+
+        function togglehelp() {
+            var txtleft = document.querySelector('#txtleft');
+            var txtright = document.querySelector('#txtright');
+            if(helpvisible) {
+                txtleft.setAttribute('visible', false);
+                txtright.setAttribute('visible', false);
+                helpvisible = false;
+            } else {
+                txtleft.setAttribute('visible', true);
+                txtright.setAttribute('visible', true);                
+                helpvisible = true;
+            }            
+        }
+
+        function trace(message) {
+            var trace = document.querySelector('#txtlog');
+            trace.setAttribute('value', message);
+        }        
+
+        // keyboard to debug
+        AFRAME.registerComponent('keyboard-controller', {
+            schema: {
+                key: { type: 'array' },
+                target: { type: 'array' },
+                event: { type: 'array' },
+            },
+            init: function () {
+                let key = this.data.key;
+                let event = this.data.event;
+                let target = this.data.target;
+                document.addEventListener('keypress', evt => {
+                    for( var i = 0; i < key.length; i++){
+                        if (evt.keyCode === key[i].codePointAt(0)) {
+                            let cible = document.querySelector(target[i]);
+                            cible.emit(event[i]);
+                            console.log("event "+event[i]+ " sent to "+target[i]);
+                        }
+                    }
+                });
+            }
+        });
+        AFRAME.registerComponent('test', {
+            init: function () {
+                el = this.el;
+
+                document.addEventListener('test', evt => {
+                    trace('test ok');
+                });
+            }
+        });        
+
+</script>
+</head>
+
+<body>
+    <a-scene background="color: #5280A7"
+        keyboard-controller="key: t; event: test; target: #boite">
+
+        <a-box id="boite" test position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
+
+        <!-- player -->
+        <a-entity id="player">
+            <!-- head -->
+            <a-entity id="head" camera wasd-controls="acceleration:10" look-controls position="0 1.6 0">
+                <!-- trace -->
+                <a-text id="txtlog" value="trace" align="center" color="#FF0000" position="0 0 -1" scale="0.25 0.25 0.25"></a-text>
+            </a-entity>
+
+            <!-- left-hand -->
+            <a-entity id="left" raycaster="objects: .collidable; far:100;"
+                 oculus-touch-controls="hand: left" input-listen="trace: true">
+                <a-text id="txtleft" value="Trigger \nGrip \nX \nY: toggle hide help" position="0 0.08 0" visible="true"
+                    rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
+            </a-entity>
+
+            <!-- right-hand -->
+            <a-entity id="right" raycaster="objects: .collidable; far:100; " 
+                oculus-touch-controls="hand: right" input-listen="trace: true">
+                <a-text id="txtright" value="Trigger \nGrip \nA \nB"
+                    position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
+                <a-sphere radius="0.01" position="0 0 -1.2" color="#FFFFFF"></a-sphere>
+            </a-entity>
+
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
