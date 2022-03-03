@@ -15,14 +15,16 @@
                 trace = this.data.trace;
                 el = this.el;
                 let evenements = [
-                "triggerdown", "triggerup", "triggertouchstart", "triggertouchend", "triggerchanged",
-                "thumbstickdown", "thumbstickup", "thumbsticktouchstart", "thumbsticktouchend", "thumbstickchanged", "thumbstickmoved",
-                "gripdown", "gripup", "griptouchstart", "griptouchend", "gripchanged", 
-                "abuttondown", "abuttonup", "abuttontouchstart", "abuttontouchend", "abuttonchanged",
-                "bbuttondown", "bbuttonup", "bbuttontouchstart", "bbuttontouchend", "bbuttonchanged",
-                "xbuttondown", "xbuttonup", "xbuttontouchstart", "xbuttontouchend", "xbuttonchanged",
-                "ybuttondown", "ybuttonup", "ybuttontouchstart", "ybuttontouchend", "ybuttonchanged",
-                "surfacedown", "surfaceup", "surfacetouchstart", "surfacetouchend", "surfacechanged"];
+                "triggerdown", "triggerup", "triggertouchstart", "triggertouchend", 
+                "thumbstickdown", "thumbstickup", "thumbsticktouchstart", "thumbsticktouchend", "thumbstickmoved",
+                "gripdown", "gripup", "griptouchstart", "griptouchend",  
+                "abuttondown", "abuttonup", "abuttontouchstart", "abuttontouchend", 
+                "bbuttondown", "bbuttonup", "bbuttontouchstart", "bbuttontouchend",
+                "xbuttondown", "xbuttonup", "xbuttontouchstart", "xbuttontouchend",
+                "ybuttondown", "ybuttonup", "ybuttontouchstart", "ybuttontouchend",
+                "surfacedown", "surfaceup", "surfacetouchstart", "surfacetouchend",];
+                // "triggerchanged", "thumbstickchanged", "gripchanged", "abuttonchanged", 
+                // "bbuttonchanged", "xbuttonchanged", "ybuttonchanged", "surfacechanged"
                 for (var i = 0; i < evenements.length; i++){                
                     console.log(el.id+" : Listener '"+evenements[i]+"' added");
                     this.el.addEventListener(evenements[i], (evt) => {
