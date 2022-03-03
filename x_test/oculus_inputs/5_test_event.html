@@ -7,26 +7,17 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://eminet666.github.io/ensaama/components/debug/debug.js"></script>
     <script>
-        AFRAME.registerComponent('all-events', {
+        AFRAME.registerComponent('test-event', {
             schema: {
                 trace: { type: 'boolean', default: false },
+                event: { type: 'string', default: 'none' },                
             }, 
             init: function () {
                 trace = this.data.trace;
-                el = this.el;
-                let evenements = [
-                "triggerdown", "triggerup", "triggertouchstart", "triggertouchend", "triggerchanged",
-                "thumbstickdown", "thumbstickup", "thumbsticktouchstart", "thumbsticktouchend", "thumbstickchanged", "thumbstickmoved",
-                "gripdown", "gripup", "griptouchstart", "griptouchend", "gripchanged", 
-                "abuttondown", "abuttonup", "abuttontouchstart", "abuttontouchend", "abuttonchanged",
-                "bbuttondown", "bbuttonup", "bbuttontouchstart", "bbuttontouchend", "bbuttonchanged",
-                "xbuttondown", "xbuttonup", "xbuttontouchstart", "xbuttontouchend", "xbuttonchanged",
-                "ybuttondown", "ybuttonup", "ybuttontouchstart", "ybuttontouchend", "ybuttonchanged",
-                "surfacedown", "surfaceup", "surfacetouchstart", "surfacetouchend", "surfacechanged"];
-                for (var i = 0; i < evenements.length; i++){                
-                    console.log(el.id+" : Listener "+evenements[i]+" added");
-                    this.el.addEventListener(evenements[i], this.logEvent(evenements[i]));
-                }
+                event = this.data.event;
+                el = this.el;              
+                console.log(el.id+" : Listener "+event+" added");
+                this.el.addEventListener(event, this.logEvent(event));
             },
             logEvent: function (evt) {
                 let cas;
@@ -44,7 +35,7 @@
 
 <body>
     <a-scene background="color: #5280A7" 
-    debug-keyboard="key: e; event: abuttonup; target: #right">
+    debug-keyboard="key: l, r; event: xbuttondown, abuttondown; target: #left, #right">
 
         <a-box position="0 0.5 -3" rotation="0 -45 0" color="orange"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
@@ -54,13 +45,13 @@
                 <a-text id="txtlog" value="play with the thumbstick" align="center" color="#FF0000" position="0 0 -1" rotation="0 0 0" scale="0.25 0.25 0.25">
                 </a-text>
             </a-entity>
-            <a-entity id="left"
-                oculus-touch-controls="hand: left" all-events="trace: true">
+            <a-entity id="left" oculus-touch-controls="hand: left" 
+                test-event="trace: true; event: xbuttondown;">
                 <a-text value="play with the thumbstick" position="0 0.08 0"
                     rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
             </a-entity>
             <a-entity id="right" oculus-touch-controls="hand: right"
-                all-events="trace: true">
+                test-event="trace: true; event: abuttondown;">
                 <a-text value="play with the thumbstick"
                     position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
             </a-entity>
