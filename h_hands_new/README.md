@@ -9,6 +9,12 @@
 * [feet](./4_feet.html)
 * [hands_feet_1](./5_hands_feet.html)
 
+### doc
+* [aframe](https://aframe.io/docs/1.3.0/components/hand-tracking-controls.html)
+
+### components
+* [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
+* superhands : [github](https://github.com/wmurphyrd/aframe-super-hands-component) | [exemples](https://wmurphyrd.github.io/aframe-super-hands-component/examples/)
 
 
 <!-- 
@@ -17,3 +23,4 @@ todolist
 https://github.com/gftruj/aframe-hand-tracking-controls-extras 
 https://github.com/aframevr/aframe/issues/4690
 -->
+https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md
