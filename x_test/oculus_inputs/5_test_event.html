@@ -20,7 +20,7 @@
                     //console.log(evt);
                     if (trace) {
                         var txtlog = document.querySelector('#txtlog');
-                        var newvalue = "hand : " + evt.target.id + "\n event :" + evt.type;
+                        var newvalue = "hand : " + evt.target.id + "\n event : " + evt.type;
                         txtlog.setAttribute('value', newvalue);
                     }                        
                 });
@@ -34,7 +34,7 @@
     <a-scene background="color: #5280A7" 
     debug-keyboard="key: l, r; event: xbuttondown, abuttondown; target: #left, #right">
 
-        <a-box position="0 0.5 -3" rotation="0 -45 0" color="blue"></a-box>
+        <a-box position="0 0.5 -3" rotation="0 -45 0" color="gold"></a-box>
         <a-plane width="10" height="10" color="silver" position="0 0 0" rotation="-90 0 0"></a-plane>
 
         <a-entity id="player">
