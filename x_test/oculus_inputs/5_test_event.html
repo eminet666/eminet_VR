@@ -7,26 +7,23 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://eminet666.github.io/ensaama/components/debug/debug.js"></script>
     <script>
-        AFRAME.registerComponent('test-event', {
+        AFRAME.registerComponent('test-hand-event', {
             schema: {
                 trace: { type: 'boolean', default: false },
                 event: { type: 'string', default: 'none' },                
             }, 
             init: function () {
                 trace = this.data.trace;
-                event = this.data.event;
-                el = this.el;              
-                console.log(el.id+" : Listener "+event+" added");
-                this.el.addEventListener(event, this.logEvent(event));
-            },
-            logEvent: function (evt) {
-                let cas;
-
-                if (trace) {
-                    var txtlog = document.querySelector('#txtlog');
-                    var newvalue = "hand : " + el.id + "\n event :" + cas;
-                    txtlog.setAttribute('value', newvalue);
-                }            
+                event = this.data.event;            
+                console.log(this.el.id+" : Listener '"+event+"' added");
+                this.el.addEventListener(event, (evt) => {
+                    console.log(evt.target.id);
+                    if (trace) {
+                        var txtlog = document.querySelector('#txtlog');
+                        var newvalue = "hand : " + evt.target.id + "\n event :" + evt.type;
+                        txtlog.setAttribute('value', newvalue);
+                    }                        
+                });
             }
         });
     </script>
@@ -42,17 +39,17 @@
 
         <a-entity id="player">
             <a-entity id="head" camera wasd-controls look-controls position="0 1.6 0">
-                <a-text id="txtlog" value="play with the thumbstick" align="center" color="#FF0000" position="0 0 -1" rotation="0 0 0" scale="0.25 0.25 0.25">
+                <a-text id="txtlog" value="test left ou right event" align="center" color="#FF0000" position="0 0 -1" rotation="0 0 0" scale="0.25 0.25 0.25">
                 </a-text>
             </a-entity>
             <a-entity id="left" oculus-touch-controls="hand: left" 
-                test-event="trace: true; event: xbuttondown;">
-                <a-text value="play with the thumbstick" position="0 0.08 0"
+                test-hand-event="trace: true; event: xbuttondown;">
+                <a-text value="test left event" position="0 0.08 0"
                     rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
             </a-entity>
             <a-entity id="right" oculus-touch-controls="hand: right"
-                test-event="trace: true; event: abuttondown;">
-                <a-text value="play with the thumbstick"
+                test-hand-event="trace: true; event: abuttondown;">
+                <a-text value="test right event"
                     position="0 0.08 0" rotation="-90 0 0" scale="0.1 0.1 0.1" align="center" color="#FFFFFF"></a-text>
             </a-entity>
         </a-entity>
