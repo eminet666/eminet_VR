@@ -13,7 +13,7 @@
 * [aframe](https://aframe.io/docs/1.3.0/components/hand-tracking-controls.html)
 
 ### components
-* [oculus-touch-controls](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
+* oculus-touch-controls : [github](https://github.com/aframevr/aframe/blob/master/docs/components/oculus-touch-controls.md)
 * superhands : [github](https://github.com/wmurphyrd/aframe-super-hands-component) | [exemples](https://wmurphyrd.github.io/aframe-super-hands-component/examples/)
 
 
