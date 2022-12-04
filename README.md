@@ -23,6 +23,9 @@
 ## ref
 * [github](https://github.com/aframevr/aframe)
 
+## test
+* [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
+
 <!-- 
 * [d_lights](./d_lights/README.md)
 * [e_textures](./e_textures/README.md)
