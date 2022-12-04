@@ -10,6 +10,8 @@ attention : la physic ne marche plus avec la 1.2.0 _ bug en cours de résolution
 
 ### old
 * [maccurdy _ extra](https://github.com/wmurphyrd/aframe-physics-extras)
+* [maccurdy _ extra](https://wmurphyrd.github.io/aframe-physics-extras/)
+* [examples maccurdy _ extra](https://wmurphyrd.github.io/aframe-physics-extras/examples/)
 * [ngokevin](https://github.com/ngokevin/aframe-physics-components)
 
 ### ammo.js
