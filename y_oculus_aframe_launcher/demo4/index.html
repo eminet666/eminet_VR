@@ -11,7 +11,7 @@
             this.el.addEventListener("xbuttondown", function(event)	{
                     //const boite = document.querySelector('#boite');
                     //boite.setAttribute('color', 'white');
-                    window.location.href = '../demo1/index.html';
+                    window.location.assign = '../demo1/index.html';
         		});
         	}
         });
@@ -37,7 +37,13 @@
     <a-scene id="scene" renderer="antialias: true"
         debug-keyboard="key: x; event: gotohref; target: #scene"
         href="lien : http://www.google.fr">
-        
+
+        <a-assets>
+            <img id="imglink" src="./logo_ecole.png">
+        </a-assets>
+
+        <a-entity link="href: www.google.fr; title: Google; image: #imglink" position="0 1 -1"></a-entity>
+
         <a-box id="boite" position="-1 0.5 -3" rotation="0 45 0" color="blue"></a-box>
         <a-sphere position="0 1.25 -5" radius="1.25" color="blue"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="blue"></a-cylinder>
