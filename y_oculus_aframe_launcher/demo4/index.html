@@ -9,9 +9,9 @@
             const utilisateur = document.querySelector('#utilisateur');
 
             this.el.addEventListener("xbuttondown", function(event)	{
-                    //const boite = document.querySelector('#boite');
-                    //boite.setAttribute('color', 'white');
-                    window.location.assign = '../demo1/index.html';
+                    const boite = document.querySelector('#boite');
+                    boite.setAttribute('color', 'white');
+                    window.location.assugn("../demo1/index.html");
         		});
         	}
         });
@@ -24,7 +24,7 @@
             let lien = this.data.lien;
             this.el.addEventListener('gotohref', evt => {
                 const boite = document.querySelector('#boite');
-                boite.setAttribute('color', 'green');                
+                boite.setAttribute('color', 'yellow');                
                 //console.log(lien);
                 //window.location.assign(lien);                
             });
@@ -38,11 +38,13 @@
         debug-keyboard="key: x; event: gotohref; target: #scene"
         href="lien : http://www.google.fr">
 
-        <a-assets>
+        <!-- <a-assets>
             <img id="imglink" src="./logo_ecole.png">
         </a-assets>
 
         <a-entity link="href: www.google.fr; title: Google; image: #imglink" position="0 1 -1"></a-entity>
+        <a-link position="0 2 -2" scale="0.5 0.5 0.5" href="http://ensaama.net" title="Default" image="#imglink"></a-link> -->
+
 
         <a-box id="boite" position="-1 0.5 -3" rotation="0 45 0" color="blue"></a-box>
         <a-sphere position="0 1.25 -5" radius="1.25" color="blue"></a-sphere>
