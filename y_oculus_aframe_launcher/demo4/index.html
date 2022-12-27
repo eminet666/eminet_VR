@@ -6,20 +6,56 @@
     AFRAME.registerComponent('gauche', {
         init: function() {
             const utilisateur = document.querySelector('#utilisateur');
-            const boite1 = document.querySelector('#boite1');
-            console.log(boite1);
+            const boite = document.querySelector('#boite');
+            console.log(boite);
 
             this.el.addEventListener("xbuttondown", function(event)	{
-                    boite1.object3D.position.z -= 0.1;
+                    boite.setAttribute('color', 'white');
+                    //window.location.href = 'https://supermedium.com/supercraft/';
         		});
         	}
         });
+
+    // debug-keyboard
+    AFRAME.registerComponent('debug-keyboard', {
+        schema: {
+            key: {
+                type: 'array'
+            },
+            target: {
+                type: 'array'
+            },
+            event: {
+                type: 'array'
+            },
+        },
+        init: function () {
+            let key = this.data.key;
+            let event = this.data.event;
+            let target = this.data.target;
+            document.addEventListener('keypress', evt => {
+                for (var i = 0; i < key.length; i++) {
+                    if (evt.keyCode === key[i].codePointAt(0)) {
+                        let cible = document.querySelector(target[i]);
+                        cible.emit(event[i]);
+                        console.log("debug-keyboard : event '" + event[i] + "' sent to " + target[i]);
+                    }
+                }
+            });
+        }
+    });
+
+
+
 </script>    
 </head>
 
 <body>
-    <a-scene  renderer="antialias: true">
-        <a-box position="-1 0.5 -3" rotation="0 45 0" color="blue"></a-box>
+    <a-scene  
+        renderer="antialias: true"
+        debug-keyboard="key: x; event: test; target: #boite">
+        
+        <a-box id="boite" position="-1 0.5 -3" rotation="0 45 0" color="blue"></a-box>
         <a-sphere position="0 1.25 -5" radius="1.25" color="blue"></a-sphere>
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="blue"></a-cylinder>
         <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="grey"></a-plane>
