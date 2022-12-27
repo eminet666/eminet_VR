@@ -1,5 +1,9 @@
 # eminet_VR
 
+## test
+* [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
+* [oculus launcher](./y_oculus_aframe_launcher/demo1/index.html)
+
 ## chapitres
 * [4.0 model](./4.0_models)
 * [4.1 model compression](./4.1_model_compression)
@@ -23,8 +27,6 @@
 ## ref
 * [github](https://github.com/aframevr/aframe)
 
-## test
-* [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
 
 <!-- 
 * [d_lights](./d_lights/README.md)
