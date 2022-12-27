@@ -23,6 +23,8 @@
         init: function () {
             let lien = this.data.lien;
             this.el.addEventListener('gotohref', evt => {
+                const boite = document.querySelector('#boite');
+                boite.setAttribute('color', 'red');                
                 //console.log(lien);
                 window.location.assign(lien);                
             });
