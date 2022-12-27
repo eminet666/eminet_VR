@@ -2,7 +2,7 @@
 
 ## test
 * [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
-* [oculus launcher](./y_oculus_aframe_launcher/demo1/index.html)
+* [oculus launcher](./y_oculus_aframe_launcher/demo4/index.html)
 
 ## chapitres
 * [4.0 model](./4.0_models)
