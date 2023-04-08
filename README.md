@@ -8,6 +8,7 @@
 * [4.1 model compression](./4.1_model_compression)
 * [4.2 model actions](./4.2_model_actions)
 * [8_son](./8_sound)
+* [d_lights](./d_lights/README.md)
 
 * [camera](./g_camera/)
 * [hands](./h_hands/)
