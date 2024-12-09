@@ -3,6 +3,9 @@
 ## test
 * [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
 
+## temp
+* [x-oculus](./x_oculus/)
+
 ## chapitres
 * [4.0 model](./4.0_models)
 * [4.1 model compression](./4.1_model_compression)
