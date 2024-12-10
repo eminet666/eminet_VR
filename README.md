@@ -3,8 +3,11 @@
 ## test
 * [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
 
-## temp
-* [x-oculus](./x_oculus/)
+## oculus_ok
+* [buttons](./x_oculus_ok/buttons.html)
+* [grip](./x_oculus_ok/grip.html)
+* [trigger](./x_oculus_ok/trigger.html)
+* [thumbstick](./x_oculus_ok/thumbstick.html)
 
 ## chapitres
 * [4.0 model](./4.0_models)

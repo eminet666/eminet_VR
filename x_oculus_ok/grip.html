@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grip VR Scene</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="./component_log-console.js"></script>
+    <script>
+        AFRAME.registerComponent('grip-logging', {
+            init: function () {
+                const device = this.el.id;
+                this.el.addEventListener('gripdown', function (evt) {
+                    console.log(device + ">gripdown");
+                });
+                this.el.addEventListener('gripup', function (evt) {
+                    console.log(device + ">gripup");
+                });                    
+                // this.el.addEventListener('griptouchstart', function (evt) {
+                //     console.log(device+">griptouchstart");
+                // });   
+                // this.el.addEventListener('griptouchend', function (evt) {
+                //     console.log(device +">griptouchend");
+                // }); 
+                this.el.addEventListener('gripchanged', function (evt) {
+                    console.log(device +">gripchanged : " + evt.detail.value.toFixed(2));
+                });                                                           
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <a-scene>
+        <a-entity camera position="0 1.6 0" look-controls>
+            <a-entity id="left" oculus-touch-controls="hand: left" 
+                grip-logging></a-entity>
+            <a-entity id="right" oculus-touch-controls="hand: right" 
+                grip-logging></a-entity>
+        </a-entity>
+
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#666"></a-plane>
+        <a-sky color="skyblue"></a-sky>
+
+        <a-plane log-console position="0 2 -3" width="3" height="1.5" color="#333">
+            <a-text value="log" id="logPanel" position="-1.4 0 0.01" color="#FFF" width="2.8" line-height="50"></a-text>
+        </a-plane>
+
+    </a-scene>
+</body>
+
+</html>
