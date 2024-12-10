@@ -8,6 +8,8 @@
 * [grip](./x_oculus_ok/grip.html)
 * [trigger](./x_oculus_ok/trigger.html)
 * [thumbstick](./x_oculus_ok/thumbstick.html)
+* [interaction&controllers](https://aframe.io/docs/1.6.0/components/oculus-touch-controls.html)
+* [oculus-touch-controllers](https://aframe.io/docs/1.6.0/components/oculus-touch-controls.html)
 
 ## chapitres
 * [4.0 model](./4.0_models)
