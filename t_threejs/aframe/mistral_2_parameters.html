@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sphères paramétrables depuis OBJ - A-Frame</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('obj-spheres', {
+            schema: {
+                file: { type: 'string', default: '' },      // Chemin du fichier OBJ
+                radius: { type: 'number', default: 0.05 }, // Rayon des sphères
+                color: { type: 'string', default: '#FFFFFF' } // Couleur des sphères
+            },
+
+            init: function () {
+                this.loadObjFile();
+            },
+
+            // update: function () {
+            //     // Recharger si les paramètres changent
+            //     this.loadObjFile();
+            // },
+
+            loadObjFile: function () {
+                const data = this.data;
+                if (!data.file) {
+                    console.error('Aucun fichier OBJ spécifié');
+                    return;
+                }
+
+                fetch(data.file)
+                    .then(response => response.text())
+                    .then(text => {
+                        // this.clearSpheres(); // Nettoyer les sphères existantes
+                        const lines = text.split('\n');
+                        const scene = this.el;
+
+                        lines.forEach(line => {
+                            if (line.trim().startsWith('v ')) {
+                                const parts = line.trim().split(/\s+/);
+                                if (parts.length >= 4) {
+                                    const x = parseFloat(parts[1]);
+                                    const y = parseFloat(parts[2]);
+                                    const z = parseFloat(parts[3]);
+
+                                    const sphere = document.createElement('a-sphere');
+                                    sphere.setAttribute('position', `${x} ${y} ${z}`);
+                                    sphere.setAttribute('radius', data.radius);
+                                    sphere.setAttribute('color', data.color);
+                                    scene.appendChild(sphere);
+                                }
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Erreur de chargement:', error));
+            },
+
+            // clearSpheres: function () {
+            //     // Supprime toutes les sphères existantes
+            //     const spheres = this.el.querySelectorAll('a-sphere');
+            //     spheres.forEach(sphere => sphere.parentNode.removeChild(sphere));
+            // }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+        <!-- Utilisation du composant avec paramètres -->
+        <a-entity obj-spheres="file: cube.obj; radius: 0.05; color: #FFFFFF">
+        </a-entity>
+
+        <!-- Cube rouge original (optionnel) -->
+        <a-box position="0 0 0" rotation="0 0 0" scale="0.1 0.1 0.1" color="#FF0000"></a-box>
+
+        <!-- Fond gris -->
+        <a-sky color="#333333"></a-sky>
+    </a-scene>
+</body>
+
+</html>

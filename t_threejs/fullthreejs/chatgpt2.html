@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Three.js - FPS avec PointerLockControls</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        #instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-family: sans-serif;
+            font-size: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+    <!-- Import map pour résoudre "three" -->
+    <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js"
+    }
+  }
+  </script>
+</head>
+
+<body>
+    <div id="instructions">Clique ici pour contrôler (WASD / flèches + souris)</div>
+    <script type="module">
+        import * as THREE from 'three';
+        // PointerLock = acteur à l’intérieur vs Orbit = spectateur extérieur
+        import { PointerLockControls } from 'https://cdn.jsdelivr.net/npm/three@0.158.0/examples/jsm/controls/PointerLockControls.js';
+
+        // --- Scène ---
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x202020);
+
+        // --- Caméra ---
+        const camera = new THREE.PerspectiveCamera(75, innerWidth / innerHeight, 0.1, 1000);
+        camera.position.y = 1.5; // hauteur "yeux"
+
+        // --- Renderer ---
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(innerWidth, innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // --- Lumières ---
+        scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 0.6));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(3, 5, 2);
+        scene.add(dirLight);
+
+        // --- Cube rouge ---
+        const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({ color: 0xff0000 })
+        );
+        cube.scale.set(0.1, 0.1, 0.1);
+        cube.position.set(0, 0.05, 0);
+        scene.add(cube);
+
+        // --- Sphère blanche ---
+        const sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(1, 32, 32),
+            new THREE.MeshStandardMaterial({ color: 0xffffff })
+        );
+        sphere.scale.set(0.1, 0.1, 0.1);
+        sphere.position.set(1, 0.1, 1);
+        scene.add(sphere);
+
+        // --- Plan (sol) ---
+        const plane = new THREE.Mesh(
+            new THREE.PlaneGeometry(4, 4),
+            new THREE.MeshStandardMaterial({ color: 0x555555, side: THREE.DoubleSide })
+        );
+        plane.rotation.x = -Math.PI / 2;
+        plane.position.y = 0;
+        scene.add(plane);
+
+        // --- Contrôles FPS ---
+        const controls = new PointerLockControls(camera, document.body);
+        scene.add(controls.getObject());
+
+        const instructions = document.getElementById('instructions');
+        instructions.addEventListener('click', () => {
+            controls.lock();
+        });
+        controls.addEventListener('lock', () => { instructions.style.display = 'none'; });
+        controls.addEventListener('unlock', () => { instructions.style.display = ''; });
+
+        // --- Déplacement clavier ---
+        const velocity = new THREE.Vector3();
+        const direction = new THREE.Vector3();
+        const keys = { forward: false, backward: false, left: false, right: false };
+
+        document.addEventListener('keydown', (e) => {
+            switch (e.code) {
+                case 'ArrowUp': case 'KeyW': keys.forward = true; break;
+                case 'ArrowLeft': case 'KeyA': keys.left = true; break;
+                case 'ArrowDown': case 'KeyS': keys.backward = true; break;
+                case 'ArrowRight': case 'KeyD': keys.right = true; break;
+            }
+        });
+        document.addEventListener('keyup', (e) => {
+            switch (e.code) {
+                case 'ArrowUp': case 'KeyW': keys.forward = false; break;
+                case 'ArrowLeft': case 'KeyA': keys.left = false; break;
+                case 'ArrowDown': case 'KeyS': keys.backward = false; break;
+                case 'ArrowRight': case 'KeyD': keys.right = false; break;
+            }
+        });
+
+        // --- Boucle d’animation ---
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const delta = clock.getDelta();
+            const speed = 5.0; // vitesse unités/sec
+
+            if (controls.isLocked) {
+                direction.set(0, 0, 0);
+                if (keys.forward) direction.z -= 1;
+                if (keys.backward) direction.z += 1;
+                if (keys.left) direction.x -= 1;
+                if (keys.right) direction.x += 1;
+                direction.normalize();
+
+                velocity.x = direction.x * speed * delta;
+                velocity.z = direction.z * speed * delta;
+
+                controls.moveRight(velocity.x);
+                controls.moveForward(velocity.z);
+            }
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // --- Resize ---
+        window.addEventListener('resize', () => {
+            camera.aspect = innerWidth / innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(innerWidth, innerHeight);
+        });
+    </script>
+</body>
+
+</html>

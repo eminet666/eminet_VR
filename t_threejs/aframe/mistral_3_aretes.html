@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Connexions entre doublons - A-Frame 1.7.0</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('obj-spheres', {
+            schema: {
+                file: { type: 'string', default: '' },
+                radius: { type: 'number', default: 0.05 },
+                color: { type: 'string', default: '#FFFFFF' },
+                connectionColor: { type: 'string', default: '#FFFFFF' },
+                connectionOpacity: { type: 'number', default: 0.8 },
+                tolerance: { type: 'number', default: 0.0001 } // Tolérance pour détecter les doublons
+            },
+
+            init: function () {
+                this.spheres = [];
+                this.connections = [];
+                this.positions = [];
+                this.loadObjFile();
+            },
+
+            loadObjFile: function () {
+                const data = this.data;
+                if (!data.file) {
+                    console.error('Aucun fichier OBJ spécifié');
+                    return;
+                }
+
+                fetch(data.file)
+                    .then(response => response.text())
+                    .then(text => {
+                        this.clearAll();
+                        const lines = text.split('\n');
+                        const scene = this.el;
+                        const positions = [];
+                        const groups = []; // Tableau pour stocker les groupes de doublons
+
+                        // Première passe: créer les sphères et regrouper les positions similaires
+                        lines.forEach((line, index) => {
+                            if (line.trim().startsWith('v ')) {
+                                const parts = line.trim().split(/\s+/);
+                                if (parts.length >= 4) {
+                                    const x = parseFloat(parts[1]);
+                                    const y = parseFloat(parts[2]);
+                                    const z = parseFloat(parts[3]);
+                                    const pos = { x, y, z, index };
+
+                                    positions.push(pos);
+
+                                    const sphere = document.createElement('a-sphere');
+                                    sphere.setAttribute('position', `${x} ${y} ${z}`);
+                                    sphere.setAttribute('radius', data.radius);
+                                    sphere.setAttribute('color', data.color);
+                                    scene.appendChild(sphere);
+                                    this.spheres.push(sphere);
+
+                                    // Trouver un groupe existant ou en créer un nouveau
+                                    let foundGroup = false;
+                                    for (const group of groups) {
+                                        const dist = this.calculateDistance(pos, group[0]);
+                                        if (dist < data.tolerance) {
+                                            group.push(pos);
+                                            foundGroup = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!foundGroup) {
+                                        groups.push([pos]);
+                                    }
+                                }
+                            }
+                        });
+
+                        this.positions = positions;
+                        this.createConnectionsBetweenDuplicates(groups, data);
+                    })
+                    .catch(error => console.error('Erreur de chargement:', error));
+            },
+
+            createConnectionsBetweenDuplicates: function (groups, data) {
+                // Pour chaque groupe de doublons
+                for (const group of groups) {
+                    if (group.length > 1) {
+                        // Connecter toutes les paires dans le groupe
+                        for (let i = 0; i < group.length; i++) {
+                            for (let j = i + 1; j < group.length; j++) {
+                                const pos1 = group[i];
+                                const pos2 = group[j];
+
+                                // Créer une ligne entre les deux points
+                                const line = document.createElement('a-line');
+                                line.setAttribute('start', `${pos1.x} ${pos1.y} ${pos1.z}`);
+                                line.setAttribute('end', `${pos2.x} ${pos2.y} ${pos2.z}`);
+                                line.setAttribute('color', data.connectionColor);
+                                line.setAttribute('opacity', data.connectionOpacity);
+                                line.setAttribute('linewidth', '2');
+
+                                this.el.appendChild(line);
+                                this.connections.push(line);
+
+                                console.log(`Ligne créée entre (${pos1.x},${pos1.y},${pos1.z}) et (${pos2.x},${pos2.y},${pos2.z})`);
+                            }
+                        }
+                    }
+                }
+            },
+
+            calculateDistance: function (pos1, pos2) {
+                const dx = pos1.x - pos2.x;
+                const dy = pos1.y - pos2.y;
+                const dz = pos1.z - pos2.z;
+                return Math.sqrt(dx * dx + dy * dy + dz * dz);
+            },
+
+            clearAll: function () {
+                this.spheres.forEach(sphere => sphere.parentNode?.removeChild(sphere));
+                this.connections.forEach(conn => conn.parentNode?.removeChild(conn));
+                this.spheres = [];
+                this.connections = [];
+                this.positions = [];
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+        <a-entity obj-spheres="file: cube.obj;
+                        radius: 0.05;
+                        color: #FFFFFF;
+                        connectionColor: #FFFFFF;
+                        connectionOpacity: 0.8;
+                        tolerance: 0.0001">
+        </a-entity>
+        <a-sky color="#333333"></a-sky>
+        <a-entity camera="active: true" position="2 2 2" look-at="0 0 0"></a-entity>
+        <a-entity movement-controls="speed: 0.1"></a-entity>
+    </a-scene>
+</body>
+
+</html>

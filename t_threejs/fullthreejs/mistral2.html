@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Three.js Scene avec contrôles souris + clavier</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            cursor: none;
+            /* Cache le curseur par défaut */
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script>
+        // Variables de mouvement (clavier)
+        const moveSpeed = 0.1;
+        const moveStates = {
+            forward: false,
+            backward: false,
+            left: false,
+            right: false
+        };
+
+        // Variables de rotation (souris)
+        let targetRotation = { x: 0, y: 0 };
+        let currentRotation = { x: 0, y: 0 };
+        const rotationSpeed = 0.02;
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        // Initialisation de la scène
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x333333);
+
+        // Caméra positionnée à (0, 1.6, 0)
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 1.6, 0);
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Lumière
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(1, 1, 1);
+        scene.add(light);
+        scene.add(new THREE.AmbientLight(0x404040));
+
+        // Cube rouge
+        const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+        const cubeMaterial = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        cube.position.set(0, 0, 0);
+        cube.scale.set(0.1, 0.1, 0.1);
+        scene.add(cube);
+
+        // Sphère blanche
+        const sphereGeometry = new THREE.SphereGeometry(0.5, 32, 32);
+        const sphereMaterial = new THREE.MeshPhongMaterial({ color: 0xffffff });
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere.position.set(1, 1, 1);
+        sphere.scale.set(0.1, 0.1, 0.1);
+        scene.add(sphere);
+
+        // Plan
+        const planeGeometry = new THREE.PlaneGeometry(4, 4);
+        const planeMaterial = new THREE.MeshPhongMaterial({
+            color: 0x888888,
+            side: THREE.DoubleSide
+        });
+        const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+        plane.rotation.x = -Math.PI / 2;
+        plane.position.y = 0;
+        scene.add(plane);
+
+        // Gestion des événements clavier (WASD/flèches)
+        document.addEventListener('keydown', (event) => {
+            switch (event.code) {
+                case 'KeyW': case 'ArrowUp': moveStates.forward = true; break;
+                case 'KeyA': case 'ArrowLeft': moveStates.left = true; break;
+                case 'KeyS': case 'ArrowDown': moveStates.backward = true; break;
+                case 'KeyD': case 'ArrowRight': moveStates.right = true; break;
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            switch (event.code) {
+                case 'KeyW': case 'ArrowUp': moveStates.forward = false; break;
+                case 'KeyA': case 'ArrowLeft': moveStates.left = false; break;
+                case 'KeyS': case 'ArrowDown': moveStates.backward = false; break;
+                case 'KeyD': case 'ArrowRight': moveStates.right = false; break;
+            }
+        });
+
+        // Gestion des événements souris pour la rotation
+        document.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            previousMousePosition = { x: event.clientX, y: event.clientY };
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            if (!isDragging) return;
+
+            const deltaX = event.clientX - previousMousePosition.x;
+            const deltaY = event.clientY - previousMousePosition.y;
+
+            // Mise à jour de la rotation cible (inversée pour un contrôle naturel)
+            targetRotation.y -= deltaX * rotationSpeed; // Rotation horizontale (gauche/droite)
+            targetRotation.x -= deltaY * rotationSpeed; // Rotation verticale (haut/bas)
+
+            // Limite la rotation verticale pour éviter un retournement complet
+            targetRotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, targetRotation.x));
+
+            previousMousePosition = { x: event.clientX, y: event.clientY };
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Gestion du redimensionnement
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Déplacement clavier (WASD/flèches)
+            if (moveStates.forward) camera.translateZ(-moveSpeed);
+            if (moveStates.backward) camera.translateZ(moveSpeed);
+            if (moveStates.left) camera.translateX(-moveSpeed);
+            if (moveStates.right) camera.translateX(moveSpeed);
+
+            // Rotation souris (interpolation fluide)
+            currentRotation.x += (targetRotation.x - currentRotation.x) * 0.1;
+            currentRotation.y += (targetRotation.y - currentRotation.y) * 0.1;
+
+            // Application de la rotation à la caméra
+            camera.rotation.x = currentRotation.x;
+            camera.rotation.y = currentRotation.y;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    </script>
+</body>
+
+</html>

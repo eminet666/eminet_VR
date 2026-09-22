@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sphère Three.js</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="info">
+        <div>Sphère à la position (1, 1, 1) avec scale 0.1</div>
+        <div>Souris : rotation de la caméra</div>
+        <div>WASD / Flèches : déplacement horizontal</div>
+        <div>Q/E : monter/descendre</div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Variables globales
+        let scene, camera, renderer, sphere;
+        let keys = {};
+
+        // Initialisation
+        function init() {
+            // Créer la scène
+            scene = new THREE.Scene();
+
+            // Créer la caméra
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 1.6, 0);
+            camera.lookAt(0, 0, 0);
+
+            // Créer le renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setClearColor(0x222222);
+            document.body.appendChild(renderer.domElement);
+
+            // Créer la géométrie et le matériau de la sphère
+            const geometry = new THREE.SphereGeometry(1, 32, 32);
+            const material = new THREE.MeshPhongMaterial({
+                color: 0xffffff,
+                shininess: 100
+            });
+
+            // Créer la sphère
+            sphere = new THREE.Mesh(geometry, material);
+
+            // Appliquer la position et l'échelle
+            sphere.position.set(1, 1, 1);
+            sphere.scale.setScalar(0.1);
+
+            scene.add(sphere);
+
+            // Ajouter des lumières
+            const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Ajouter un plan horizontal en y=0
+            const planeGeometry = new THREE.PlaneGeometry(4, 4);
+            const planeMaterial = new THREE.MeshPhongMaterial({
+                color: 0x888888,
+                side: THREE.DoubleSide
+            });
+            const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+            plane.rotation.x = -Math.PI / 2; // Rotation pour le mettre horizontal
+            plane.position.y = 0;
+            scene.add(plane);
+
+            // Ajouter un cube rouge à l'origine
+            const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+            const cubeMaterial = new THREE.MeshPhongMaterial({
+                color: 0xff0000
+            });
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.position.set(0, 0, 0);
+            cube.scale.setScalar(0.1);
+            scene.add(cube);
+
+            // Contrôles basiques de la caméra avec la souris
+            setupCameraControls();
+
+            // Contrôles clavier
+            setupKeyboardControls();
+
+            // Démarrer l'animation
+            animate();
+        }
+
+        // Contrôles de caméra simples
+        function setupCameraControls() {
+            let isMouseDown = false;
+            let mouseX = 0, mouseY = 0;
+            let cameraAngleX = 0, cameraAngleY = 0;
+            const distance = 5;
+
+            renderer.domElement.addEventListener('mousedown', (event) => {
+                isMouseDown = true;
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            renderer.domElement.addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+
+            renderer.domElement.addEventListener('mousemove', (event) => {
+                if (!isMouseDown) return;
+
+                const deltaX = event.clientX - mouseX;
+                const deltaY = event.clientY - mouseY;
+
+                cameraAngleY += deltaX * 0.01;
+                cameraAngleX += deltaY * 0.01;
+
+                // Limiter l'angle vertical
+                cameraAngleX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, cameraAngleX));
+
+                // Calculer la nouvelle position de la caméra
+                camera.position.x = distance * Math.cos(cameraAngleX) * Math.sin(cameraAngleY);
+                camera.position.y = distance * Math.sin(cameraAngleX);
+                camera.position.z = distance * Math.cos(cameraAngleX) * Math.cos(cameraAngleY);
+
+                camera.lookAt(1, 1, 1); // Regarder vers la sphère
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            // Zoom avec la molette
+            renderer.domElement.addEventListener('wheel', (event) => {
+                const zoomSpeed = 0.1;
+                const direction = event.deltaY > 0 ? 1 : -1;
+
+                camera.position.multiplyScalar(1 + direction * zoomSpeed);
+
+                event.preventDefault();
+            });
+        }
+
+        // Contrôles clavier
+        function setupKeyboardControls() {
+            document.addEventListener('keydown', (event) => {
+                keys[event.code] = true;
+                console.log('Touche pressée:', event.code);
+            });
+
+            document.addEventListener('keyup', (event) => {
+                keys[event.code] = false;
+            });
+        }
+
+        // Traitement des mouvements de caméra
+        function handleCameraMovement() {
+            const moveSpeed = 0.1;
+
+            // WASD et flèches pour déplacement horizontal
+            if (keys['KeyW'] || keys['ArrowUp']) {
+                camera.position.z -= moveSpeed;
+            }
+            if (keys['KeyS'] || keys['ArrowDown']) {
+                camera.position.z += moveSpeed;
+            }
+            if (keys['KeyA'] || keys['ArrowLeft']) {
+                camera.position.x -= moveSpeed;
+            }
+            if (keys['KeyD'] || keys['ArrowRight']) {
+                camera.position.x += moveSpeed;
+            }
+
+            // Touches Q et E pour monter/descendre
+            if (keys['KeyQ']) {
+                camera.position.y -= moveSpeed;
+            }
+            if (keys['KeyE']) {
+                camera.position.y += moveSpeed;
+            }
+        }
+
+        // Boucle d'animation
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Traiter les mouvements de caméra
+            handleCameraMovement();
+
+            // Faire tourner légèrement la sphère pour mieux la voir
+            sphere.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        }
+
+        // Gérer le redimensionnement de la fenêtre
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        window.addEventListener('resize', onWindowResize, false);
+
+        // Lancer l'initialisation
+        init();
+    </script>
+</body>
+
+</html>

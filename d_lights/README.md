@@ -12,7 +12,7 @@
 [spot](./aframe_doc/light_2_type_5_spot.html)
 
 #### tuto
-* source : [tuto](https://aframe-course.glitch.me/0800-lights.html)
+<!-- * source : [tuto](https://aframe-course.glitch.me/0800-lights.html) -->
 * exemples : [default](./tuto/lights_0_default.html) | 
 [disable](./tuto/lights_0_desabledefault.html) |
 [ambiant](./tuto/lights_1_ambiant.html) | 

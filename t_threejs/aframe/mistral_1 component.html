@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sphères depuis cube.obj - A-Frame</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script>
+        // Composant personnalisé pour charger et parser le fichier OBJ
+        AFRAME.registerComponent('obj-spheres', {
+            init: function () {
+                // Remplacez par le chemin réel de votre fichier cube.obj
+                const objFilePath = 'cube.obj';
+
+                // Chargement du fichier OBJ
+                fetch(objFilePath)
+                    .then(response => response.text())
+                    .then(text => {
+                        const lines = text.split('\n');
+                        const scene = this.el;
+
+                        lines.forEach(line => {
+                            // On cherche les lignes commençant par "v " (vertices)
+                            if (line.trim().startsWith('v ')) {
+                                // Extraction des coordonnées x, y, z
+                                const parts = line.trim().split(/\s+/);
+                                if (parts.length >= 4) {
+                                    const x = parseFloat(parts[1]);
+                                    const y = parseFloat(parts[2]);
+                                    const z = parseFloat(parts[3]);
+
+                                    // Création d'une sphère blanche à cette position
+                                    const sphere = document.createElement('a-sphere');
+                                    sphere.setAttribute('position', `${x} ${y} ${z}`);
+                                    sphere.setAttribute('radius', '0.05'); // 0.1 de diamètre
+                                    sphere.setAttribute('color', '#FFFFFF');
+                                    scene.appendChild(sphere);
+                                }
+                            }
+                        });
+                    })
+                    .catch(error => console.error('Erreur de chargement du fichier OBJ:', error));
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene obj-spheres>
+        <!-- Cube rouge original (optionnel) -->
+        <a-box position="0 0 0" rotation="0 0 0" scale="0.1 0.1 0.1" color="#FF0000"></a-box>
+
+        <!-- Fond gris -->
+        <a-sky color="#333333"></a-sky>
+    </a-scene>
+</body>
+
+</html>
