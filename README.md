@@ -3,6 +3,9 @@
 ## test
 * [nav-mesh-collision](https://rocketvirtual.com/aframePACKAGE/AdvancedHelloWorld.html)
 
+## sound
+* [sound](./8_sound/README.md)
+
 ## oculus_ok
 * [buttons](./x_oculus_ok/buttons.html)
 * [grip](./x_oculus_ok/grip.html)
