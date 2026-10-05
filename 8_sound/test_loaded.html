@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test MP3</title>
+</head>
+
+<body>
+
+    <h2>Test du fichier MP3</h2>
+
+    <audio id="audio" src="./assets/cigale.mp3" controls preload="auto">
+    </audio>
+
+    <script>
+
+        const audio = document.querySelector('#audio');
+
+        audio.addEventListener('loadeddata', () => {
+            console.log("✅ loadeddata : fichier audio chargé");
+        });
+
+        audio.addEventListener('canplay', () => {
+            console.log("✅ canplay : le navigateur peut lire le fichier");
+        });
+
+        audio.addEventListener('error', () => {
+            console.error("❌ ERREUR AUDIO");
+            console.log(audio.error);
+        });
+
+    </script>
+
+</body>
+
+</html>

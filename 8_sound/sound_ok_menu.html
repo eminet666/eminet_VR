@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A-Frame 1.7.0 - Contrôle du son</title>
+
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+
+    <style>
+        #controls {
+            position: fixed;
+            z-index: 10;
+            top: 20px;
+            left: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            font-family: Arial, sans-serif;
+            border-radius: 8px;
+        }
+
+        button {
+            margin: 3px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        input {
+            vertical-align: middle;
+        }
+
+        #status {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Interface HTML -->
+    <div id="controls">
+        <button id="start">🔊 Démarrer l'audio</button>
+        <br>
+        <button id="play">▶ Play</button>
+        <button id="pause">⏸ Pause</button>
+        <button id="stop">⏹ Stop</button>
+        <br>
+        Volume :
+        <input id="volume" type="range" min="0" max="1" step="0.01" value="1">
+        <div id="status">
+            Audio non démarré
+        </div>
+    </div>
+
+    <!-- SCÈNE A-FRAME -->
+    <a-scene background="color: skyblue">
+
+        <a-assets>
+
+            <img id="img360" src="./assets/grece.jpg">
+
+            <audio id="vol" src="./assets/cigale.mp3" preload="auto">
+            </audio>
+
+        </a-assets>
+
+        <!-- Source sonore -->
+        <a-entity id="son" sound="src: #vol; volume: 1">
+        </a-entity>
+
+        <a-sky src="#img360" position="-2.06 10 -20" rotation="0 95 0">
+        </a-sky>
+
+    </a-scene>
+
+    <script>
+        const son = document.querySelector('#son');
+        const start = document.querySelector('#start');
+        const play = document.querySelector('#play');
+        const pause = document.querySelector('#pause');
+        const stop = document.querySelector('#stop');
+        const volume = document.querySelector('#volume');
+        const status = document.querySelector('#status');
+
+        // DÉMARRAGE DE L'AUDIO
+        start.addEventListener('click', function () {
+            // Le clic utilisateur autorise le navigateur à utiliser l'AudioContext.
+            if (AFRAME.audioContext.state === 'suspended') {
+                AFRAME.audioContext.resume();
+            }
+            status.textContent = "Audio activé";
+            // On peut maintenant jouer le son
+            son.components.sound.playSound();
+        });
+
+        // PLAY
+        play.addEventListener('click', function () {
+            son.components.sound.playSound()
+            status.textContent = "Lecture";
+        });
+
+        // PAUSE
+        pause.addEventListener('click', function () {
+            son.components.sound.pauseSound();
+            status.textContent = "Pause";
+        });
+
+        // STOP
+        stop.addEventListener('click', function () {
+            son.components.sound.stopSound();
+            status.textContent = "Arrêt";
+        });
+
+        // VOLUME
+        volume.addEventListener('input', function () {
+            const valeur = parseFloat(volume.value);
+            son.components.sound.setVolume(valeur);
+            status.textContent =
+                "Volume : " + Math.round(valeur * 100) + "%";
+
+        });
+
+    </script>
+
+</body>
+
+</html>

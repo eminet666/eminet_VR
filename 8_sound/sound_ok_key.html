@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Test son A-Frame 1.7.0</title>
+
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+
+        <a-assets>
+
+            <audio id="cigale" src="./assets/cigale.mp3" preload="auto">
+            </audio>
+
+        </a-assets>
+
+
+        <a-sound id="son" src="#cigale" volume="1">
+        </a-sound>
+
+
+    </a-scene>
+
+
+    <script>
+
+        // ------------------------------------------
+        // Récupération du composant sonore
+        // ------------------------------------------
+
+        const son = document.querySelector('#son');
+
+
+        // ------------------------------------------
+        // Le son est-il chargé ?
+        // ------------------------------------------
+
+        son.addEventListener('sound-loaded', function () {
+
+            console.log("✅ SON CHARGÉ PAR A-FRAME");
+
+        });
+
+
+        // ------------------------------------------
+        // Touche S
+        // ------------------------------------------
+
+        document.addEventListener('keydown', function (event) {
+
+            if (event.key.toLowerCase() === 's') {
+
+                console.log("S pressé");
+
+                son.components.sound.playSound();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

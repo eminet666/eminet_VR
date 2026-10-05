@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>A-Frame 1.7.0 - Son au clavier (Compatible Firefox)</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script>
+        AFRAME.registerComponent('sound-on-key', {
+            schema: {
+                key: { type: 'string', default: 's' }
+            },
+            init: function () {
+                this.onKeyDown = this.onKeyDown.bind(this);
+                // Écoute globale sur document pour éviter la perte de focus sous Firefox
+                document.addEventListener('keydown', this.onKeyDown);
+            },
+            remove: function () {
+                document.removeEventListener('keydown', this.onKeyDown);
+            },
+            onKeyDown: function (event) {
+                if (event.key.toLowerCase() === this.data.key.toLowerCase()) {
+                    // Relance l'AudioContext s'il a été suspendu par Firefox
+                    const sceneEl = this.el.sceneEl;
+                    if (sceneEl.audioListener && sceneEl.audioListener.context.state === 'suspended') {
+                        sceneEl.audioListener.context.resume();
+                    }
+
+                    const sound = this.el.components.sound;
+                    if (sound) {
+                        sound.playSound();
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <audio id="mon-audio" src="./assets/cigale.mp3" preload="auto" crossorigin="anonymous"></audio>
+        </a-assets>
+
+        <a-entity sound="src: #mon-audio; autoplay: false; poolSize: 5" sound-on-key="key: s">
+        </a-entity>
+
+        <a-sky color="#ECECF4"></a-sky>
+    </a-scene>
+</body>
+
+</html>
