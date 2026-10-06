@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Source de lumière A-Frame 1.7.0</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+</head>
+
+<body>
+    <!-- Scène sombre avec un fond presque noir -->
+    <a-scene background="color: #050508">
+
+        <!-- Lumière ambiante très faible pour apercevoir les ombres du sol -->
+        <a-entity light="type: ambient; color: #111122; intensity: 0.2"></a-entity>
+
+        <!-- Le Sol -->
+        <a-plane position="0 0 -3" rotation="-90 0 0" width="10" height="10" color="#333333"></a-plane>
+
+        <!-- Petit cube lumineux (0.25m de côté, placé en 0, 1, -3) -->
+        <a-box position="0 1 -2" width="0.25" height="0.25" depth="0.25" material="shader: flat; color: #ffaa00"
+            light="type: point; color: #ffaa00; intensity: 4; distance: 8; decay: 2">
+            // Le cube est à la fois un objet visible et une source de lumière
+            // Le shader flat permet de ne pas être affecté par la lumière ambiante
+            // Le light point est une source de lumière ponctuelle qui éclaire les objets autour
+            // intensity : 4 => puissance de la lumière
+            // distance : 8 => distance maximale de la lumière
+            // decay : 2 => décroissance de la lumière avec la distance (2 = réaliste)
+        </a-box>
+
+        <!-- Quelques cubes témoins dans la pièce pour voir l'effet de lumière -->
+        <a-box position="-1.5 0.5 -3" width="0.8" height="0.8" depth="0.8" color="#777777"></a-box>
+        <a-box position="1.5 0.5 -3.5" width="0.8" height="0.8" depth="0.8" color="#777777"></a-box>
+
+    </a-scene>
+</body>
+
+</html>

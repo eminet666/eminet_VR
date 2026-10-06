@@ -25,6 +25,9 @@
 
 * [exemple](https://aframe.io/aframe-school/#/7/1)
 
+#### demo emissive
+* [emissive](./demo_emissive.html)
+
 ### types
 #### Ambient : lights globally affect all entities in the scene 
 - propriétés : color, intensity
