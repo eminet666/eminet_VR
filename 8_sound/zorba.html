@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script type="text/html" src="./unlock_audio_ios.js"></script>
+
+    <style>
+        #musique {
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #contexte {
+            height: 30px;
+        }
+
+        #idBouton {
+            height: 30px;
+        }
+
+        p {
+            font-size: 0.8em;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body style='margin : 0px; overflow: hidden;'>
+    <a-scene background="color: skyblue">
+        <a-assets>
+            <audio id="son" src="./assets/zorba_ok.mp3" preload="auto" loop="false"></audio>
+        </a-assets>
+
+    </a-scene>
+
+    <div id="musique">
+        <button id="bouton">SON ON</button>
+    </div>
+    <script>
+        var b = document.querySelector('#bouton');
+        var son = document.querySelector('#son');
+
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        var contexteAudio = new AudioContext();
+        //unlockAudioIOS(contexteAudio); // ok pour context = AudioContext;
+
+        var DELAI_BOUTON_MS = 3000; // Délai de 3 secondes pour le bouton
+        var timerBouton = null;
+
+        function playOrPause() {
+            if (contexteAudio.state === "suspended") {
+                contexteAudio.resume().then(function () {
+                    console.log('Playback resumed successfully');
+                    son.play();
+                    b.innerHTML = "SON OFF";
+                    console.log("SON OFF");
+                });
+            } else if (son.paused) {
+                son.play();
+                b.innerHTML = "SON OFF";
+                console.log("SON OFF");
+            } else {
+                son.pause();
+                b.innerHTML = "SON ON";
+                console.log("SON ON");
+            }
+        }
+
+        // Clic sur le bouton : déclenchement avec délai
+        b.onclick = function () {
+            // Annule un éventuel délai en cours si on clique rapidement plusieurs fois
+            if (timerBouton) clearTimeout(timerBouton);
+
+            if (son.paused) {
+                b.innerHTML = "PATIENTEZ...";
+                timerBouton = setTimeout(function () {
+                    playOrPause();
+                    timerBouton = null;
+                }, DELAI_BOUTON_MS);
+            } else {
+                // Si le son joue déjà, l'arrêt/pause est immédiat
+                playOrPause();
+            }
+        };
+
+        // Écouteur clavier pour la touche 's' ou 'S' : déclenchement immédiat (sans délai)
+        window.addEventListener('keydown', function (event) {
+            if (event.key.toLowerCase() === 's') {
+                if (timerBouton) {
+                    clearTimeout(timerBouton);
+                    timerBouton = null;
+                }
+                playOrPause();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
